@@ -1,0 +1,18 @@
+{
+  "name": "maasy",
+  "owner": {
+    "name": "Believe Global",
+    "url": "https://believe-global.com"
+  },
+  "metadata": {
+    "description": "Maasy en Claude: marketplace de los plugins de Maasy."
+  },
+  "plugins": [
+    {
+      "name": "maasy",
+      "source": "./maasy",
+      "description": "Crea tu cuenta gratis y el ADN de tu marca con una entrevista guiada.",
+      "category": "marketing"
+    }
+  ]
+}
