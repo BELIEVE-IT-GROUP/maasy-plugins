@@ -13,6 +13,12 @@
       "source": "./maasy",
       "description": "Crea tu cuenta gratis y el ADN de tu marca con una entrevista guiada.",
       "category": "marketing"
+    },
+    {
+      "name": "maasy-vibe",
+      "source": "./maasy-vibe",
+      "description": "Maasy Vibe en Claude Code: crea apps con el template v2, revísalas y publícalas en el borde de Believe, legibles por agentes.",
+      "category": "development"
     }
   ]
 }
