@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "vibe": {
+      "command": "sh",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/server/run.sh"
+      ]
+    }
+  }
+}

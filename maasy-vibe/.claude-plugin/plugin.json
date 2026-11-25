@@ -1,0 +1,26 @@
+{
+  "name": "maasy-vibe",
+  "version": "0.1.0+24dd1f7c",
+  "dependencies": [
+    "maasy"
+  ],
+  "description": "Maasy Vibe en Claude Code: crea apps con el template v2, revísalas y publícalas en el borde de Believe, legibles por agentes.",
+  "types": "./types/index.d.ts",
+  "author": {
+    "name": "Believe Global",
+    "url": "https://believe-global.com"
+  },
+  "homepage": "https://believe-global.com",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/server/run.sh\" --check"
+          }
+        ]
+      }
+    ]
+  }
+}

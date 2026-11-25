@@ -1,0 +1,16 @@
+node_modules
+dist
+.tanstack
+.nitro
+.output
+.DS_Store
+*.local
+
+# Los genera Believable en cada publish (src/main/deploy/index.ts) y los checkpoints hacen git add -A:
+# sin esto terminan versionados y propagan config equivocada (REGLAS-INFRA regla 2; incidente BeMail).
+.env
+.env.production
+
+# Carpeta de trabajo de las skills (GLB crudos de dioramas, fotos y clips de hero-video, ffmpeg
+# estático): pesa decenas de MB y los checkpoints no deben versionarla.
+raw/
