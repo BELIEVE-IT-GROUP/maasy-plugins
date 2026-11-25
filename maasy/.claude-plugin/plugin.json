@@ -1,10 +1,11 @@
 {
   "name": "maasy",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Maasy en Claude: crea tu marca con una entrevista guiada y trabaja con su ADN desde Claude.",
   "author": {
     "name": "Believe Global",
     "url": "https://believe-global.com"
   },
-  "homepage": "https://maasy.ai"
+  "homepage": "https://maasy.ai",
+  "types": "./types/index.d.ts"
 }

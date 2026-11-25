@@ -10,6 +10,18 @@ Este directorio es público: la receta de la entrevista (preguntas, opciones, pr
 Comandos: `/maasy:start` (cuenta gratis y marca con una entrevista guiada) y `/maasy:borrar`. Sin servidor local y sin hooks.
 Los archivos locales se miden con `wc` y `file` (macOS y Linux). El logo por URL funciona en cualquier sistema.
 
+## Panel (MEC-15 y MEC-16)
+
+`hooks/panel.tsx` es el mod del núcleo: un solo panel con pestañas (Crear, Cuenta y las de los plugins que traen una tool
+`<id>_panel`), la entrevista con su avance y la franja `.cd-plugbar`. Contrato: `panel.v1` (`contrato-tabs-panel.md`).
+Inerte hasta la primera tool `maasy_*` o `/maasy-panel`: al arrancar solo registra el comando.
+
+- `hooks/panel-v1.ts`: validador por partes (un bloque malo se descarta, no la tab) y enlaces contra el origen de cada tab.
+- `hooks/estado.ts`: lógica pura (descubrir tabs con la lista cerrada de ids de §4.1, orden y orígenes de esa tabla, marca activa y `brandId`, Crear y Cuenta desde lo que ya devolvieron las tools). Los textos de terceros con caracteres de control se descartan.
+- `build.mjs`: baja `maasy-ui.css` v2.1, exige su sha256 y genera `hooks/tokens.generated.ts` (`node plugin/build.mjs --check`).
+- Pruebas: `claude plugin test plugin` (el mod), `deno test --unstable-sloppy-imports plugin/tests/` (validador y estado)
+  y `plugin/tests/arranque-headless.sh` (arranque con y sin el plugin).
+
 Instalación (cuando el repo `BELIEVE-IT-GROUP/maasy-plugins` se publique, con este mismo contenido):
 
 ```
