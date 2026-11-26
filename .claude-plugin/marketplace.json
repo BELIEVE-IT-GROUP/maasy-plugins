@@ -49,6 +49,12 @@
       "source": "./maasy-reply",
       "description": "Diseña desde Claude las campañas de comentario a DM de Instagram de tu marca. Maasy Reply las corre sin IA cuando una persona las activa en el panel.",
       "category": "marketing"
+    },
+    {
+      "name": "maasy-games",
+      "source": "./maasy-games",
+      "description": "Maasy Games en Claude: juegos de marca jugables en el celular, probados y empaquetados por Maasy.",
+      "category": "marketing"
     }
   ]
 }
