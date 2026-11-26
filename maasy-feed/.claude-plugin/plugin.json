@@ -1,6 +1,6 @@
 {
   "name": "maasy-feed",
-  "version": "1.0.0+287168f",
+  "version": "1.0.1+bbf582a",
   "dependencies": [
     "maasy"
   ],
@@ -14,5 +14,7 @@
     "maasy",
     "instagram",
     "befeed"
-  ]
+  ],
+  "icon": "./.claude-plugin/icon.png",
+  "privacyPolicyUrl": "https://reply.believe-global.com/privacy"
 }

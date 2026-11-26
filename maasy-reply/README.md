@@ -20,3 +20,5 @@ Con este plugin, tu Claude diseña las campañas de comentario a DM de Instagram
 
 - Una cuenta de Maasy con plan pago y acceso a la marca.
 - La cuenta de Instagram conectada en BeReply y vinculada a esa marca.
+
+Licencia: MIT. Ver LICENSE.
