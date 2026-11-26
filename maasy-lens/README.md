@@ -51,3 +51,9 @@ la versión que tenías funcionando. El registro queda en `~/.maasy-lens/actuali
 dice qué haría sin instalar nada.
 
 Las licencias de lo que se instala están en `THIRD-PARTY-NOTICES`.
+
+## Licencia
+
+MIT, ver [LICENSE](LICENSE). Cubre solo el código de este plugin. Lo que instala (uv, Python, whisper.cpp, deno, ffmpeg y el modelo) conserva su propia licencia, ver `THIRD-PARTY-NOTICES`.
+
+[Política de privacidad](https://maasy.ai/privacy)
