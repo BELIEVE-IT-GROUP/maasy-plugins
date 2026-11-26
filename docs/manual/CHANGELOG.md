@@ -8,6 +8,16 @@ Cómo se numera:
 - **Segundo número**: un capítulo nuevo o una capacidad nueva documentada (por ejemplo, un plugin que llega a la tienda).
 - **Tercer número**: correcciones, precisiones y pantallas rehechas.
 
+## 1.2.2 (2026-11-26)
+
+- **Feed y Reply**: todo lo que hace la persona (conectar Instagram, aprobar o descartar, programar y activar) es en la web de Maasy, en `maasy.ai/control/llaves`, `/control/feed` y `/control/reply`. Se quitan todas las menciones al panel de BeFeed y de BeReply. El capítulo 7 suma una tabla con esas direcciones.
+- **Reply**: si la conexión solo trae "Proponer borradores", `/maasy-reply:campana` te pide el @usuario; si falta otro permiso, Claude dice cuál y dónde activarlo.
+- **Games** pasa a disponible: `maasy-games` en la tienda, juegos en `<nombre>.begames.app`, aprobar y despublicar en `maasy.ai/control/games`. El capítulo 15 se reescribe como "Maasy Games y lo que viene" (con Ads).
+- **Incubator**: `/maasy-vibe:incubadora` ya viene en `maasy-vibe` y se describe en el capítulo 9.
+- **`maasy_forget_brand_brain_item`** ya está disponible: se quita `PRÓXIMAMENTE`.
+- **Borrar una marca**: si recuperar una marca borrada sube tu cupo, primero ves cuánto cambia la factura y decides tú.
+- Versiones al día: Vibe 0.1.0+6c360a26, Motion 0.2.3, Feed 1.0.2 y Reply 1.0.3.
+
 ## 1.2.1 (2026-11-26)
 
 - Versiones al día: Motion 0.2.2 y Lens 0.2.3 (solo licencia, ícono y política de privacidad; el manual no cambia).

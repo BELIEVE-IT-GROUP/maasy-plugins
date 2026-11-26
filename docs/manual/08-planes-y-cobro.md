@@ -73,7 +73,7 @@ Con el plan Pro, cada marca suma un cobro de USD 29 al mes. Por eso Claude nunca
 Hay tres casos.
 
 - **Marca del plan gratis, creada desde Claude:** `/maasy:borrar`, con el nombre escrito por ti. Libera tu cupo al instante (capítulo 3).
-- **Marca del plan Pro:** la puede borrar solo su dueño, y pide la misma confirmación por tarjeta. Antes de borrar, Maasy te dice qué se borra y cuánto baja tu factura, con el prorrateo a favor de hoy. La confirmación vale 10 minutos. Con tu sí, la marca deja de verse en todas partes y la factura baja en el acto. Sus datos, archivos, conversaciones, contactos y plantillas se eliminan del todo a los 30 días. Hasta entonces, soporte puede restaurarla.
+- **Marca del plan Pro:** la puede borrar solo su dueño, y pide la misma confirmación por tarjeta. Antes de borrar, Maasy te dice qué se borra y cuánto baja tu factura, con el prorrateo a favor de hoy. La confirmación vale 10 minutos. Con tu sí, la marca deja de verse en todas partes y la factura baja en el acto. Sus datos, archivos, conversaciones, contactos y plantillas se eliminan del todo a los 30 días. Hasta entonces, soporte puede restaurarla. Si recuperarla sube tu cupo de marcas (y con eso tu factura), antes ves cuánto cambia la factura y decides tú.
 - **Cualquier otra marca** (compartida con otras personas, operada por Believe): desde la web de Maasy.
 
 El borrado se frena con un aviso si la marca tiene algo vivo: publicaciones o posts programados, redes conectadas, campañas o automatizaciones activas, landings o artículos publicados, o pagos pendientes de la red de anuncios que hay que cobrar antes. Primero resuelves eso y después borras.

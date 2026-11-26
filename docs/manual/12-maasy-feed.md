@@ -1,8 +1,8 @@
 # Maasy Feed: tu Instagram orgánico
 
-`maasy-feed` planea tu semana de Instagram y escribe las piezas con tu voz de marca. Las semanas y las piezas se guardan en BeFeed, el sistema de contenido orgánico de Believe. Claude las deja como guion; tú las apruebas, las programas y las publicas en el panel de BeFeed.
+`maasy-feed` planea tu semana de Instagram y escribe las piezas con tu voz de marca. Las semanas y las piezas se guardan en BeFeed, el sistema de contenido orgánico de Believe. Claude las deja como guion; tú las apruebas, las programas y las publicas en la web de Maasy (maasy.ai/control/feed).
 
-> Disponible en la tienda (versión 1.0.0).
+> Disponible en la tienda (versión 1.0.2).
 
 ## Para qué sirve
 
@@ -15,7 +15,7 @@
 
 - Los plugins `maasy` y `maasy-feed`, y una marca creada.
 - Una cuenta de Maasy con plan Pro y acceso a la marca. Sin plan pago, `/maasy-feed:conectar` te lo dice y no insiste.
-- Tu cuenta de Instagram, que conectas en el panel de BeFeed con su propio inicio de sesión. Claude no puede conectarla por ti.
+- Tu cuenta de Instagram, que conectas en la web de Maasy (maasy.ai/control/llaves) con su propio inicio de sesión. Claude no puede conectarla por ti.
 
 ## Cómo se instala
 
@@ -36,7 +36,7 @@ Los permisos son por marca y vencen (90 días por defecto):
 
 ### 1. Conectar la marca
 
-`/maasy-feed:conectar mi marca` da de alta tu marca de Maasy en BeFeed. Claude busca la marca entre las tuyas (si hay más de una parecida, te pregunta cuál), la conecta y te dice hasta qué fecha dura el permiso. Si ya estaba conectada, renueva el permiso. Si tu Instagram todavía no está conectado, te da el enlace para hacerlo en el panel.
+`/maasy-feed:conectar mi marca` da de alta tu marca de Maasy en BeFeed. Claude busca la marca entre las tuyas (si hay más de una parecida, te pregunta cuál), la conecta y te dice hasta qué fecha dura el permiso. Si ya estaba conectada, renueva el permiso. Si tu Instagram todavía no está conectado, te dice que lo conectes en la web de Maasy (maasy.ai/control/llaves).
 
 ### 2. Escribir la semana
 
@@ -48,11 +48,11 @@ Los permisos son por marca y vencen (90 días por defecto):
 4. Crea la semana y cada pieza. Antes de guardar cada una, pasa el texto por el chequeo de voz del servidor y corrige lo que marque.
 5. Cuando una pieza queda lista para revisión, la pasa a filtros. Si quieres una hora, Claude la deja como propuesta.
 
-![Diseño aprobado: la semana de ejemplo en borrador. El plan de la semana y el chequeo de voz coinciden con el plugin; las tarjetas y el panel pueden verse distintos.](img/capturas/feed-semana.png)
+![Diseño aprobado: la semana de ejemplo en borrador. El plan de la semana y el chequeo de voz coinciden con el plugin; las tarjetas y las pantallas pueden verse distintas.](img/capturas/feed-semana.png)
 
 ### 3. Aprobar y publicar
 
-Aprobar, programar y publicar los haces tú en el panel de BeFeed. Claude nunca dice que algo quedó publicado.
+Aprobar, programar y publicar los haces tú en la web de Maasy, en maasy.ai/control/feed. Claude nunca dice que algo quedó publicado.
 
 ## Las herramientas que usa Claude
 
@@ -60,7 +60,6 @@ Aprobar, programar y publicar los haces tú en el panel de BeFeed. Claude nunca 
 |---|---|
 | `marcas` | Lista tus cuentas conectadas |
 | `alta_marca` | Conecta una marca de Maasy y renueva el permiso |
-| `conectar_instagram` | Te da el enlace para conectar Instagram |
 | `metodo` | Entrega el método de contenido, por secciones |
 | `ultimo_cierre` | Lee el cierre de la última semana |
 | `marca` | Lee los datos de la marca en BeFeed |
@@ -81,7 +80,7 @@ El método no viene en el plugin: BeFeed lo sirve siempre en su última versión
 
 ## Preguntas frecuentes
 
-**¿Puede Claude publicar por mí?** No. Claude deja borradores. Aprobar y publicar se hace en el panel de BeFeed.
+**¿Puede Claude publicar por mí?** No. Claude deja borradores. Aprobar y publicar se hace en la web de Maasy (maasy.ai/control/feed).
 
 **¿Por qué el servidor revisa mi voz y no Claude?** Porque el servidor aplica siempre las mismas reglas, con las palabras prohibidas y el tono de tu ADN.
 

@@ -2,7 +2,7 @@
 
 `maasy-motion` hace videos con la marca de tu cerebro. Claude escribe el video como código, lo revisa por su cuenta y tú lo ves, lo corriges con notas y lo renderizas en la app Maasy Motion, en tu Mac.
 
-> Disponible en la tienda (versión 0.2.2).
+> Disponible en la tienda (versión 0.2.3).
 
 ## Para qué sirve
 

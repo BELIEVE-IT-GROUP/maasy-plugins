@@ -111,7 +111,7 @@ Guarda este ángulo ganador: "Entrega en 24 horas o te devolvemos el envío".
 
 Si guardaste algo equivocado, desactualizado o por accidente, se borra con `maasy_forget_brand_brain_item`, con el identificador que devolvió al guardarlo. Solo borra entradas que tú agregaste con `maasy_feed_brand_brain`, una por vez.
 
-> `PRÓXIMAMENTE`: esta herramienta está en revisión y todavía no está en producción. Cuando salga, no exigirá plan Pro: borrar es un derecho, y basta tener acceso a la marca. Sirve también para borrar un análisis de Lens que guardaste en el cerebro (capítulo 11).
+> Esta herramienta no exige plan Pro: borrar es un derecho, y basta tener acceso a la marca. Sirve también para borrar un análisis de Lens que guardaste en el cerebro (capítulo 11).
 
 ## Lo que el cerebro no hace
 

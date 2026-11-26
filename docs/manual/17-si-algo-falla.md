@@ -33,6 +33,7 @@ Casi todo lo que falla tiene un arreglo corto. Busca tu síntoma y sigue la rece
 | Vibe: "no hay sesión" al publicar | `/maasy-vibe:login publicar` |
 | Vibe: se llenó el cupo de apps | El plan gratis publica 1 app y Pro 5. Despublica una con `/maasy-vibe:unpublish` o sube de plan |
 | Vibe: no puedo despublicar | La app tiene backend o dominio propio. El mensaje dice qué quitar primero |
+| Reply: `/maasy-reply:campana` te pide el @usuario | La conexión solo trae el permiso "Proponer borradores" y no deja listar tus cuentas. Escribe el @usuario de Instagram y sigue. Si falta otro permiso, Claude te dice cuál y dónde activarlo |
 | Motion: Claude dice que la app no responde | Instala Maasy Motion desde su DMG y ábrela una vez |
 | Motion: falta una pieza (`doctor`) | Claude muestra el arreglo de cada pieza. Hazlo y vuelve a empezar |
 | Lens: `ver_video` no existe | Lens no está instalado o conectado. Corre `/maasy-lens:estado` y reconecta con `/mcp`, **belens**, **Reconectar** |

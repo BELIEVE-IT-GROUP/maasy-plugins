@@ -63,6 +63,7 @@ Los dominios propios, los secretos de tu app, las herramientas MCP que expone y 
 | `/maasy-vibe:new` | Crea una app nueva con la plantilla |
 | `/maasy-vibe:publish` | Compila y publica en `<id>.apps.believe-global.com` |
 | `/maasy-vibe:check` | Revisa si la app está lista para la web y para agentes, y arregla lo que falta |
+| `/maasy-vibe:incubadora` | Incuba una idea de negocio, fase por fase, con jueces independientes |
 | `/maasy-vibe:movil` | Convierte el proyecto en app iOS y Android y la sube a TestFlight o a la prueba interna de Google Play |
 | `/maasy-vibe:unpublish` | Despublica la app y libera el cupo del plan |
 | `/maasy-vibe:login` | Entra con tu cuenta de Maasy o con la de Believable de siempre. También acepta `maasy`, `believable`, un correo o `publicar` |
@@ -83,7 +84,14 @@ Los dominios propios, los secretos de tu app, las herramientas MCP que expone y 
 
 ## El Incubator
 
-Dentro de Vibe vivirá el Incubator: un recorrido guiado para pasar de una idea a un negocio, con fases y revisión en cada una. Está `PRÓXIMAMENTE` (capítulo 15).
+`/maasy-vibe:incubadora` conduce un recorrido guiado para pasar de una idea de negocio a algo concreto, fase por fase (de f0 a f7), con tarjetas de decisión y jueces independientes.
+
+1. Claude crea una corrida (o retoma la que ya tienes) y guarda su identificador.
+2. Pide la guía de la fase en curso al servidor y la sigue. Las preguntas te las hace Claude con tarjetas, no un subagente.
+3. Para cerrar una fase, la pasa por la revisión de un juez independiente, un subagente aparte, que aprueba o rechaza. Si rechaza, Claude te cuenta el motivo.
+4. Con el visto bueno, cierra la fase. Forzar un cierre lo decides tú.
+
+Si la herramienta dice que el Incubator todavía no está disponible para tu cuenta, o que falta la sesión, Claude te lo dice tal cual y no sigue.
 
 ## Qué ves en pantalla
 

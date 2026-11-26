@@ -40,7 +40,8 @@ Los plugins que hay hoy y su estado:
 | `maasy-feed` | Planear y escribir tu Instagram orgánico | Disponible |
 | `maasy-reply` | Campañas de comentario a mensaje directo, en borrador | Disponible |
 | `maasy-aos` | Qué tan bien te leen y te recomiendan las IA | Disponible |
-| Ads, Games e Incubator | Pauta, juegos de marca y creación de negocio | `PRÓXIMAMENTE` |
+| `maasy-games` | Juegos de marca que se juegan en el celular | Disponible |
+| Ads | Campañas de pauta con tu cerebro de marca | `PRÓXIMAMENTE` |
 
 ## Qué hace Claude y qué haces tú
 

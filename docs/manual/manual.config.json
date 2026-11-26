@@ -23,11 +23,11 @@
       "estado": "main"
     },
     "maasy-vibe": {
-      "version": "0.1.0+24dd1f7c",
+      "version": "0.1.0+6c360a26",
       "estado": "main"
     },
     "maasy-motion": {
-      "version": "0.2.2",
+      "version": "0.2.3",
       "estado": "main"
     },
     "maasy-lens": {
@@ -35,14 +35,18 @@
       "estado": "main"
     },
     "maasy-feed": {
-      "version": "1.0.0+287168f",
+      "version": "1.0.2+3a44066",
       "estado": "main"
     },
     "maasy-reply": {
-      "version": "1.0.0+287168f",
+      "version": "1.0.3+48c415b",
       "estado": "main"
     },
     "maasy-aos": {
+      "version": "0.1.0",
+      "estado": "main"
+    },
+    "maasy-games": {
       "version": "0.1.0",
       "estado": "main"
     }
@@ -53,7 +57,7 @@
   },
   "sources": {
     "01-que-es-maasy-en-claude.md": {
-      "sha": "f62ca54d32585737419b47eea8532d8987b6c62c",
+      "sha": "9891699f40000c1439f8a741fc8f17eb0cd5b43e",
       "plugins": [
         "maasy",
         "maasy-vibe",
@@ -66,7 +70,7 @@
       ]
     },
     "02-instalacion-y-requisitos.md": {
-      "sha": "f62ca54d32585737419b47eea8532d8987b6c62c",
+      "sha": "9891699f40000c1439f8a741fc8f17eb0cd5b43e",
       "plugins": [
         "maasy",
         "maasy-vibe",
@@ -80,7 +84,7 @@
       ]
     },
     "03-maasy-tu-cuenta-y-tu-marca.md": {
-      "sha": "f62ca54d32585737419b47eea8532d8987b6c62c",
+      "sha": "9891699f40000c1439f8a741fc8f17eb0cd5b43e",
       "plugins": [
         "maasy"
       ],
@@ -94,7 +98,7 @@
       ]
     },
     "04-lo-que-maasy-sabe-de-tu-marca.md": {
-      "sha": "f62ca54d32585737419b47eea8532d8987b6c62c",
+      "sha": "9891699f40000c1439f8a741fc8f17eb0cd5b43e",
       "plugins": [
         "maasy"
       ],
@@ -104,7 +108,7 @@
       ]
     },
     "05-el-cerebro-de-tu-marca.md": {
-      "sha": "f62ca54d32585737419b47eea8532d8987b6c62c",
+      "sha": "9891699f40000c1439f8a741fc8f17eb0cd5b43e",
       "plugins": [
         "maasy"
       ],
@@ -114,7 +118,7 @@
       ]
     },
     "06-que-puedes-crear-con-tu-marca.md": {
-      "sha": "f62ca54d32585737419b47eea8532d8987b6c62c",
+      "sha": "9891699f40000c1439f8a741fc8f17eb0cd5b43e",
       "plugins": [
         "maasy",
         "maasy-vibe",
@@ -127,7 +131,7 @@
       ]
     },
     "07-la-web-de-maasy.md": {
-      "sha": "f62ca54d32585737419b47eea8532d8987b6c62c",
+      "sha": "9891699f40000c1439f8a741fc8f17eb0cd5b43e",
       "plugins": [
         "maasy"
       ],
@@ -136,7 +140,7 @@
       ]
     },
     "08-planes-y-cobro.md": {
-      "sha": "f62ca54d32585737419b47eea8532d8987b6c62c",
+      "sha": "9891699f40000c1439f8a741fc8f17eb0cd5b43e",
       "plugins": [
         "maasy"
       ],
@@ -145,7 +149,7 @@
       ]
     },
     "09-maasy-vibe.md": {
-      "sha": "f62ca54d32585737419b47eea8532d8987b6c62c",
+      "sha": "9891699f40000c1439f8a741fc8f17eb0cd5b43e",
       "plugins": [
         "maasy-vibe"
       ],
@@ -153,11 +157,12 @@
         "maasy-vibe/commands",
         "maasy-vibe/.claude-plugin",
         "maasy-vibe/.mcp.json",
-        "maasy-vibe/template/README.md"
+        "maasy-vibe/template/README.md",
+        "maasy-vibe/agents"
       ]
     },
     "10-maasy-motion.md": {
-      "sha": "f62ca54d32585737419b47eea8532d8987b6c62c",
+      "sha": "9891699f40000c1439f8a741fc8f17eb0cd5b43e",
       "plugins": [
         "maasy-motion"
       ],
@@ -166,7 +171,7 @@
       ]
     },
     "11-maasy-lens.md": {
-      "sha": "f62ca54d32585737419b47eea8532d8987b6c62c",
+      "sha": "9891699f40000c1439f8a741fc8f17eb0cd5b43e",
       "plugins": [
         "maasy-lens"
       ],
@@ -175,7 +180,7 @@
       ]
     },
     "12-maasy-feed.md": {
-      "sha": "f62ca54d32585737419b47eea8532d8987b6c62c",
+      "sha": "9891699f40000c1439f8a741fc8f17eb0cd5b43e",
       "plugins": [
         "maasy-feed"
       ],
@@ -184,7 +189,7 @@
       ]
     },
     "13-maasy-reply.md": {
-      "sha": "f62ca54d32585737419b47eea8532d8987b6c62c",
+      "sha": "9891699f40000c1439f8a741fc8f17eb0cd5b43e",
       "plugins": [
         "maasy-reply"
       ],
@@ -193,7 +198,7 @@
       ]
     },
     "14-maasy-aos.md": {
-      "sha": "f62ca54d32585737419b47eea8532d8987b6c62c",
+      "sha": "9891699f40000c1439f8a741fc8f17eb0cd5b43e",
       "plugins": [
         "maasy-aos"
       ],
@@ -201,13 +206,17 @@
         "maasy-aos"
       ]
     },
-    "15-proximamente.md": {
-      "sha": "f62ca54d32585737419b47eea8532d8987b6c62c",
-      "plugins": [],
-      "paths": []
+    "15-maasy-games-y-lo-que-viene.md": {
+      "plugins": [
+        "maasy-games"
+      ],
+      "paths": [
+        "maasy-games"
+      ],
+      "sha": "9891699f40000c1439f8a741fc8f17eb0cd5b43e"
     },
     "16-privacidad-y-seguridad.md": {
-      "sha": "f62ca54d32585737419b47eea8532d8987b6c62c",
+      "sha": "9891699f40000c1439f8a741fc8f17eb0cd5b43e",
       "plugins": [
         "maasy",
         "maasy-motion",
@@ -220,7 +229,7 @@
       ]
     },
     "17-si-algo-falla.md": {
-      "sha": "f62ca54d32585737419b47eea8532d8987b6c62c",
+      "sha": "9891699f40000c1439f8a741fc8f17eb0cd5b43e",
       "plugins": [
         "maasy",
         "maasy-vibe",
@@ -235,7 +244,7 @@
       ]
     },
     "18-glosario.md": {
-      "sha": "f62ca54d32585737419b47eea8532d8987b6c62c",
+      "sha": "9891699f40000c1439f8a741fc8f17eb0cd5b43e",
       "plugins": [],
       "paths": []
     }
