@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "maasy-reply": {
+      "type": "http",
+      "url": "https://reply.believe-global.com/api/mcp/reply"
+    }
+  }
+}

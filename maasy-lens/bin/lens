@@ -1,0 +1,23 @@
+#!/bin/bash
+# Arranca el MCP de Maasy Lens en modo externo: sin cookies ni sesiones de nadie (D10).
+#   lens actualizar [--seco]   revisa ya si hay versión nueva (--seco: solo dice qué haría)
+set -euo pipefail
+if [ "$(uname -s)" != Darwin ]; then
+  echo "Maasy Lens solo funciona en Mac." >&2
+  exit 1
+fi
+R="$(cd "$(dirname "$0")/.." && pwd)"
+source "$R/bin/versiones"
+D="$HOME/.maasy-lens"
+# Si una actualización se cortó en medio del cambio, vuelve lo que quedó en .anterior.
+for n in venv belens.py bin; do [ -e "$D/$n" ] || [ ! -e "$D/.anterior/$n" ] || mv "$D/.anterior/$n" "$D/$n"; done
+if [ ! -x "$D/venv/bin/python" ] || [ ! -f "$D/belens.py" ]; then
+  echo "Maasy Lens no está instalado en este Mac. Corre /maasy-lens:estado y acepta la instalación." >&2
+  exit 1
+fi
+actualizar() { BELENS_HOME="$D" MAASY_LENS_VERSION_PLUGIN="$BELENS_VERSION" PYTHON_VERSION="$PYTHON_VERSION" "$D/venv/bin/python" "$R/bin/actualizar" "$@"; }
+if [ "${1:-}" = actualizar ]; then shift; actualizar "$@"; exit; fi
+# En segundo plano y sin tocar la salida del MCP: no demora el arranque y cualquier falla deja esta versión.
+actualizar </dev/null >>"$D/actualizar.log" 2>&1 &
+export BELENS_EXTERNO=1 BELENS_HOME="$D" PATH="$D/bin:$D/venv/bin:$PATH:/usr/local/bin"   # los binarios de Lens antes que los del Mac; /usr/local/bin: Homebrew en Intel
+exec "$D/venv/bin/python" "$D/belens.py" "$@"

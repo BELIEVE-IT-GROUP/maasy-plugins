@@ -1,0 +1,84 @@
+#!/bin/bash
+# Instala Maasy Lens en ~/.maasy-lens. Primero baja todo y verifica cada archivo por sha256 (bin/versiones y
+# requirements.lock); si uno solo no coincide, no instala nada. Recién después lo pone en su lugar.
+# En Mac con Apple Silicon baja también whisper-cli, deno, ffmpeg y ffprobe (LGPL), sin modificar, a ~/.maasy-lens/bin.
+# En Mac Intel esos cuatro salen de Homebrew.
+set -euo pipefail
+R="$(cd "$(dirname "$0")/.." && pwd)"
+source "$R/bin/versiones"
+case "$(uname -s)/$(uname -m)" in
+  Darwin/arm64) INTEL="" ;;
+  Darwin/x86_64) INTEL=1; UV_URL="$UV_INTEL_URL"; UV_SHA256="$UV_INTEL_SHA256" ;;
+  *) echo "Maasy Lens solo funciona en Mac."; exit 1 ;;
+esac
+D="$HOME/.maasy-lens"
+if [ -n "$INTEL" ]; then
+  falta=""
+  for t in ffmpeg ffprobe whisper-cli deno; do command -v "$t" >/dev/null || [ -x "/usr/local/bin/$t" ] || falta="$falta $t"; done
+  echo "Este Mac es Intel: Maasy Lens no trae sus binarios para Intel y usa los de Homebrew."
+  if [ -n "$falta" ]; then
+    echo "Falta:$falta. Instálalo con Homebrew, que verifica cada paquete: brew install ffmpeg whisper-cpp deno"
+    echo "Después vuelve a correr la instalación."
+    exit 2
+  fi
+fi
+
+UA="Mozilla/5.0 (Macintosh; Apple silicon) maasy-lens"  # Cloudflare responde 403 sin un User-Agent de navegador
+HOST="https://files.believe-global.com"
+ESPEJO="${MAASY_LENS_ESPEJO_LOCAL:-}"   # solo para pruebas: sirve las URLs de ${HOST} desde 127.0.0.1
+case "$ESPEJO" in ""|http://127.0.0.1:*) ;; *) echo "MAASY_LENS_ESPEJO_LOCAL tiene que ser http://127.0.0.1:<puerto>"; exit 1 ;; esac
+suma() { shasum -a 256 "$1" | cut -d' ' -f1; }
+E="$D/.bajando"
+rm -rf "$E"; mkdir -p "$E"
+tmp=() dst=()   # lo ya verificado (temporal y destino); se mueve al final
+nada() { rm -rf "$E"; echo "$1 No se instaló nada."; exit 3; }
+traer() {  # url sha256 destino: baja a $E y verifica; si el destino ya está con ese sha256, no baja
+  if [ -f "$3" ] && [ "$(suma "$3")" = "$2" ]; then return 0; fi
+  local u="$1" t="$E/${#tmp[@]}"
+  [ -n "$ESPEJO" ] && [ "${u#"$HOST"/}" != "$u" ] && u="$ESPEJO/${u#"$HOST"/}"
+  echo "Bajando $(basename "$3")…"
+  curl -fL --progress-bar --retry 3 -A "$UA" -o "$t" "$u" || nada "No se pudo bajar $1."
+  [ "$(suma "$t")" = "$2" ] || nada "El sha256 no coincide: $1."
+  tmp+=("$t"); dst+=("$3")
+}
+
+if [ -z "$INTEL" ]; then
+  traer "$BIN_URL/whisper-cli-$WHISPER_VERSION/whisper-cli" "$WHISPER_CLI_SHA256" "$D/bin/whisper-cli"
+  traer "$BIN_URL/whisper-cli-$WHISPER_VERSION/LICENSE" "$WHISPER_LICENSE_SHA256" "$D/bin/licencias/whisper-cli-LICENSE"
+  traer "$BIN_URL/ffmpeg-$FFMPEG_VERSION/ffmpeg" "$FFMPEG_SHA256" "$D/bin/ffmpeg"
+  traer "$BIN_URL/ffmpeg-$FFMPEG_VERSION/ffprobe" "$FFPROBE_SHA256" "$D/bin/ffprobe"
+  traer "$BIN_URL/ffmpeg-$FFMPEG_VERSION/LICENSE" "$FFMPEG_LICENSE_SHA256" "$D/bin/licencias/ffmpeg-LICENSE"
+  traer "$BIN_URL/ffmpeg-$FFMPEG_VERSION/LICENSE-dav1d" "$DAV1D_LICENSE_SHA256" "$D/bin/licencias/dav1d-LICENSE"
+  traer "$BIN_URL/ffmpeg-$FFMPEG_VERSION/FUENTES.txt" "$FUENTES_SHA256" "$D/bin/licencias/FUENTES.txt"
+  traer "$BIN_URL/deno-$DENO_VERSION/LICENSE" "$DENO_LICENSE_SHA256" "$D/bin/licencias/deno-LICENSE"
+  if ! [ -f "$D/bin/deno" ] || [ "$(suma "$D/bin/deno")" != "$DENO_SHA256" ]; then
+    n=${#tmp[@]}
+    traer "$BIN_URL/deno-$DENO_VERSION/deno-aarch64-apple-darwin.zip" "$DENO_ZIP_SHA256" "$E/deno.zip"
+    unzip -q -o "$E/$n" deno -d "$E/deno-zip" || nada "El zip de deno no se pudo abrir."
+    [ "$(suma "$E/deno-zip/deno")" = "$DENO_SHA256" ] || nada "El sha256 de deno (dentro del zip) no coincide."
+    tmp[n]="$E/deno-zip/deno"; dst[n]="$D/bin/deno"
+  fi
+fi
+traer "$BELENS_URL" "$BELENS_SHA256" "$D/belens.py"
+# uv ya instalado y verificado: la marca guarda el sha256 del paquete del que salió y el del binario que quedó.
+if ! [ -x "$D/uv" ] || [ "$(cat "$D/uv.sha256" 2>/dev/null)" != "$UV_SHA256 $(suma "$D/uv")" ]; then
+  traer "$UV_URL" "$UV_SHA256" "$E/uv.tar.gz"
+fi
+traer "$MODELO_URL" "$MODELO_SHA256" "$D/models/$MODELO"
+
+# Todo verificado: recién ahora se toca la instalación.
+for i in "${!tmp[@]}"; do
+  mkdir -p "$(dirname "${dst[i]}")"
+  mv -f "${tmp[i]}" "${dst[i]}"
+done
+[ -d "$D/bin" ] && chmod +x "$D/bin/"* 2>/dev/null || true
+if [ -f "$E/uv.tar.gz" ]; then
+  tar -xzf "$E/uv.tar.gz" -C "$D" --strip-components 1
+  echo "$UV_SHA256 $(suma "$D/uv")" > "$D/uv.sha256"
+fi
+rm -rf "$E"   # lo bajado ya está en su lugar: no queda nada temporal ocupando lugar
+export UV_CACHE_DIR="$D/uv-cache" UV_PYTHON_INSTALL_DIR="$D/python"
+"$D/uv" venv --quiet --allow-existing --python "$PYTHON_VERSION" "$D/venv"   # uv verifica el Python que baja
+"$D/uv" pip install --quiet --python "$D/venv/bin/python" --require-hashes -r "$R/requirements.lock"
+echo "$BELENS_VERSION" > "$D/VERSION"   # bin/actualizar compara contra esta
+echo "Maasy Lens quedó instalado en $D. Abre una conversación nueva; si Lens no aparece, escribe /mcp y elige Reconectar. Después: /maasy-lens:estado."

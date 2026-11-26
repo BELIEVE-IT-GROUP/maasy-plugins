@@ -1,0 +1,11 @@
+{
+  "name": "maasy-lens",
+  "version": "0.2.2",
+  "description": "Maasy Lens: desarma un video de un link desde tu Mac (gancho, transcripción, texto en pantalla y cuadros) y guarda la fórmula en tu cerebro de Maasy. Solo funciona en Mac con Apple Silicon.",
+  "author": {
+    "name": "Believe Global",
+    "url": "https://believe-global.com"
+  },
+  "homepage": "https://maasy.ai",
+  "dependencies": ["maasy"]
+}

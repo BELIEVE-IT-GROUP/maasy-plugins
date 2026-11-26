@@ -1,0 +1,19 @@
+{
+  "name": "maasy-reply",
+  "version": "1.0.0+287168f",
+  "dependencies": [
+    "maasy"
+  ],
+  "description": "Diseña desde Claude las campañas de comentario a DM de Instagram de tu marca. Maasy Reply las corre sin IA cuando una persona las activa en el panel.",
+  "author": {
+    "name": "Believe",
+    "url": "https://believe-global.com"
+  },
+  "homepage": "https://reply.believe-global.com",
+  "keywords": [
+    "maasy",
+    "instagram",
+    "dm",
+    "bereply"
+  ]
+}

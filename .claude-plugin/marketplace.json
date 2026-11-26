@@ -15,10 +15,34 @@
       "category": "marketing"
     },
     {
+      "name": "maasy-lens",
+      "source": "./maasy-lens",
+      "description": "Maasy Lens: desarma un video de un link desde tu Mac y guarda la fórmula en tu cerebro de Maasy. Solo Mac.",
+      "category": "marketing"
+    },
+    {
       "name": "maasy-vibe",
       "source": "./maasy-vibe",
       "description": "Maasy Vibe en Claude Code: crea apps con el template v2, revísalas y publícalas en el borde de Believe, legibles por agentes.",
       "category": "development"
+    },
+    {
+      "name": "maasy-motion",
+      "source": "./maasy-motion",
+      "description": "Maasy Motion en Claude: videos con la marca de tu cerebro Maasy, hechos y renderizados en tu Mac.",
+      "category": "marketing"
+    },
+    {
+      "name": "maasy-feed",
+      "source": "./maasy-feed",
+      "description": "Maasy Feed: planea y escribe el Instagram orgánico de tus marcas de Maasy desde Claude. BeFeed guarda las semanas y las piezas; aprobar y publicar los haces tú en el panel.",
+      "category": "marketing"
+    },
+    {
+      "name": "maasy-reply",
+      "source": "./maasy-reply",
+      "description": "Diseña desde Claude las campañas de comentario a DM de Instagram de tu marca. Maasy Reply las corre sin IA cuando una persona las activa en el panel.",
+      "category": "marketing"
     }
   ]
 }
