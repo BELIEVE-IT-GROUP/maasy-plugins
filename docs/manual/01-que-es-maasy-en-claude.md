@@ -35,11 +35,11 @@ Los plugins que hay hoy y su estado:
 |---|---|---|
 | `maasy` | Cuenta, marca con su ADN, panel, CRM en lectura | Disponible |
 | `maasy-vibe` | Apps y landings con tu marca, publicadas | Disponible |
-| `maasy-motion` | Videos con tu marca, en tu Mac | `PRÓXIMAMENTE` (en revisión) |
-| `maasy-lens` | Desarmar un video a partir de un link | `PRÓXIMAMENTE` (en revisión) |
-| `maasy-feed` | Planear y escribir tu Instagram orgánico | `PRÓXIMAMENTE` |
-| `maasy-reply` | Borradores de respuesta a comentarios y mensajes | `PRÓXIMAMENTE` |
-| `maasy-aos` | Qué tan bien te leen y te recomiendan las IA | `PRÓXIMAMENTE` |
+| `maasy-motion` | Videos con tu marca, en tu Mac | Disponible |
+| `maasy-lens` | Desarmar un video a partir de un link | Disponible |
+| `maasy-feed` | Planear y escribir tu Instagram orgánico | Disponible |
+| `maasy-reply` | Campañas de comentario a mensaje directo, en borrador | Disponible |
+| `maasy-aos` | Qué tan bien te leen y te recomiendan las IA | Disponible al entrar a la tienda |
 | Ads, Games e Incubator | Pauta, juegos de marca y creación de negocio | `PRÓXIMAMENTE` |
 
 ## Qué hace Claude y qué haces tú

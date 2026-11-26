@@ -2,7 +2,7 @@
 
 `maasy-lens` desarma un video público a partir de un link: el gancho de los primeros tres segundos, la transcripción con tiempos, el texto en pantalla, una hoja con los cuadros clave y las métricas. Con eso tu Claude explica por qué funciona y cómo adaptar la fórmula a tu marca, sin copiar el video ni el guion.
 
-> `PRÓXIMAMENTE` en la tienda. El plugin está en revisión (versión 0.2.0).
+> Disponible en la tienda (versión 0.2.2).
 
 ## Para qué sirve
 

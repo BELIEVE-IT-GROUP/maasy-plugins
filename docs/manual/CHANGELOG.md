@@ -8,6 +8,13 @@ Cómo se numera:
 - **Segundo número**: un capítulo nuevo o una capacidad nueva documentada (por ejemplo, un plugin que llega a la tienda).
 - **Tercer número**: correcciones, precisiones y pantallas rehechas.
 
+## 1.2.0 (2026-11-26)
+
+- **Feed, Reply y AOS pasan a disponibles.** Se reescriben los capítulos 12, 13 y 14 con lo que hacen los plugins publicados: comandos y herramientas reales de `maasy-feed` 1.0.0, `maasy-reply` 1.0.0 y `maasy-aos` 0.1.0 (este último entra a la tienda con su PR). Se quitan las etiquetas PRÓXIMAMENTE de esos tres. Las pantallas siguen siendo diseños aprobados, y el pie dice qué coincide.
+- **Reply** se activa en el panel de BeReply, no en la web de Maasy; Feed y AOS ya no mencionan una pestaña propia en el panel.
+- **Motion y Lens** pasan a disponibles (0.2.1 y 0.2.2). El ffmpeg de Motion ahora incluye subtítulos quemados y conversión HDR; se corrige el capítulo 10 y se agregan sus descargas y límites.
+- Ads, Games e Incubator siguen como `PRÓXIMAMENTE`.
+
 ## 1.1.1 (2026-11-26)
 
 - **Cancelar Pro**: se cancela desde el portal de pagos de Stripe, al final del período pagado y sin prorrateo. Sigues con Pro hasta entonces; después tus marcas vuelven al plan gratis sin perder datos, y las que pasen del cupo se siguen usando pero no puedes crear nuevas.

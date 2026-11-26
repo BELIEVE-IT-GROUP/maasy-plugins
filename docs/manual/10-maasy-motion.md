@@ -2,7 +2,7 @@
 
 `maasy-motion` hace videos con la marca de tu cerebro. Claude escribe el video como código, lo revisa por su cuenta y tú lo ves, lo corriges con notas y lo renderizas en la app Maasy Motion, en tu Mac.
 
-> `PRÓXIMAMENTE` en la tienda. El plugin está en revisión (versión 0.2.0). Este capítulo describe cómo funciona.
+> Disponible en la tienda (versión 0.2.1).
 
 ## Para qué sirve
 
@@ -14,7 +14,7 @@
 
 - Un Mac con chip Apple (M1 o más nuevo) y macOS 13 o superior.
 - Los plugins `maasy` (con tu sesión y una marca creada) y `maasy-motion`.
-- La app **Maasy Motion** instalada y abierta una vez. Se descarga en `files.believe-global.com/apps/maasy-motion/`. Trae su propio ffmpeg: no necesitas Homebrew.
+- La app **Maasy Motion** instalada y abierta una vez. Se descarga en `files.believe-global.com/apps/maasy-motion/`. Trae su propio ffmpeg y whisper: no necesitas Homebrew. En un Mac con Intel o con un macOS anterior al 13, la app no abre y el sistema dice que no es compatible.
 - El plan Pro, porque el video toma la marca de tu cerebro.
 
 ## Cómo se instala
@@ -65,14 +65,17 @@ Si cambiaste la carpeta de trabajo, usa la que te dio la app.
 
 Los pasos que usan servicios externos (generar imágenes o video con fal, voces con ElevenLabs, traducción con HeyGen) usan tus propias llaves. Se cargan en la app, en Ajustes, y **se quedan en tu Mac**. Maasy no las guarda y Claude nunca te las pide en el chat. Sin llave de fal, los pasos con máscara quedan apagados y el resto funciona.
 
-## Subtítulos y límites del ffmpeg
+## Subtítulos, voces y lo que se descarga
 
-La app trae un ffmpeg propio con aceleración por VideoToolbox. Ese ffmpeg no incluye `libass` ni `zscale`, así que:
+La app trae su propio ffmpeg, con aceleración por VideoToolbox, `libass` y `zimg`, y su propio whisper. Eso significa que:
 
-- No hace reels con subtítulos quemados sobre un video grabado, ni conversión HDR.
-- Los videos hechos como código (los films de Maasy Motion) no usan esas funciones, así que no se ven afectados.
-- Si quieres subtítulos quemados, indica otro ffmpeg que los tenga en Ajustes (`tools.ffmpeg`).
-- Importar un video desde un link necesita `yt-dlp` instalado en tu Mac.
+- **Hace reels con subtítulos quemados** y convierte video HDR.
+- Los subtítulos usan las tipografías que trae la app. Si la fuente de tu marca no está entre ellas, se cambia por la más parecida.
+- La primera vez que transcribe, baja el modelo de voz (574 MB) a la carpeta de datos de la app.
+- Importa videos desde un link con el `yt-dlp` y el `deno` que trae.
+- Si tu Mac no tiene Chrome, la primera vez que dibuja un video baja un navegador sin ventana (105 MB).
+- La primera vez que renderizas un film final, instala una herramienta que califica el sonido (cerca de 1 GB, más sus modelos).
+- Las voces locales no están disponibles en Mac: las voces van por ElevenLabs u OpenAI, con tu llave.
 
 ## Límites
 
