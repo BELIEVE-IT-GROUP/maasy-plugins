@@ -28,3 +28,9 @@ Instalación (cuando el repo `BELIEVE-IT-GROUP/maasy-plugins` se publique, con e
 /plugin marketplace add BELIEVE-IT-GROUP/maasy-plugins
 /plugin install maasy@maasy
 ```
+
+## Licencia
+
+MIT, ver [LICENSE](LICENSE). Cubre solo el código de este plugin. Las recetas viven en el servidor de Maasy y no forman parte del repositorio.
+
+[Política de privacidad](https://maasy.ai/privacy)

@@ -7,5 +7,7 @@
     "url": "https://believe-global.com"
   },
   "homepage": "https://maasy.ai",
-  "types": "./types/index.d.ts"
+  "types": "./types/index.d.ts",
+  "icon": "./.claude-plugin/icon.png",
+  "privacyPolicyUrl": "https://maasy.ai/privacy"
 }

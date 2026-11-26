@@ -6,6 +6,8 @@
   ],
   "description": "Maasy Vibe en Claude Code: crea apps con el template v2, revísalas y publícalas en el borde de Believe, legibles por agentes.",
   "types": "./types/index.d.ts",
+  "icon": "./.claude-plugin/icon.png",
+  "privacyPolicyUrl": "https://maasy.ai/privacy",
   "author": {
     "name": "Believe Global",
     "url": "https://believe-global.com"
