@@ -7,5 +7,8 @@
     "url": "https://believe-global.com"
   },
   "homepage": "https://maasy.ai",
+  "license": "MIT",
+  "icon": "./assets/icon.png",
+  "privacyPolicyUrl": "https://maasy.ai/privacy",
   "dependencies": ["maasy"]
 }
