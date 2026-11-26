@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "belens": {
+      "command": "${CLAUDE_PLUGIN_ROOT}/bin/lens",
+      "args": [
+        "mcp"
+      ],
+      "env": {
+        "BELENS_EXTERNO": "1"
+      }
+    }
+  }
+}

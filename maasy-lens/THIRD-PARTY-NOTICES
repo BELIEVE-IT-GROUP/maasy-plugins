@@ -1,0 +1,53 @@
+Maasy Lens (plugin maasy-lens) · Avisos de terceros
+
+El plugin no empaqueta binarios ni modelos. bin/instalar baja lo de abajo en el Mac de la persona y verifica cada
+archivo por sha256 (bin/versiones y requirements.lock) antes de usarlo.
+
+BeLens (belens.py) · Believe Global · propio
+
+Herramientas que baja el instalador
+- uv 0.13.7 · Astral Software · MIT OR Apache-2.0 · https://github.com/astral-sh/uv
+- Python 3.12 (python-build-standalone, lo baja uv) · Python Software Foundation · PSF-2.0, con sus componentes
+  bajo sus propias licencias · https://github.com/astral-sh/python-build-standalone
+- Modelo de whisper ggml-large-v3-turbo-q5_0 · pesos de OpenAI Whisper, MIT; conversión ggml de whisper.cpp, MIT ·
+  https://huggingface.co/ggerganov/whisper.cpp
+
+Paquetes de Python (requirements.lock)
+- yt-dlp · Unlicense (dominio público) · https://github.com/yt-dlp/yt-dlp
+- mcp (SDK de Python del Model Context Protocol) · MIT
+- ocrmac · MIT
+- pyobjc-core, pyobjc-framework-Cocoa, pyobjc-framework-CoreML, pyobjc-framework-Quartz,
+  pyobjc-framework-Vision · MIT
+- pillow · MIT-CMU
+- pydantic, pydantic-core, pydantic-settings, annotated-types, typing-inspection · MIT
+- typing-extensions · PSF-2.0
+- anyio, h11, httpx-sse, attrs, jsonschema, jsonschema-specifications, referencing, rpds-py, pyjwt · MIT
+- httpx, httpcore, idna, click, pycparser, python-dotenv, starlette, sse-starlette, uvicorn · BSD-3-Clause
+- python-multipart · Apache-2.0
+- cryptography · Apache-2.0 OR BSD-3-Clause
+- cffi · MIT-0
+- certifi · MPL-2.0
+
+Binarios que baja el instalador en Mac con Apple Silicon (a ~/.maasy-lens/bin, sin modificar)
+Se sirven desde https://files.believe-global.com/apps/maasy-lens/bin/, cada uno en su carpeta con su LICENSE, y quedan
+con su licencia en ~/.maasy-lens/bin/licencias; bin/actualizar los cambia cuando cambia su sha256. Son programas aparte: Lens los ejecuta, no los enlaza.
+- whisper-cli de whisper.cpp 1.9.6 · MIT · https://github.com/ggml-org/whisper.cpp
+  Compilado desde el tag v1.9.6 (https://github.com/ggml-org/whisper.cpp/archive/refs/tags/v1.9.6.tar.gz), porque
+  whisper.cpp no publica binario para macOS. Comando y configuración en whisper-cli-1.9.6/FUENTES.txt.
+- deno 2.9.8 · MIT · https://github.com/denoland/deno
+  El zip oficial del release v2.9.8 de GitHub (deno-aarch64-apple-darwin.zip), sin tocar.
+- ffmpeg y ffprobe 8.1.3 · LGPL-2.1 o posterior · https://ffmpeg.org
+  Build LGPL: sin --enable-gpl, --enable-nonfree ni --enable-version3 (lo muestra ffmpeg -buildconf). Fuente exacta:
+  https://ffmpeg.org/releases/ffmpeg-8.1.3.tar.xz; configuración completa en ffmpeg-8.1.3/FUENTES.txt.
+  Incluye dav1d 1.5.5 · BSD-2-Clause · https://code.videolan.org/videolan/dav1d
+  (https://downloads.videolan.org/pub/videolan/dav1d/1.5.5/dav1d-1.5.5.tar.xz), para decodificar AV1.
+  Puedes reemplazar ~/.maasy-lens/bin/ffmpeg y ffprobe por otro build tuyo: Lens usa lo que esté ahí.
+
+En un Mac Intel, ffmpeg, ffprobe, whisper.cpp y deno los instala la persona con Homebrew (ni van en el plugin ni los
+baja el instalador).
+
+Del sistema
+- Vision de Apple (OCR de texto en pantalla), parte de macOS.
+
+Los textos completos de cada licencia vienen con cada paquete instalado (carpeta dist-info de cada uno en
+~/.maasy-lens/venv) y en el repositorio de cada proyecto.
