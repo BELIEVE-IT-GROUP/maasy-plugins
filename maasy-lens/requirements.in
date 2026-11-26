@@ -1,3 +1,8 @@
 mcp>=1.2,<2
 ocrmac>=1.0
-yt-dlp
+# Los extras del yt-dlp del mini (default y curl-cffi). mutagen (GPL) queda fuera con --no-emit-package: solo sirve
+# para incrustar portadas y etiquetas, y yt-dlp anda sin él.
+yt-dlp[default,curl-cffi]
+# cryptography (la pide mcp) dejó de publicar wheel de macOS x86_64 en la 49: en Intel se queda en la última que sí.
+cryptography<49 ; platform_machine == 'x86_64'
+cryptography>=50 ; platform_machine != 'x86_64'
