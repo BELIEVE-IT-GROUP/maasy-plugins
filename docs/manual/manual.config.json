@@ -1,0 +1,202 @@
+{
+  "title": "Manual de Maasy en Claude",
+  "subtitle": "Los plugins de Maasy para Claude: tu marca, su memoria y lo que haces con ellas, paso a paso.",
+  "hero": "entrevista-tarjetas.png",
+  "hero_alt": "Maasy en Claude Desktop: una pregunta de la entrevista de marca en tarjetas, con el avance del ADN en el panel de la derecha (diseño aprobado)",
+  "hero_size": [
+    1240,
+    852
+  ],
+  "r2": {
+    "prefix": "maasy/manual",
+    "public_base": "https://files.believe-global.com"
+  },
+  "benotes": {
+    "url": "https://cuadernos.believe-global.com",
+    "title": "Manual de Maasy en Claude",
+    "notebook": "BELIEVE",
+    "page_id": ""
+  },
+  "plugins": {
+    "maasy": {
+      "version": "0.2.0",
+      "estado": "main"
+    },
+    "maasy-vibe": {
+      "version": "0.1.0+24dd1f7c",
+      "estado": "main"
+    },
+    "maasy-motion": {
+      "version": "0.2.0",
+      "estado": "pr:2"
+    },
+    "maasy-lens": {
+      "version": "0.2.0",
+      "estado": "pr:3"
+    },
+    "maasy-feed": {
+      "estado": "planeado"
+    },
+    "maasy-reply": {
+      "estado": "planeado"
+    },
+    "maasy-aos": {
+      "estado": "planeado"
+    }
+  },
+  "assets": {
+    "believe-positive.svg": "docs/manual/img/marca/believe-positive.svg",
+    "believe-negative.svg": "docs/manual/img/marca/believe-negative.svg"
+  },
+  "sources": {
+    "01-que-es-maasy-en-claude.md": {
+      "sha": "44aac3a0d34966f234c1c2cdc4f7c228db0c3cfe",
+      "plugins": [
+        "maasy",
+        "maasy-vibe",
+        "maasy-motion",
+        "maasy-lens"
+      ],
+      "paths": [
+        ".claude-plugin/marketplace.json",
+        "maasy/README.md"
+      ]
+    },
+    "02-instalacion-y-requisitos.md": {
+      "sha": "44aac3a0d34966f234c1c2cdc4f7c228db0c3cfe",
+      "plugins": [
+        "maasy",
+        "maasy-vibe",
+        "maasy-motion",
+        "maasy-lens"
+      ],
+      "paths": [
+        ".claude-plugin/marketplace.json",
+        "maasy/.mcp.json",
+        "maasy/README.md"
+      ]
+    },
+    "03-maasy-tu-cuenta-y-tu-marca.md": {
+      "sha": "44aac3a0d34966f234c1c2cdc4f7c228db0c3cfe",
+      "plugins": [
+        "maasy"
+      ],
+      "paths": [
+        "maasy/commands",
+        "maasy/skills",
+        "maasy/hooks",
+        "maasy/README.md",
+        "maasy/.mcp.json",
+        "maasy/.claude-plugin"
+      ]
+    },
+    "04-la-web-de-maasy.md": {
+      "sha": "44aac3a0d34966f234c1c2cdc4f7c228db0c3cfe",
+      "plugins": [
+        "maasy"
+      ],
+      "paths": [
+        "maasy/README.md"
+      ]
+    },
+    "05-planes-y-cobro.md": {
+      "sha": "44aac3a0d34966f234c1c2cdc4f7c228db0c3cfe",
+      "plugins": [
+        "maasy"
+      ],
+      "paths": [
+        "maasy/commands"
+      ]
+    },
+    "06-maasy-vibe.md": {
+      "sha": "44aac3a0d34966f234c1c2cdc4f7c228db0c3cfe",
+      "plugins": [
+        "maasy-vibe"
+      ],
+      "paths": [
+        "maasy-vibe/commands",
+        "maasy-vibe/.claude-plugin",
+        "maasy-vibe/.mcp.json",
+        "maasy-vibe/template/README.md"
+      ]
+    },
+    "07-maasy-motion.md": {
+      "sha": "44aac3a0d34966f234c1c2cdc4f7c228db0c3cfe",
+      "plugins": [
+        "maasy-motion"
+      ],
+      "paths": [
+        "maasy-motion"
+      ]
+    },
+    "08-maasy-lens.md": {
+      "sha": "44aac3a0d34966f234c1c2cdc4f7c228db0c3cfe",
+      "plugins": [
+        "maasy-lens"
+      ],
+      "paths": [
+        "maasy-lens"
+      ]
+    },
+    "09-maasy-feed.md": {
+      "sha": "44aac3a0d34966f234c1c2cdc4f7c228db0c3cfe",
+      "plugins": [
+        "maasy-feed"
+      ],
+      "paths": []
+    },
+    "10-maasy-reply.md": {
+      "sha": "44aac3a0d34966f234c1c2cdc4f7c228db0c3cfe",
+      "plugins": [
+        "maasy-reply"
+      ],
+      "paths": []
+    },
+    "11-maasy-aos.md": {
+      "sha": "44aac3a0d34966f234c1c2cdc4f7c228db0c3cfe",
+      "plugins": [
+        "maasy-aos"
+      ],
+      "paths": []
+    },
+    "12-proximamente.md": {
+      "sha": "44aac3a0d34966f234c1c2cdc4f7c228db0c3cfe",
+      "plugins": [],
+      "paths": []
+    },
+    "13-privacidad-y-seguridad.md": {
+      "sha": "44aac3a0d34966f234c1c2cdc4f7c228db0c3cfe",
+      "plugins": [
+        "maasy",
+        "maasy-motion",
+        "maasy-lens"
+      ],
+      "paths": [
+        "maasy/commands",
+        "maasy-lens/README.md",
+        "maasy-motion/README.md"
+      ]
+    },
+    "14-si-algo-falla.md": {
+      "sha": "44aac3a0d34966f234c1c2cdc4f7c228db0c3cfe",
+      "plugins": [
+        "maasy",
+        "maasy-vibe",
+        "maasy-motion",
+        "maasy-lens"
+      ],
+      "paths": [
+        "maasy/commands",
+        "maasy-vibe/commands",
+        "maasy-lens/commands",
+        "maasy-motion/commands"
+      ]
+    },
+    "15-glosario.md": {
+      "sha": "44aac3a0d34966f234c1c2cdc4f7c228db0c3cfe",
+      "plugins": [],
+      "paths": []
+    }
+  },
+  "hero_caption": "Diseño aprobado, con datos de ejemplo. En la versión publicada el comando es /maasy:start."
+}

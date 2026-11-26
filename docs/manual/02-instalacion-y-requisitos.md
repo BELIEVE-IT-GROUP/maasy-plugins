@@ -1,0 +1,75 @@
+# Instalación y requisitos
+
+Instalar Maasy toma unos cinco minutos y no hace falta saber programar. Se hace con dos líneas en Claude. Todos los plugins viven en una sola tienda: el marketplace `BELIEVE-IT-GROUP/maasy-plugins`.
+
+## Lo que necesitas
+
+| Requisito | Detalle |
+|---|---|
+| Claude | Una cuenta Pro o superior, con la app de Claude instalada (pestaña **Code**) o Claude Code en la terminal |
+| Computador | Para `maasy`, `maasy-vibe`, Feed, Reply y AOS, cualquiera donde corra Claude |
+| Solo Mac | Motion y Lens necesitan un Mac con chip Apple (M1 o más nuevo) y macOS 13 o superior |
+| Internet | Para entrar a tu cuenta de Maasy y para publicar |
+
+Maasy no te pide una llave de IA para empezar. La IA es tu cuenta de Claude.
+
+## Paso a paso
+
+**1. Agrega la tienda de Maasy.** Abre Claude, ve a la pestaña **Code** y escribe:
+
+```
+/plugin marketplace add BELIEVE-IT-GROUP/maasy-plugins
+```
+
+**2. Instala el núcleo.**
+
+```
+/plugin install maasy@maasy
+```
+
+Si Claude pregunta si confías en la carpeta, elige **Yes, I trust this folder**. La opción que aparece marcada por defecto es la contraria (**No, exit**) y un Enter apurado cierra Claude. Mira antes de presionar.
+
+**3. Abre una conversación nueva.** Claude carga los plugins al empezar una conversación. Si instalaste con una abierta, cierra y abre otra.
+
+**4. Empieza con `/maasy:start`.** Es el siguiente capítulo.
+
+![Diseño aprobado: Claude pide permiso para instalar el plugin y, al terminar, ofrece los comandos de Maasy. En la versión publicada el comando para empezar es /maasy:start.](img/capturas/instalar-plugin.png)
+
+## Suma los plugins que quieras
+
+Cada uno se instala igual, con una línea, y se activa abriendo una conversación nueva.
+
+| Para | Escribe |
+|---|---|
+| Crear apps y landings con tu marca | `/plugin install maasy-vibe@maasy` |
+| Hacer videos con tu marca (solo Mac) | `/plugin install maasy-motion@maasy` |
+| Desarmar un video de un link (solo Mac) | `/plugin install maasy-lens@maasy` |
+| Planear tu Instagram | `/plugin install maasy-feed@maasy` |
+| Responder a tus clientes en redes | `/plugin install maasy-reply@maasy` |
+| Medir cómo te ven las IA | `/plugin install maasy-aos@maasy` |
+
+> **Estado hoy:** en la tienda ya están `maasy` y `maasy-vibe`. `maasy-motion` y `maasy-lens` están en revisión y llegan a la tienda al aprobarse. `maasy-feed`, `maasy-reply` y `maasy-aos` tienen su diseño aprobado y todavía no se publican. Los capítulos 7 a 11 describen cada uno como será.
+
+## Qué ves después de instalar
+
+El plugin `maasy` agrega un panel al lado de la conversación y una franja pequeña sobre el cuadro de texto. El panel tiene una pestaña **Crear** (el avance de tu marca) y una pestaña **Cuenta**. Cada plugin que sumas agrega su propia pestaña. Es un solo panel para todo.
+
+El panel no hace nada hasta que usas Maasy por primera vez. Si no lo ves, escribe `/maasy-panel`.
+
+## Dónde conviene instalar
+
+Los plugins se pueden instalar para toda tu cuenta de Claude o solo para un proyecto. Si trabajas con muchas carpetas y no quieres que Maasy se cargue en todas, instálalo solo en el proyecto donde lo vas a usar.
+
+## Actualizar y quitar
+
+- **Actualizar:** los plugins se actualizan desde la tienda. Maasy Lens y la app Maasy Motion también se actualizan solos y vuelven a la versión anterior si algo falla.
+- **Quitar un plugin:** `/plugin` y elige desinstalar. Tu marca y tu cuenta siguen en Maasy.
+- **Borrar la marca:** se hace con `/maasy:borrar` (capítulo 3), no desinstalando el plugin.
+
+## Preguntas frecuentes
+
+**¿Necesito Claude Code o me sirve Claude Desktop?** Sirven los dos. Los comandos y el panel son los mismos.
+
+**Instalé y no aparece el comando.** Abre una conversación nueva. Si sigue sin aparecer, escribe `/plugin` y revisa que `maasy` figure como instalado.
+
+**¿Es seguro dar permiso para que se instale?** Es el permiso normal de Claude para sumar un plugin. Cada plugin pide por separado lo que quiere hacer cuando lo hace, y lo que toca tu plata, tus mensajes o tus cuentas va aparte (capítulo 13).
