@@ -8,11 +8,20 @@ Maasy Motion en Claude Code y Claude Desktop. Conecta el MCP local de la app Maa
 /plugin install maasy-motion --marketplace BELIEVE-IT-GROUP/maasy-plugins
 ```
 
+## Requisitos
+
+Mac con Apple Silicon (M1 o posterior) y macOS 13 o más. En un Mac con Intel o con un macOS anterior la app no abre y
+el sistema dice que no es compatible.
+
 ## Límites
 
-Maasy Motion trae su propio ffmpeg (LGPL, con VideoToolbox) y no necesita Homebrew. Ese ffmpeg no incluye `libass` ni
-`zscale`: no hace reels con subtítulos quemados ni conversión HDR. Los films no los usan. Si los necesitas, indica otro
-ffmpeg en Ajustes (`tools.ffmpeg`). Importar un video desde un link necesita `yt-dlp` en el Mac.
+Maasy Motion trae su propio ffmpeg (LGPL, con VideoToolbox, libass y zimg) y whisper, y no necesita Homebrew: hace
+reels con subtítulos quemados y convierte HDR. La primera vez que transcribe baja el modelo de voz (574 MB) a su
+carpeta de datos. Los subtítulos usan las tipografías que trae la app; si la fuente de una marca no está entre ellas,
+se cambia por la más parecida. Importa videos desde un link con el `yt-dlp` y el `deno` que trae. Si el Mac no tiene
+Chrome, la primera vez que dibuja un video baja `chrome-headless-shell` (105 MB). La primera vez que renderiza un film
+final instala earshot, que califica el sonido (cerca de 1 GB, más sus modelos). Las voces locales de Piper no están
+disponibles en Mac: las voces van por ElevenLabs u OpenAI con tu llave.
 
 ## Permisos
 

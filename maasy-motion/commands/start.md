@@ -1,7 +1,7 @@
 ---
 description: Empieza con Maasy Motion. Trae tu marca de Maasy y arma un video en tu Mac
 argument-hint: "[qué video quieres]"
-allowed-tools: mcp__plugin_maasy_maasy__maasy_list_brands, mcp__plugin_maasy_maasy__maasy_get_design_md, mcp__plugin_maasy_maasy__maasy_get_brand_dna, mcp__plugin_maasy_maasy__maasy_get_brand_context, mcp__plugin_maasy_maasy__maasy_get_motion_recipe, mcp__plugin_maasy_maasy__maasy_upload_asset, mcp__plugin_maasy_maasy__maasy_canvas_submit, mcp__plugin_maasy_maasy__maasy_canvas_list, mcp__plugin_maasy-motion_becut__doctor, mcp__plugin_maasy-motion_becut__brand_put, mcp__plugin_maasy-motion_becut__brand_reconcile, mcp__plugin_maasy-motion_becut__brand_list, mcp__plugin_maasy-motion_becut__brand_set, mcp__plugin_maasy-motion_becut__hub_new_film, mcp__plugin_maasy-motion_becut__hub_live, mcp__plugin_maasy-motion_becut__hub_frame, mcp__plugin_maasy-motion_becut__hub_notes, mcp__plugin_maasy-motion_becut__film_poster, mcp__plugin_maasy-motion_becut__asset_upload, mcp__plugin_maasy-motion_becut__fal_run, Read(~/Movies/BeCut/films/**), Edit(~/Movies/BeCut/films/**), AskUserQuestion
+allowed-tools: mcp__plugin_maasy_maasy__maasy_list_brands, mcp__plugin_maasy_maasy__maasy_get_design_md, mcp__plugin_maasy_maasy__maasy_get_brand_dna, mcp__plugin_maasy_maasy__maasy_get_brand_context, mcp__plugin_maasy_maasy__maasy_get_motion_recipe, mcp__plugin_maasy_maasy__maasy_upload_asset, mcp__plugin_maasy_maasy__maasy_canvas_submit, mcp__plugin_maasy_maasy__maasy_canvas_list, mcp__plugin_maasy-motion_becut__doctor, mcp__plugin_maasy-motion_becut__brand_put, mcp__plugin_maasy-motion_becut__brand_reconcile, mcp__plugin_maasy-motion_becut__brand_list, mcp__plugin_maasy-motion_becut__brand_set, mcp__plugin_maasy-motion_becut__hub_new_film, mcp__plugin_maasy-motion_becut__hub_live, mcp__plugin_maasy-motion_becut__hub_frame, mcp__plugin_maasy-motion_becut__hub_notes, mcp__plugin_maasy-motion_becut__film_poster, mcp__plugin_maasy-motion_becut__asset_upload, mcp__plugin_maasy-motion_becut__fal_run, Bash(uname -m), Bash(sw_vers -productVersion), Read(~/Movies/BeCut/films/**), Edit(~/Movies/BeCut/films/**), AskUserQuestion
 ---
 
 Maasy Motion usa la sesión del plugin `maasy` y la app Maasy Motion instalada en este Mac. El método de trabajo lo manda
@@ -10,7 +10,9 @@ el servidor de Maasy, por partes y marcado con tu cuenta: no lo inventes, no lo 
 1. **Sesión de Maasy.** Si no tienes las tools `mcp__plugin_maasy_maasy__*`, detente y muestra estas dos líneas:
    `/plugin install maasy` y después `/maasy:start`. Si `maasy_list_brands` pide iniciar sesión, conecta Maasy (sigue
    lo que diga Claude) y vuelve a llamarla. Sin sesión no sigas.
-2. **La app.** Llama `doctor` de BeCut. Si la tool no responde, la app no está instalada: pide instalar Maasy Motion desde
+2. **El Mac y la app.** Maasy Motion corre en Mac con Apple Silicon y macOS 13 o más. Llama `doctor` de BeCut. Si la
+   tool no responde, mira `uname -m` y `sw_vers -productVersion`: si no es `arm64` o la versión es menor que 13, dilo y
+   detente. Si el Mac sirve, la app no está instalada: pide instalar Maasy Motion desde
    su DMG (`https://files.believe-global.com/apps/maasy-motion/`) y abrirla una vez. Si `doctor` marca piezas que faltan,
    muestra el arreglo que trae cada una y espera a que la persona lo haga.
 3. **La marca.** Con `maasy_list_brands`, primero pasa todas las marcas de la cuenta a `brand_reconcile` (`slugs`: el
