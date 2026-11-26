@@ -15,6 +15,12 @@
       "category": "marketing"
     },
     {
+      "name": "maasy-lens",
+      "source": "./maasy-lens",
+      "description": "Maasy Lens: desarma un video de un link desde tu Mac y guarda la fórmula en tu cerebro de Maasy. Solo Mac.",
+      "category": "marketing"
+    },
+    {
       "name": "maasy-vibe",
       "source": "./maasy-vibe",
       "description": "Maasy Vibe en Claude Code: crea apps con el template v2, revísalas y publícalas en el borde de Believe, legibles por agentes.",
