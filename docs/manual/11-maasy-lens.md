@@ -87,6 +87,6 @@ Todo lo que viene del video (el texto de la descripción, la transcripción, el 
 
 **Dice que `ver_video` no existe.** Lens no está instalado o no está conectado. Corre `/maasy-lens:estado` y, al terminar, reconecta con `/mcp`.
 
-**¿Puedo borrar un análisis que ya guardé en mi cerebro?** Sí, con `maasy_forget_brand_brain_item` (`PRÓXIMAMENTE`, en revisión). No exige plan Pro, solo acceso a la marca.
+**¿Puedo borrar un análisis que ya guardé en mi cerebro?** Sí, con `maasy_forget_brand_brain_item`. No exige plan Pro, solo acceso a la marca.
 
 **¿Qué pasa con mi análisis si no lo guardo?** Queda en la conversación y en la pestaña Lens con estado "analizado". Si lo guardaste, además vive en tu cerebro.

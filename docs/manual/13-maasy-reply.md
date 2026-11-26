@@ -1,6 +1,6 @@
 # Maasy Reply: campañas de comentario a mensaje directo
 
-`maasy-reply` te ayuda a diseñar cómo responde tu marca a comentarios en Instagram. Tu Claude arma la campaña como borrador, la deja guardada y tú la revisas y la activas en el panel de BeReply. Las campañas funcionan sin IA: cada texto queda escrito y fijo. Reply no es un chatbot.
+`maasy-reply` te ayuda a diseñar cómo responde tu marca a comentarios en Instagram. Tu Claude arma la campaña como borrador, la deja guardada y tú la revisas y la activas en la web de Maasy (maasy.ai/control/reply). Las campañas funcionan sin IA: cada texto queda escrito y fijo. Reply no es un chatbot.
 
 > Disponible en la tienda (versión 1.0.0).
 
@@ -14,17 +14,17 @@
 ## La regla que ordena todo
 
 ```figura
-<figure class="vx-fig" data-alt="Cuatro pasos. Claude con el plugin lee la voz de tu marca y escribe la campaña. La campaña se guarda como borrador. Tú la revisas y la activas en el panel de BeReply. Una vez activa, corre sin IA con textos fijos.">
+<figure class="vx-fig" data-alt="Cuatro pasos. Claude con el plugin lee la voz de tu marca y escribe la campaña. La campaña se guarda como borrador. Tú la revisas y la activas en la web de Maasy. Una vez activa, corre sin IA con textos fijos.">
   <div class="vx-head">Quién decide cada paso</div>
   <div class="vx-body">
     <div class="vx-flow">
       <div class="vx-node">Claude escribe<small>Lee tu voz y arma la campaña</small></div>
       <div class="vx-node">Queda en borrador<small>No corre y no envía nada</small></div>
-      <div class="vx-node vx-key">Tú activas<small>En el panel de BeReply</small></div>
+      <div class="vx-node vx-key">Tú activas<small>En la web de Maasy</small></div>
       <div class="vx-node">Corre sin IA<small>Textos fijos</small></div>
     </div>
   </div>
-  <figcaption>Ninguna campaña se activa ni sale un mensaje sin que una persona lo apruebe en el panel.</figcaption>
+  <figcaption>Ninguna campaña se activa ni sale un mensaje sin que una persona lo apruebe en la web de Maasy.</figcaption>
 </figure>
 ```
 
@@ -32,7 +32,7 @@
 
 - Los plugins `maasy` y `maasy-reply`, y una marca creada.
 - Una cuenta de Maasy con plan pago y acceso a la marca.
-- Tu cuenta de Instagram conectada en BeReply y vinculada a esa marca.
+- Tu cuenta de Instagram conectada en la web de Maasy (maasy.ai/control/llaves) y vinculada a esa marca.
 
 ## Cómo se instala
 
@@ -53,15 +53,15 @@ La primera vez, Claude te pide entrar con tu cuenta de Maasy. Para crear borrado
 ### Diseñar una campaña
 
 1. Escribe `/maasy-reply:campana` y lo que quieres: "a quien comente GUIA en el reel de agentes, mándale la guía por mensaje directo".
-2. Claude pide a Reply la receta de campañas y la sigue parte por parte. Si no sabe la cuenta, te la pregunta.
+2. Claude pide a Reply la receta de campañas y la sigue parte por parte. Si no sabe la cuenta, te la pregunta. Si la conexión solo trae el permiso "Proponer borradores" y no deja listar tus cuentas, Claude no te pide más permisos: te pregunta el @usuario de Instagram de la cuenta y sigue con ese. Si falta otro permiso, Claude te dice cuál es y dónde activarlo.
 3. Lee la voz de tu marca en Maasy antes de escribir.
-4. Todo lo que guarda queda como borrador. Al final te da un enlace (`revisar_en`) para que lo revises y lo actives en el panel.
+4. Todo lo que guarda queda como borrador. Al final te dice que lo revises y lo actives en la web de Maasy (maasy.ai/control/reply).
 
-![Diseño aprobado: una campaña de ejemplo como borrador, con sus revisiones. Las revisiones de voz y de ventana coinciden con el plugin; el diseño del panel puede ser distinto.](img/capturas/reply-borrador.png)
+![Diseño aprobado: una campaña de ejemplo como borrador, con sus revisiones. Las revisiones de voz y de ventana coinciden con el plugin; el diseño de la pantalla puede ser distinto.](img/capturas/reply-borrador.png)
 
 ### Ver cómo va
 
-`/maasy-reply:escalados` los lista en una tabla corta: fecha, campaña, usuario, comentario y motivo. `/maasy-reply:conversaciones` muestra cada conversación con usuario, último mensaje, fecha y si la ventana de 24 horas sigue abierta, y hasta cuándo. Si la ventana está cerrada, Claude explica que ya no se puede responder hasta que la persona escriba otra vez. Para contestar, se usa la bandeja de BeReply: Claude no responde a nadie.
+`/maasy-reply:escalados` los lista en una tabla corta: fecha, campaña, usuario, comentario y motivo. `/maasy-reply:conversaciones` muestra cada conversación con usuario, último mensaje, fecha y si la ventana de 24 horas sigue abierta, y hasta cuándo. Si la ventana está cerrada, Claude explica que ya no se puede responder hasta que la persona escriba otra vez. Claude no responde a nadie.
 
 ![Diseño aprobado: conversaciones abiertas con su ventana de 24 horas. Los usuarios son de ejemplo.](img/capturas/reply-conversaciones.png)
 
@@ -89,7 +89,7 @@ Los comentarios y mensajes son texto de personas que no conoces. Claude los lee 
 
 ## Preguntas frecuentes
 
-**¿Puede Reply mandar mensajes sin que yo lo sepa?** No. Una campaña corre solo después de que la activas en el panel.
+**¿Puede Reply mandar mensajes sin que yo lo sepa?** No. Una campaña corre solo después de que la activas en la web de Maasy.
 
 **¿Por qué no responde con IA?** Porque una respuesta automática puede llegar a las 3 de la mañana, cuando no hay un Claude abierto que la revise. Preferimos textos que tú aprobaste antes.
 

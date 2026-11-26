@@ -68,7 +68,7 @@ Los comentarios, mensajes, descripciones de videos y transcripciones que un plug
 | Cambiar la llave de Maasy de Claude | Esa misma pantalla, **Regenerar** |
 | Borrar una marca del plan gratis | `/maasy:borrar`. La marca deja de verse al instante y sus datos y archivos se borran a los 30 días |
 | Borrar cualquier otra marca | En la web de Maasy |
-| Borrar un análisis de Lens | Los videos se borran solos a los 30 días en tu Mac. Borrar un análisis ya guardado en tu cerebro se hará con `maasy_forget_brand_brain_item` (`PRÓXIMAMENTE`, en revisión). No exige plan Pro, solo acceso a la marca |
+| Borrar un análisis de Lens | Los videos se borran solos a los 30 días en tu Mac. Borrar un análisis ya guardado en tu cerebro se hace con `maasy_forget_brand_brain_item`. No exige plan Pro, solo acceso a la marca |
 | Quitar un plugin | `/plugin`, desinstalar. No borra tu marca |
 
 Borrar una marca no borra los datos del CRM de la marca mientras haya contactos o leads: primero hay que resolver eso. Las tarjetas del canvas se van con la marca.

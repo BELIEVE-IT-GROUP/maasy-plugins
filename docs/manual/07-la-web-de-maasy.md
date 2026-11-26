@@ -31,7 +31,8 @@ La navegación tiene cuatro secciones para tu cuenta y una por cada producto.
 | Canvas | Donde llegan las piezas que crean tus plugins, para que las juzgues |
 | Llaves y conexiones | La llave con la que Claude entra a Maasy y las cuentas externas que conectaste |
 | CRM | Contactos, leads, oportunidades y pipeline |
-| Ads, Reply, Feed, Motion, Lens y AOS | Una sección por producto, con la etiqueta **Pronto** hasta que se publique |
+| Feed, Reply y Games | Donde apruebas, programas y publicas lo que prepara cada plugin (ver más abajo) |
+| Ads, Motion, Lens y AOS | Una sección por producto, con la etiqueta **Pronto** hasta que tenga la suya |
 
 ## Marcas
 
@@ -77,6 +78,17 @@ Aquí viven las dos cosas que Claude no debe tener nunca a la mano.
 
 ![Diseño aprobado: la llave de Maasy y las conexiones de ejemplo.](img/capturas/control-llaves.png)
 
+## Feed, Reply y Games
+
+Todo lo que hace la persona en estos productos pasa en la web de Maasy:
+
+| Dónde | Qué haces |
+|---|---|
+| `maasy.ai/control/llaves` | Conectar tu cuenta de Instagram y tus otras cuentas |
+| `maasy.ai/control/feed` | Aprobar o descartar las piezas de la semana, programarlas y publicarlas |
+| `maasy.ai/control/reply` | Revisar y activar las campañas que Claude dejó en borrador |
+| `maasy.ai/control/games` | Aprobar un juego o despublicarlo |
+
 ## Lo que no encuentras, y por qué
 
 Si vienes de Claude, hay herramientas de la web de Maasy que no aparecen. Es una decisión, no un error. Son las que corren con IA de Believe y consumen créditos: el chat de Vibe, el Copilot de Maasy, el Autopilot y las generaciones con IA en la web. Desde Claude la IA la pones tú, así que esas pantallas se reemplazan por un aviso que te manda de vuelta al chat de Claude.
@@ -88,7 +100,7 @@ Si vienes de Claude, hay herramientas de la web de Maasy que no aparecen. Es una
 ## Límites
 
 - El mapa de nodos del cerebro se explora en la app web, no en Claude.
-- Las secciones de Ads, Reply, Feed, Motion, Lens y AOS llegan con su producto.
+- Las secciones de Ads, Motion, Lens y AOS llegan con su producto.
 - Los datos de las capturas de este capítulo son de ejemplo.
 
 ## Preguntas frecuentes

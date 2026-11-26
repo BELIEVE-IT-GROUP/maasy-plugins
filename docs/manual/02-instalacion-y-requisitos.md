@@ -47,8 +47,9 @@ Cada uno se instala igual, con una línea, y se activa abriendo una conversació
 | Planear tu Instagram | `/plugin install maasy-feed@maasy` |
 | Responder a tus clientes en redes | `/plugin install maasy-reply@maasy` |
 | Medir cómo te ven las IA | `/plugin install maasy-aos@maasy` |
+| Hacer un juego de marca | `/plugin install maasy-games@maasy` |
 
-> **Estado hoy:** en la tienda están `maasy`, `maasy-vibe`, `maasy-motion`, `maasy-lens`, `maasy-feed`, `maasy-reply` y `maasy-aos`. Ads, Games e Incubator siguen como `PRÓXIMAMENTE` (capítulo 15).
+> **Estado hoy:** en la tienda están `maasy`, `maasy-vibe`, `maasy-motion`, `maasy-lens`, `maasy-feed`, `maasy-reply`, `maasy-aos` y `maasy-games`. Ads sigue como `PRÓXIMAMENTE` (capítulo 15).
 
 ## Qué ves después de instalar
 
