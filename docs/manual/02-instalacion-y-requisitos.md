@@ -48,8 +48,9 @@ Cada uno se instala igual, con una línea, y se activa abriendo una conversació
 | Responder a tus clientes en redes | `/plugin install maasy-reply@maasy` |
 | Medir cómo te ven las IA | `/plugin install maasy-aos@maasy` |
 | Hacer un juego de marca | `/plugin install maasy-games@maasy` |
+| Revisar tu pauta y proponer cambios | `/plugin install maasy-ads@maasy` |
 
-> **Estado hoy:** en la tienda están `maasy`, `maasy-vibe`, `maasy-motion`, `maasy-lens`, `maasy-feed`, `maasy-reply`, `maasy-aos` y `maasy-games`. Ads sigue como `PRÓXIMAMENTE` (capítulo 15).
+> **Estado hoy:** en la tienda están `maasy`, `maasy-vibe`, `maasy-motion`, `maasy-lens`, `maasy-feed`, `maasy-reply`, `maasy-aos`, `maasy-games` y `maasy-ads`: son 9 plugins (capítulo 15).
 
 ## Qué ves después de instalar
 

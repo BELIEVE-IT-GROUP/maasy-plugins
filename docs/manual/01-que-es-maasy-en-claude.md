@@ -41,7 +41,7 @@ Los plugins que hay hoy y su estado:
 | `maasy-reply` | Campañas de comentario a mensaje directo, en borrador | Disponible |
 | `maasy-aos` | Qué tan bien te leen y te recomiendan las IA | Disponible |
 | `maasy-games` | Juegos de marca que se juegan en el celular | Disponible |
-| Ads | Campañas de pauta con tu cerebro de marca | `PRÓXIMAMENTE` |
+| `maasy-ads` | Revisar tu pauta, simular un plan y proponer tarjetas que apruebas tú | Disponible |
 
 ## Qué hace Claude y qué haces tú
 

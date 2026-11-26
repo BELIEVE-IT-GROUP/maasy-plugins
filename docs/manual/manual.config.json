@@ -49,6 +49,10 @@
     "maasy-games": {
       "version": "0.1.0",
       "estado": "main"
+    },
+    "maasy-ads": {
+      "version": "0.1.0",
+      "estado": "main"
     }
   },
   "assets": {
@@ -57,12 +61,13 @@
   },
   "sources": {
     "01-que-es-maasy-en-claude.md": {
-      "sha": "9891699f40000c1439f8a741fc8f17eb0cd5b43e",
+      "sha": "5041c6fc6f97d831a89b166b053242f118cbc029",
       "plugins": [
         "maasy",
         "maasy-vibe",
         "maasy-motion",
-        "maasy-lens"
+        "maasy-lens",
+        "maasy-ads"
       ],
       "paths": [
         ".claude-plugin/marketplace.json",
@@ -70,12 +75,13 @@
       ]
     },
     "02-instalacion-y-requisitos.md": {
-      "sha": "9891699f40000c1439f8a741fc8f17eb0cd5b43e",
+      "sha": "5041c6fc6f97d831a89b166b053242f118cbc029",
       "plugins": [
         "maasy",
         "maasy-vibe",
         "maasy-motion",
-        "maasy-lens"
+        "maasy-lens",
+        "maasy-ads"
       ],
       "paths": [
         ".claude-plugin/marketplace.json",
@@ -206,14 +212,16 @@
         "maasy-aos"
       ]
     },
-    "15-maasy-games-y-lo-que-viene.md": {
+    "15-maasy-games-y-ads.md": {
       "plugins": [
-        "maasy-games"
+        "maasy-games",
+        "maasy-ads"
       ],
       "paths": [
-        "maasy-games"
+        "maasy-games",
+        "maasy-ads"
       ],
-      "sha": "9891699f40000c1439f8a741fc8f17eb0cd5b43e"
+      "sha": "5041c6fc6f97d831a89b166b053242f118cbc029"
     },
     "16-privacidad-y-seguridad.md": {
       "sha": "9891699f40000c1439f8a741fc8f17eb0cd5b43e",

@@ -8,6 +8,14 @@ Cómo se numera:
 - **Segundo número**: un capítulo nuevo o una capacidad nueva documentada (por ejemplo, un plugin que llega a la tienda).
 - **Tercer número**: correcciones, precisiones y pantallas rehechas.
 
+## 1.3.0 (2026-11-26)
+
+- **Ads pasa a disponible**: `maasy-ads` 0.1.0 ya está en la tienda (ahora son 9 plugins). El capítulo 15 pasa a llamarse "Maasy Games y Maasy Ads" y Ads deja de ser `PRÓXIMAMENTE`: qué hace, qué necesitas, cómo instalarlo, el comando `/maasy-ads:start`, paso a paso, qué ves en pantalla, quién hace qué, las herramientas, límites y preguntas frecuentes.
+- **La regla de Ads**: Claude lee, simula contra tu mandato y propone tarjetas. Nada toca la plataforma publicitaria hasta que apruebas la tarjeta en `maasy.ai/control/ads`. El plugin pide solo los permisos `ads:read` y `ads:propose`.
+- **Capítulo 1 y 2**: Ads sale de la lista de lo que viene y entra a la tabla de plugins y a la de instalación.
+- **Capítulo 7**: la sección Ads de la web de Maasy deja de llevar la etiqueta Pronto (conectar cuentas, tarjetas pendientes). Motion, Lens y AOS siguen con ella.
+- Una figura nueva en el capítulo 15 (leer, simular, proponer, aprobar). El capítulo todavía no trae capturas de Ads.
+
 ## 1.2.2 (2026-11-26)
 
 - **Feed y Reply**: todo lo que hace la persona (conectar Instagram, aprobar o descartar, programar y activar) es en la web de Maasy, en `maasy.ai/control/llaves`, `/control/feed` y `/control/reply`. Se quitan todas las menciones al panel de BeFeed y de BeReply. El capítulo 7 suma una tabla con esas direcciones.
