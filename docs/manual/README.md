@@ -80,13 +80,9 @@ PLAYWRIGHT_CORE=/ruta/a/node_modules node scripts/manual/capture.mjs [--only nom
 
 ### BeNotes
 
-BeNotes (Cuadernos) no tiene llave de API: su puerta es el MCP `https://cuadernos.believe-global.com/api/mcp`, con OAuth por usuario. El refresh token rota en cada uso, así que este manual tiene su **propio** secreto, `BENOTES_MAASY_MANUAL_OAUTH`. Para publicar sin ventana hay que conectar una vez, quien administra Cuadernos, en su Mac:
+BeNotes (Cuadernos) se publica por su MCP `https://cuadernos.believe-global.com/api/mcp` con el token de máquina `BENOTES_MANUALES_TOKEN`, el mismo para todas las recetas de manuales. No vence ni rota: nadie tiene que dar permiso en el navegador. Su alcance es mínimo: solo lee y actualiza las notas de manuales de su lista y crea notas en su cuaderno; el resto de las notas no existe para él.
 
-```bash
-node scripts/manual/benotes.mjs connect
-```
-
-**Pendiente hoy:** la conexión (`connect`) la corre Jorge en su Mac. Mientras tanto la nota de BeNotes lleva la versión resumen (portada, índice y enlaces a la página), empujada a mano con el conector de Cuadernos. Sin conectar, `--publish` publica en R2 y deja BeNotes como pendiente. Mientras tanto se empuja a mano con el conector de Cuadernos (`notes_create` o `notes_update` con `docs/manual/dist/benotes.json`) y se deja el `page_id` en `manual.config.json`.
+`push` actualiza la nota de `page_id` y la relee para verificarla. Sin el token en el entorno, `--publish` publica en R2 y deja BeNotes como pendiente, con el paso a mano (`notes_update` con `docs/manual/dist/benotes.json` por el conector de Cuadernos).
 
 ## Autoupdate: el manual avisa cuando un plugin cambia
 
