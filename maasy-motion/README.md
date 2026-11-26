@@ -38,3 +38,9 @@ funciona `allowed-tools` en Claude Code). Para que tampoco pregunte en los mensa
 Este directorio es público: el método (`receta/`) vive en el servidor de Maasy y llega por partes, marcado por cuenta.
 Los tests de `crates/core/src/believe/centinelas.rs` fallan si una oración de la receta, un asset de las marcas de
 Believe o música sin licencia para terceros aparece acá o en lo que se empaqueta en la app. Diseño: `docs/diseno/MEC-22.md`.
+
+## Licencia
+
+MIT, ver [LICENSE](LICENSE). Cubre solo el código de este plugin. La app Maasy Motion y sus componentes de terceros conservan su propia licencia, ver `THIRD-PARTY-NOTICES`. La receta vive en el servidor de Maasy y no forma parte del repositorio.
+
+[Política de privacidad](https://maasy.ai/privacy)
