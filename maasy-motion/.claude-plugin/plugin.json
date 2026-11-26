@@ -1,11 +1,13 @@
 {
   "name": "maasy-motion",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Maasy Motion en Claude: videos con la marca de tu cerebro Maasy, hechos y renderizados en tu Mac. Requiere el plugin maasy.",
   "author": {
     "name": "Believe Global",
     "url": "https://believe-global.com"
   },
   "homepage": "https://maasy.ai",
+  "icon": "./.claude-plugin/icon.png",
+  "privacyPolicyUrl": "https://maasy.ai/privacy",
   "dependencies": ["maasy"]
 }
