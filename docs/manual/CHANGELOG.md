@@ -8,6 +8,11 @@ Cómo se numera:
 - **Segundo número**: un capítulo nuevo o una capacidad nueva documentada (por ejemplo, un plugin que llega a la tienda).
 - **Tercer número**: correcciones, precisiones y pantallas rehechas.
 
+## 1.2.1 (2026-11-26)
+
+- Versiones al día: Motion 0.2.2 y Lens 0.2.3 (solo licencia, ícono y política de privacidad; el manual no cambia).
+- **AOS** ya está en la tienda: pasa a `main` y a "Disponible" en el manual. Se quita la frase que decía que esperaba la aprobación de su PR.
+
 ## 1.2.0 (2026-11-26)
 
 - **Feed, Reply y AOS pasan a disponibles.** Se reescriben los capítulos 12, 13 y 14 con lo que hacen los plugins publicados: comandos y herramientas reales de `maasy-feed` 1.0.0, `maasy-reply` 1.0.0 y `maasy-aos` 0.1.0 (este último entra a la tienda con su PR). Se quitan las etiquetas PRÓXIMAMENTE de esos tres. Las pantallas siguen siendo diseños aprobados, y el pie dice qué coincide.

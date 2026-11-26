@@ -2,7 +2,7 @@
 
 `maasy-aos` mide qué tan bien pueden usar tu sitio los agentes de IA y qué tanto te recomiendan los modelos. Tiene dos números que no hay que confundir: el AOS, que audita tu sitio, y el APS, que mide la preferencia de los modelos por tu marca. AOS y APS los sirve BeAOS, la plataforma de medición de Believe.
 
-> Versión 0.1.0. Entra a la tienda cuando se apruebe su PR.
+> Disponible en la tienda (versión 0.1.0).
 
 ## Para qué sirve
 

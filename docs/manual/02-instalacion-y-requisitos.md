@@ -48,7 +48,7 @@ Cada uno se instala igual, con una línea, y se activa abriendo una conversació
 | Responder a tus clientes en redes | `/plugin install maasy-reply@maasy` |
 | Medir cómo te ven las IA | `/plugin install maasy-aos@maasy` |
 
-> **Estado hoy:** en la tienda están `maasy`, `maasy-vibe`, `maasy-motion`, `maasy-lens`, `maasy-feed` y `maasy-reply`. `maasy-aos` (versión 0.1.0) entra a la tienda al aprobarse su PR. Ads, Games e Incubator siguen como `PRÓXIMAMENTE` (capítulo 15).
+> **Estado hoy:** en la tienda están `maasy`, `maasy-vibe`, `maasy-motion`, `maasy-lens`, `maasy-feed`, `maasy-reply` y `maasy-aos`. Ads, Games e Incubator siguen como `PRÓXIMAMENTE` (capítulo 15).
 
 ## Qué ves después de instalar
 

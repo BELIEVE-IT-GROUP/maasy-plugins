@@ -39,7 +39,7 @@ Los plugins que hay hoy y su estado:
 | `maasy-lens` | Desarmar un video a partir de un link | Disponible |
 | `maasy-feed` | Planear y escribir tu Instagram orgánico | Disponible |
 | `maasy-reply` | Campañas de comentario a mensaje directo, en borrador | Disponible |
-| `maasy-aos` | Qué tan bien te leen y te recomiendan las IA | Disponible al entrar a la tienda |
+| `maasy-aos` | Qué tan bien te leen y te recomiendan las IA | Disponible |
 | Ads, Games e Incubator | Pauta, juegos de marca y creación de negocio | `PRÓXIMAMENTE` |
 
 ## Qué hace Claude y qué haces tú
