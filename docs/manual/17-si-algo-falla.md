@@ -31,7 +31,7 @@ Casi todo lo que falla tiene un arreglo corto. Busca tu síntoma y sigue la rece
 | Un plugin dice que no hay sesión de Maasy | Instala `maasy` y corre `/maasy:start` |
 | Un plugin de producto no ve mi marca | La conexión del cerebro con tus plugins es del plan Pro. Mira tu plan en la web de Maasy |
 | Vibe: "no hay sesión" al publicar | `/maasy-vibe:login publicar` |
-| Vibe: se llenó el cupo de apps | Despublica una con `/maasy-vibe:unpublish` o sube de plan |
+| Vibe: se llenó el cupo de apps | El plan gratis publica 1 app y Pro 5. Despublica una con `/maasy-vibe:unpublish` o sube de plan |
 | Vibe: no puedo despublicar | La app tiene backend o dominio propio. El mensaje dice qué quitar primero |
 | Motion: Claude dice que la app no responde | Instala Maasy Motion desde su DMG y ábrela una vez |
 | Motion: falta una pieza (`doctor`) | Claude muestra el arreglo de cada pieza. Hazlo y vuelve a empezar |

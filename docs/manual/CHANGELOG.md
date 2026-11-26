@@ -8,6 +8,12 @@ Cómo se numera:
 - **Segundo número**: un capítulo nuevo o una capacidad nueva documentada (por ejemplo, un plugin que llega a la tienda).
 - **Tercer número**: correcciones, precisiones y pantallas rehechas.
 
+## 1.1.1 (2026-11-26)
+
+- **Cancelar Pro**: se cancela desde el portal de pagos de Stripe, al final del período pagado y sin prorrateo. Sigues con Pro hasta entonces; después tus marcas vuelven al plan gratis sin perder datos, y las que pasen del cupo se siguen usando pero no puedes crear nuevas.
+- **Vibe**: plan gratis de Maasy, 1 app publicada con el sello "Built with Maasy"; plan Pro, 5 apps sin sello. El plan es el del dueño de la marca, así que un colaborador en una marca Pro también publica sin sello.
+- **Borrar un análisis de Lens del cerebro**: queda como `PRÓXIMAMENTE` (`maasy_forget_brand_brain_item`, en revisión) y no exigirá plan Pro, solo acceso a la marca.
+
 ## 1.1.0 (2026-11-26)
 
 - **Tres capítulos nuevos.** "Lo que Maasy sabe de tu marca" (4): el ADN parte por parte, las ocho derivaciones y lo que produce cada una, el análisis de referencias con Anti-Look Maasy y el design.md. "El cerebro de tu marca" (5): el grafo, su compresión, el corpus vectorizado por capas, la memoria de aprobadas, ganadoras y descartadas, cómo lo consulta Claude y cómo aprende, con una figura del ciclo. "Qué puedes crear con tu marca" (6): textos, estrategias, anuncios, posts, artículos, emails, landings y videos, con ejemplos de pedidos.

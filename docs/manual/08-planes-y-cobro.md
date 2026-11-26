@@ -78,9 +78,16 @@ Hay tres casos.
 
 El borrado se frena con un aviso si la marca tiene algo vivo: publicaciones o posts programados, redes conectadas, campañas o automatizaciones activas, landings o artículos publicados, o pagos pendientes de la red de anuncios que hay que cobrar antes. Primero resuelves eso y después borras.
 
-## Cancelar o dejar de pagar
+## Cancelar tu plan Pro
 
-> **Pendiente de confirmar con el equipo:** el código de pago del plan no define un flujo propio de cancelación (ni fecha de corte ni qué se apaga). Lo único que hace es sincronizar el estado de tu suscripción de Stripe con tu cuenta, incluidos los cambios que hagas desde el portal de Stripe, y reconciliar tu cupo de marcas con las marcas que tienes vivas. Qué pasa exactamente al cancelar se completa cuando esté definido.
+Se cancela desde el portal de pagos de Stripe, el mismo donde ves tus facturas.
+
+1. Abres el portal de pagos de Stripe de tu suscripción y eliges cancelar.
+2. La cancelación vale **al final del período que ya pagaste**. No hay prorrateo ni reembolso de lo que queda.
+3. Sigues con Pro hasta que termina ese período.
+4. Después, tus marcas vuelven al plan gratis **sin perder datos**. Las que pasen del cupo gratis (una marca) se siguen usando, pero no puedes crear marcas nuevas hasta volver a Pro.
+
+Lo que se apaga al volver al plan gratis es lo que es de Pro: el cerebro para los plugins, el CRM y el canvas.
 
 ## Preguntas frecuentes
 

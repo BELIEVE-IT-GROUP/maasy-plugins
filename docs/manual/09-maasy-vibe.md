@@ -91,8 +91,10 @@ Claude te muestra cada herramienta que usa y pide permiso en las que publican. E
 
 ## Límites
 
-- La publicación tiene un cupo de apps según tu plan. Si se llena, Claude muestra el mensaje y te dice cómo liberar uno (por ejemplo, despublicando otra app).
-- En el plan gratis de Vibe la app publicada lleva un sello pequeño, abajo a la derecha. Quitarlo es parte de un plan pago.
+- **Plan gratis de Maasy:** 1 app publicada, con el sello "Built with Maasy" abajo a la derecha.
+- **Plan Pro de Maasy:** 5 apps publicadas y sin sello.
+- El plan es el del dueño de la marca: un colaborador con asiento en una marca Pro también publica sin sello.
+- Si el cupo se llena, Claude muestra el mensaje y te dice cómo liberar uno (por ejemplo, despublicando otra app).
 - La app vive en el borde de Believe (`apps.believe-global.com`). Los dominios propios se conectan en la web de Maasy.
 - Una app de otra cuenta no se puede publicar desde la tuya.
 - La vista previa de Claude Desktop solo ve los proyectos creados en la carpeta de la sesión. Si creaste el proyecto en otra, abre una sesión ahí.
