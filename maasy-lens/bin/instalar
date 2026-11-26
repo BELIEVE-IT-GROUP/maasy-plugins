@@ -81,4 +81,4 @@ export UV_CACHE_DIR="$D/uv-cache" UV_PYTHON_INSTALL_DIR="$D/python"
 "$D/uv" venv --quiet --allow-existing --python "$PYTHON_VERSION" "$D/venv"   # uv verifica el Python que baja
 "$D/uv" pip install --quiet --python "$D/venv/bin/python" --require-hashes -r "$R/requirements.lock"
 echo "$BELENS_VERSION" > "$D/VERSION"   # bin/actualizar compara contra esta
-echo "Maasy Lens quedó instalado en $D. Ahora: /mcp → belens → Reconectar (reiniciar Claude no alcanza durante 15 minutos) y después /maasy-lens:estado."
+echo "Maasy Lens quedó instalado en $D. Abre una conversación nueva; si Lens no aparece, escribe /mcp y elige Reconectar. Después: /maasy-lens:estado."

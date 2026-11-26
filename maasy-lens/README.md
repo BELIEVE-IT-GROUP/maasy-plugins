@@ -38,6 +38,8 @@ sha256 (`bin/versiones`). En Mac con Apple Silicon baja también, a `~/.maasy-le
 y verifica todo: si un solo sha256 no coincide, no instala nada. En un Mac Intel no baja esos binarios y te pide
 instalarlos con Homebrew (`brew install ffmpeg whisper-cpp deno`).
 
+Al terminar, abre una conversación nueva; si Lens no aparece, escribe `/mcp` y elige Reconectar.
+
 ## Actualizaciones
 
 Lens se actualiza solo. Al arrancar, `bin/lens` revisa en segundo plano (como mucho cada 6 horas, sin demorar el MCP)
