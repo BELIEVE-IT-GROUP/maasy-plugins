@@ -1,0 +1,15 @@
+{
+  "name": "maasy-ads",
+  "version": "0.1.0",
+  "dependencies": [
+    "maasy"
+  ],
+  "description": "Maasy Ads en Claude: lee tu pauta, simula planes y propone tarjetas que apruebas tú. Claude nunca aplica ni publica.",
+  "author": {
+    "name": "Believe Global",
+    "url": "https://believe-global.com"
+  },
+  "homepage": "https://maasy.ai",
+  "icon": "./.claude-plugin/icon.png",
+  "privacyPolicyUrl": "https://maasy.ai/privacy"
+}

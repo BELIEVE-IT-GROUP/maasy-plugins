@@ -54,6 +54,12 @@
       "name": "maasy-games",
       "source": "./maasy-games",
       "description": "Maasy Games en Claude: juegos de marca jugables en el celular, probados y empaquetados por Maasy.",
+        "category": "marketing"
+      },
+      {
+      "name": "maasy-ads",
+      "source": "./maasy-ads",
+      "description": "Maasy Ads en Claude: lee tu pauta, simula planes y propone tarjetas que apruebas tú.",
       "category": "marketing"
     }
   ]
