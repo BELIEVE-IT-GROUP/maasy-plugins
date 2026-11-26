@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "becut": {
+      "command": "/Applications/Maasy Motion.app/Contents/MacOS/linnea",
+      "args": [
+        "mcp"
+      ]
+    }
+  }
+}

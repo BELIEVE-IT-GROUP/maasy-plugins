@@ -19,6 +19,12 @@
       "source": "./maasy-vibe",
       "description": "Maasy Vibe en Claude Code: crea apps con el template v2, revísalas y publícalas en el borde de Believe, legibles por agentes.",
       "category": "development"
+    },
+    {
+      "name": "maasy-motion",
+      "source": "./maasy-motion",
+      "description": "Maasy Motion en Claude: videos con la marca de tu cerebro Maasy, hechos y renderizados en tu Mac.",
+      "category": "marketing"
     }
   ]
 }

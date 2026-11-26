@@ -1,0 +1,50 @@
+Maasy Motion (BeCut) - avisos de terceros
+==========================================
+
+Maasy Motion es BeCut en modo externo, un fork de Linnea. Estos son los componentes de terceros que viajan con la app
+o con este plugin. Los textos completos de cada licencia van dentro de la app, en Contents/Resources/library/upstream/.
+
+Linnea
+  Copyright (c) 2026 Emir C. Licencia MIT. https://github.com/emircesur/Linnea
+
+ghost-editor
+  Copyright (c) 2026 kurbaitaev. Licencia MIT (library/upstream/LICENSE-ghost-editor).
+
+VideoHub
+  Copyright (c) 2026 VideoHub contributors. Licencia MIT (library/upstream/LICENSE-videohub).
+
+Lemo-Opuscar
+  Copyright (c) 2026 LemoLab. Licencia MIT. https://github.com/lemomo-ai/lemo-opuscar
+  (estilos portados en library/styles/recipes; en BeCut, library/recipes trae el CREDITS.txt y la licencia literal de cada uno).
+
+Fuentes de library/fonts y de las recetas
+  SIL Open Font License 1.1; la licencia de cada familia va junto a ella (LICENSE-<familia>.txt).
+  Playfair Display tiene Reserved Font Name y viaja sin modificar (library/upstream/THIRD_PARTY/fonts.md).
+
+Paper Shaders
+  Licencia Apache-2.0, con su LICENSE y NOTICE en templates/vendor.
+
+Fluent Emoji (Microsoft)
+  Licencia MIT; se baja a library/emoji.
+
+MediaPipe Face Landmarker (Google)
+  Licencia Apache-2.0.
+
+xfade-easing
+  Licencia MIT (scripts/vendor/xfade-easing).
+
+Efectos de sonido CC0 (library/sfx/cc0-*.wav)
+  Freesound, CC0 1.0 (dominio público). Cada entrada del manifiesto enlaza su página de origen.
+
+Programas aparte en Maasy Motion.app (Contents/Resources/bin; la app los ejecuta, no los enlaza)
+  FFmpeg 8.1.3 (ffmpeg y ffprobe), LGPL-2.1 o posterior, compilado sin --enable-gpl ni --enable-nonfree
+  (LICENSE-ffmpeg; fuentes, sha256 y configuración en FUENTES.txt). Con dav1d 1.5.5, BSD-2-Clause (LICENSE-dav1d).
+  whisper.cpp 1.9.6 (whisper-cli), MIT (LICENSE-whisper, FUENTES-whisper.txt).
+
+Lo que la persona baja en su Mac y no viaja con la app
+  yt-dlp, los modelos de whisper.cpp, RVM y los modelos de máscara y de caras. Cada uno con su licencia, en el sitio de
+  su autor.
+
+No viaja
+  Música y efectos de bancos de stock cuyos términos no permiten redistribuirlos dentro de una herramienta. La app no
+  trae biblioteca de música; los efectos que no son del pack CC0 los sintetiza en tu Mac.
