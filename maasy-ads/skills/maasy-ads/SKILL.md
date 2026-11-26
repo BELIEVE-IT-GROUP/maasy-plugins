@@ -47,7 +47,7 @@ Una propuesta crea una **tarjeta**. No toca la plataforma publicitaria.
 
 ## Aprobar y aplicar
 
-Lo hace la persona en la web. Las cuentas propias de Maasy aprueban en `/claude/ads` (próximamente); las marcas que opera Believe, en el panel de BeAds. Aprobar usa un permiso de control (`ads:approve`) que solo tiene la web. El plugin pide únicamente `ads:read` y `ads:propose`. Nunca digas que algo está activo o publicado sin verlo en una lectura.
+Lo hace la persona en la web. Las cuentas propias de Maasy aprueban en `/claude/ads` (próximamente); las marcas que opera Believe, en el panel de BeAds. Aprobar usa el permiso de control `ads:control`, que es interno y solo tiene la web. El plugin pide únicamente `ads:read` y `ads:propose`. Nunca digas que algo está activo o publicado sin verlo en una lectura.
 
 ## Panel
 
