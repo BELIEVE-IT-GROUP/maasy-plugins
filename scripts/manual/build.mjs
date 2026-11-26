@@ -443,7 +443,7 @@ ${body}
 </div>
 <footer>
   <div class="wrap">
-    <p>${esc(config.title)} v${esc(meta.manual_version)}. Describe ${esc(meta.app_version)}. Fuente única: <code>docs/manual/</code> en el repo maasy-plugins. Las pantallas son los diseños aprobados con datos de ejemplo; donde difieren de lo publicado, el pie lo dice.</p>
+    <p>${esc(config.title)} v${esc(meta.manual_version)}. Describe ${esc(meta.app_version)}. Fuente única: <code>docs/manual/</code> en el repo maasy-plugins. Las pantallas son los diseños aprobados con datos de ejemplo; donde difieren de lo publicado, el pie lo dice. Soporte: <a href="mailto:soporte@maasy.ai">soporte@maasy.ai</a>.</p>
     <div class="sign"><img class="on-light" src="assets/believe-positive.svg" alt="Believe" width="110" height="26"><img class="on-dark" src="assets/believe-negative.svg" alt="Believe" width="110" height="30"></div>
   </div>
 </footer>

@@ -4,11 +4,11 @@
   <key>Label</key><string>com.believe.maasy-manual-autoupdate</string>
   <key>ProgramArguments</key><array>
     <string>/bin/bash</string>
-    <string>/Users/mac/.believe/bin/maasy-manual-autoupdate.sh</string>
+    <string>__HOME__/.local/bin/maasy-manual-autoupdate.sh</string>
   </array>
-  <key>EnvironmentVariables</key><dict><key>PATH</key><string>/Users/mac/.local/bin:/opt/homebrew/bin:/usr/bin:/bin</string></dict>
+  <key>EnvironmentVariables</key><dict><key>PATH</key><string>__HOME__/.local/bin:/opt/homebrew/bin:/usr/bin:/bin</string></dict>
   <key>StartCalendarInterval</key><dict><key>Hour</key><integer>9</integer><key>Minute</key><integer>35</integer></dict>
   <key>RunAtLoad</key><false/>
-  <key>StandardOutPath</key><string>/Users/mac/Library/Logs/maasy-manual-autoupdate.log</string>
-  <key>StandardErrorPath</key><string>/Users/mac/Library/Logs/maasy-manual-autoupdate.log</string>
+  <key>StandardOutPath</key><string>__HOME__/Library/Logs/maasy-manual-autoupdate.log</string>
+  <key>StandardErrorPath</key><string>__HOME__/Library/Logs/maasy-manual-autoupdate.log</string>
 </dict></plist>

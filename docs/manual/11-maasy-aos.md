@@ -45,8 +45,9 @@ Necesita `maasy` con una marca y el plan Pro. Para medir el APS necesitas tus pr
 ## Lo que paga cada parte
 
 - **Tus llaves** pagan las respuestas de los modelos que mide tu APS.
-- **Believe** paga al juez que califica esas respuestas, como parte del servicio de medición que cobra tu plan.
-- Hay topes por día de corridas y de gasto. Se cambian en la web de Maasy, no desde Claude. El diseño muestra, de ejemplo, 5 corridas y 10 dólares por día; las cifras finales se confirman al lanzar.
+- **Believe** paga al juez que califica esas respuestas. Lo cubre tu plan como parte del servicio de medición.
+- Hay un tope de **5 corridas y USD 10 por cuenta al día**. No se cambia desde Claude.
+- La medición usa **solo tus llaves** de IA, nunca las de Believe. Si te falta una, la corrida no arranca.
 
 ## Qué ves en pantalla
 
@@ -57,7 +58,7 @@ La pestaña **AOS** del panel guarda el informe de tu sitio: el puntaje, los cua
 - AOS audita sitios públicos. No inicia sesión en tu sitio.
 - Una medición con dos modelos da una lectura más corta que con tres.
 - El APS medido depende de lo que respondan los modelos ese día: cambia entre corridas. Mira la banda de variación, no un solo número.
-- Las llaves de modelos viven en la plataforma de medición, cifradas, y no se devuelven nunca. Si falta una, la corrida no cae a las de Believe.
+- Las llaves de modelos viven en la plataforma de medición, cifradas, y no se devuelven nunca.
 
 ## Preguntas frecuentes
 

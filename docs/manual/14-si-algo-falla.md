@@ -55,6 +55,4 @@ Casi todo lo que falla tiene un arreglo corto. Busca tu síntoma y sigue la rece
 
 ## Cómo pedir ayuda
 
-Cuéntanos qué estabas haciendo y qué viste en pantalla, con el texto exacto de cualquier mensaje de error. Si te acompaña una persona de Maasy en una prueba, díselo a ella primero.
-
-> **Pendiente:** el canal de soporte oficial (correo o formulario) no está definido en los documentos de diseño que respaldan este manual. Se completa al abrir el lanzamiento.
+Escribe a **soporte@maasy.ai**. Cuéntanos qué estabas haciendo y qué viste en pantalla, con el texto exacto de cualquier mensaje de error. Si te acompaña una persona de Maasy en una prueba, díselo a ella primero.

@@ -16,7 +16,7 @@
  *   --apply         crea la rama manual/autoupdate-<sha> en un worktree temporal y marca cada capítulo afectado
  *                   con un comentario "<!-- REVISAR ... -->" al inicio. build.mjs se NIEGA a construir mientras
  *                   haya una marca, así que nadie publica un capítulo sin revisar. Sube la rama.
- *   --pr            con --apply: abre el PR (gh; corre bajo ~/.believe/bin/infra para tener GIT_FULL_ACCESS_TOKEN).
+ *   --pr            con --apply: abre el PR (gh; necesita GH_TOKEN en el entorno).
  *
  * Qué nunca hace: no toca la rama en la que se corre, no cambia versiones ni textos del manual (eso lo hace quien
  * revisa: actualiza el capítulo, pone la versión nueva en manual.config.json, sube MANUAL-VERSION, quita la marca)
@@ -164,8 +164,8 @@ function apply({ ref, short, sections, findings, openPr }) {
     console.log(`Rama ${branch} subida con ${Object.keys(sections).length} capítulo(s) marcados.`)
     if (openPr) {
       const body = ['Capítulos del manual que cambiaron de contexto. Cada uno trae un comentario `REVISAR` al inicio: build.mjs no construye mientras exista.', '', ...Object.entries(sections).map(([file, why]) => `- \`${file}\`: ${why.join('; ')}`), '', 'Para cerrar: actualiza el capítulo, pon la versión nueva en `manual.config.json` (plugins y sources), quita el comentario, sube `MANUAL-VERSION` y agrega la entrada al CHANGELOG.'].join('\n')
-      const token = process.env.GIT_FULL_ACCESS_TOKEN
-      if (!token) { console.log('Sin GIT_FULL_ACCESS_TOKEN: no abro el PR. Corre bajo ~/.believe/bin/infra, o ábrelo a mano.'); return }
+      const token = process.env.GH_TOKEN
+      if (!token) { console.log('Sin GH_TOKEN: no abro el PR. Cárgalo en el entorno, o ábrelo a mano.'); return }
       execFileSync('gh', ['pr', 'create', '--repo', 'BELIEVE-IT-GROUP/maasy-plugins', '--head', branch, '--base', 'main', '--title', `docs(manual): autoupdate ${short}`, '--body', body], { env: { ...process.env, GH_TOKEN: token }, stdio: 'inherit' })
     }
     void findings

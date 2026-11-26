@@ -5,17 +5,18 @@
  * BeNotes NO tiene llave de API: su única puerta programática es el MCP remoto `/api/mcp`
  * (Streamable HTTP, sin estado) con OAuth 2.1 por usuario (registro dinámico + PKCE S256). El access
  * token dura 1 h; el refresh dura 30 días y ROTA en cada uso: por eso cada corrida guarda el refresh
- * nuevo en Infisical antes de seguir. Es la receta del Manual de Believable
+ * nuevo en tu gestor de secretos (Infisical) antes de seguir. Es la receta del Manual de Believable
  * (scripts/manual/benotes.mjs) con su PROPIO secreto: compartir uno rompería al otro en la primera
  * rotación.
  *
  *   connect   una vez, quien administra Cuadernos, en su Mac con sesión abierta: registra el cliente,
- *             pide su consentimiento en el navegador y guarda BENOTES_MAASY_MANUAL_OAUTH en Infisical.
+ *             pide su consentimiento en el navegador y guarda BENOTES_MAASY_MANUAL_OAUTH en el gestor de secretos.
  *   push      crea o actualiza la nota con docs/manual/dist/benotes.json y la relee para verificar.
- *             Corre bajo `~/.believe/bin/infra` (necesita BENOTES_MAASY_MANUAL_OAUTH).
+ *             Necesita BENOTES_MAASY_MANUAL_OAUTH en el entorno.
  *   plan      dice qué haría `push`, sin red y sin secretos.
  *
- * Usa el INFISICAL_TOKEN que entrega `infra`; fuera de infra, INFISICAL_CLIENT_ID / INFISICAL_CLIENT_SECRET.
+ * Variables (ver scripts/manual/.env.example): INFISICAL_PROJECT_ID e INFISICAL_API_URL (obligatorias, sin valor por defecto),
+ * y INFISICAL_TOKEN o, si no, INFISICAL_CLIENT_ID / INFISICAL_CLIENT_SECRET.
  * Nunca imprime un token.
  */
 import { execFileSync } from 'node:child_process'
@@ -30,8 +31,8 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..')
 const config = JSON.parse(readFileSync(path.join(ROOT, 'docs/manual/manual.config.json'), 'utf8')).benotes
 const BASE = (process.env.BENOTES_URL ?? config.url).replace(/\/+$/, '')
 const SECRET_NAME = 'BENOTES_MAASY_MANUAL_OAUTH'
-const PROJECT_ID = process.env.INFISICAL_PROJECT_ID ?? 'cff01b26-6296-4828-973e-dcc2f664113f'
-const DOMAIN = process.env.INFISICAL_API_URL ?? 'https://vault.believe-global.com/api'
+const PROJECT_ID = process.env.INFISICAL_PROJECT_ID
+const DOMAIN = process.env.INFISICAL_API_URL
 const PORT = 8766
 const REDIRECT = `http://localhost:${PORT}/callback`
 
@@ -42,13 +43,13 @@ function infisical() {
   const bin = [process.env.INFISICAL_BIN, '/opt/homebrew/bin/infisical', '/usr/local/bin/infisical'].filter(Boolean).find((candidate) => {
     try { execFileSync(candidate, ['--version'], { stdio: 'ignore' }); return true } catch { return false }
   }) ?? 'infisical'
-  // `infra` ya entrega un INFISICAL_TOKEN de la misma identidad y borra el client secret antes de
-  // correr el comando (2026-11): se usa ese token. El login propio queda para correr fuera de infra.
+  if (!PROJECT_ID || !DOMAIN) fail('faltan INFISICAL_PROJECT_ID e INFISICAL_API_URL en el entorno (ver scripts/manual/.env.example). No toqué nada.')
+  // Si ya hay un INFISICAL_TOKEN en el entorno se usa; si no, login con client id y secret.
   let token = process.env.INFISICAL_TOKEN
   if (!token) {
     const clientId = process.env.INFISICAL_CLIENT_ID
     const clientSecret = process.env.INFISICAL_CLIENT_SECRET
-    if (!clientId || !clientSecret) fail('falta INFISICAL_TOKEN (corre bajo ~/.believe/bin/infra) o INFISICAL_CLIENT_ID / INFISICAL_CLIENT_SECRET. No toqué nada.')
+    if (!clientId || !clientSecret) fail('falta INFISICAL_TOKEN o INFISICAL_CLIENT_ID / INFISICAL_CLIENT_SECRET. No toqué nada.')
     token = execFileSync(bin, ['login', '--method=universal-auth', `--client-id=${clientId}`, `--client-secret=${clientSecret}`, `--domain=${DOMAIN}`, '--plain', '--silent'], { encoding: 'utf8' }).trim()
   }
   const scope = [`--projectId=${PROJECT_ID}`, '--env=prod', `--domain=${DOMAIN}`, `--token=${token}`, '--silent']
@@ -120,13 +121,13 @@ async function connect() {
   const tokens = await token({ grant_type: 'authorization_code', code, redirect_uri: REDIRECT, client_id: client.client_id, code_verifier: verifier })
   save(JSON.stringify({ client_id: client.client_id, refresh_token: tokens.refresh_token }))
   const me = await tool(tokens.access_token, 'whoami')
-  console.log(`Conectado a BeNotes (usuario ${me.userId}, permisos: ${me.scope}). Guardé ${SECRET_NAME} en Infisical (Believe-Infra / prod).`)
+  console.log(`Conectado a BeNotes (usuario ${me.userId}, permisos: ${me.scope}). Guardé ${SECRET_NAME} en el gestor de secretos.`)
 }
 
 async function push() {
   const { title, content } = payload()
   let stored
-  try { stored = JSON.parse(process.env[SECRET_NAME] ?? '') } catch { fail(`falta ${SECRET_NAME}. Una vez, quien administra Cuadernos, en su Mac: ~/.believe/bin/infra node scripts/manual/benotes.mjs connect`) }
+  try { stored = JSON.parse(process.env[SECRET_NAME] ?? '') } catch { fail(`falta ${SECRET_NAME}. Una vez, quien administra Cuadernos, en su Mac: node scripts/manual/benotes.mjs connect`) }
   // El refresh rota: sin poder guardar el nuevo, no se gasta el viejo.
   const save = infisical()
   const tokens = await token({ grant_type: 'refresh_token', refresh_token: stored.refresh_token, client_id: stored.client_id })
@@ -166,7 +167,7 @@ function plan() {
   console.log(`  nota       "${title}", ${content.content.length} bloques, ${bytes} bytes`)
   console.log(`  destino    ${config.page_id ? `actualiza la nota ${config.page_id} (notes_update)` : `busca por título exacto (notes_search); si existe la actualiza (notes_update), si no la crea (notes_create) en ${config.notebook ? `el cuaderno "${config.notebook}"` : 'el único cuaderno de la cuenta'}`}`)
   console.log('  verifica   relee la nota (notes_read) y compara título y contenido')
-  console.log(`  requiere   ${SECRET_NAME} en Infisical (una vez: ~/.believe/bin/infra node scripts/manual/benotes.mjs connect)`)
+  console.log(`  requiere   ${SECRET_NAME} en Infisical (una vez: node scripts/manual/benotes.mjs connect)`)
 }
 
 const command = { connect, push, plan }[process.argv[2]]

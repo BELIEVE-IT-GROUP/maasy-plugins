@@ -133,7 +133,7 @@ Con el plan Pro, Claude puede leer tu CRM de Maasy: contactos, leads, oportunida
 3. Claude pide un permiso aparte para la tool de borrado. Es una segunda barrera a propósito.
 4. Si lo que escribiste coincide, la marca desaparece de todas partes. Sus datos y archivos se eliminan del todo a los 30 días.
 
-Solo se puede borrar una marca propia, que nadie más esté usando y que no opere Believe. Cualquier otra se borra desde la web de Maasy. Las tarjetas que tengas en el canvas se van con la marca.
+Con el plan gratis solo se puede borrar una marca propia, que nadie más esté usando y que no opere Believe. Si tu marca es del plan Pro, solo su dueño puede borrarla: Claude te muestra una tarjeta con lo que se borra y cuánto baja tu factura, y borra solo con tu sí (capítulo 5). Cualquier otra marca se borra desde la web de Maasy. Las tarjetas que tengas en el canvas se van con la marca.
 
 ## Idioma
 

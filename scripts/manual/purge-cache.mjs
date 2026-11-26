@@ -6,10 +6,10 @@
  * la copia vieja (cf-cache-status: HIT) hasta purgar. También puede haber guardado un 404 de antes de la primera
  * publicación. Lee docs/manual/dist/publish-plan.tsv y purga cada URL pública.
  *
- * Necesita Cloudflare_workers_token (así, con esa capitalización) en el entorno: correr bajo `~/.believe/bin/infra`.
+ * Necesita CLOUDFLARE_PURGE_TOKEN (permiso Zone > Cache Purge) en el entorno.
  * La zona se resuelve por nombre (believe-global.com). Nunca imprime el token.
  *
- * Uso: ~/.believe/bin/infra node scripts/manual/purge-cache.mjs
+ * Uso: node scripts/manual/purge-cache.mjs   (con las variables de scripts/manual/.env.example cargadas)
  */
 import { readFileSync } from 'node:fs'
 import { dirname, join, resolve } from 'node:path'
@@ -17,8 +17,8 @@ import { fileURLToPath } from 'node:url'
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const config = JSON.parse(readFileSync(join(ROOT, 'docs/manual/manual.config.json'), 'utf8'))
-const token = process.env.Cloudflare_workers_token
-if (!token) { console.error('Falta Cloudflare_workers_token en el entorno (corre bajo ~/.believe/bin/infra).'); process.exit(1) }
+const token = process.env.CLOUDFLARE_PURGE_TOKEN
+if (!token) { console.error('Falta CLOUDFLARE_PURGE_TOKEN en el entorno.'); process.exit(1) }
 
 const base = config.r2.public_base.replace(/\/+$/, '')
 const host = new URL(base).hostname

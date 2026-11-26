@@ -42,7 +42,7 @@ scripts/publish-manual.sh --publish            # publica a R2 y a BeNotes
 - Si lo publicado ya es este contenido, no sube nada.
 - Si el contenido cambió y `MANUAL-VERSION` no, se niega (salvo `--force`).
 - Después de subir, baja la página y comprueba que trae la versión y que su captura principal responde como imagen.
-- Después de subir, purga la caché de Cloudflare de las URL publicadas (`scripts/manual/purge-cache.mjs`, bajo `infra`): R2 se cachea por URL y sin purgar sigue saliendo la copia vieja.
+- Después de subir, purga la caché de Cloudflare de las URL publicadas (`scripts/manual/purge-cache.mjs`): R2 se cachea por URL y sin purgar sigue saliendo la copia vieja.
 
 ## Cómo escribir
 
@@ -75,7 +75,7 @@ PLAYWRIGHT_CORE=/ruta/a/node_modules node scripts/manual/capture.mjs [--only nom
 | Destino | Qué llega | Cómo |
 |---|---|---|
 | Repo | El Markdown y las pantallas | git |
-| R2 | `index.html`, `manual.md`, `manual.json`, `assets/*` en `files.believe-global.com/maasy/manual/` | `~/.believe/bin/publish-r2 <archivo> --key maasy/manual/<archivo>` |
+| R2 | `index.html`, `manual.md`, `manual.json`, `assets/*` en `files.believe-global.com/maasy/manual/` | `publish-r2 <archivo> --key maasy/manual/<archivo>` (o la herramienta que indique `PUBLISH_R2_BIN`) |
 | BeNotes | La nota "Manual de Maasy en Claude" en el cuaderno BELIEVE | `scripts/manual/benotes.mjs push`, por el MCP de Cuadernos |
 
 ### BeNotes
@@ -83,10 +83,10 @@ PLAYWRIGHT_CORE=/ruta/a/node_modules node scripts/manual/capture.mjs [--only nom
 BeNotes (Cuadernos) no tiene llave de API: su puerta es el MCP `https://cuadernos.believe-global.com/api/mcp`, con OAuth por usuario. El refresh token rota en cada uso, así que este manual tiene su **propio** secreto, `BENOTES_MAASY_MANUAL_OAUTH`. Para publicar sin ventana hay que conectar una vez, quien administra Cuadernos, en su Mac:
 
 ```bash
-~/.believe/bin/infra node scripts/manual/benotes.mjs connect
+node scripts/manual/benotes.mjs connect
 ```
 
-Sin conectar, `--publish` publica en R2 y deja BeNotes como pendiente. Mientras tanto se empuja a mano con el conector de Cuadernos (`notes_create` o `notes_update` con `docs/manual/dist/benotes.json`) y se deja el `page_id` en `manual.config.json`.
+**Pendiente hoy:** la conexión (`connect`) la corre Jorge en su Mac. Mientras tanto la nota de BeNotes lleva la versión resumen (portada, índice y enlaces a la página), empujada a mano con el conector de Cuadernos. Sin conectar, `--publish` publica en R2 y deja BeNotes como pendiente. Mientras tanto se empuja a mano con el conector de Cuadernos (`notes_create` o `notes_update` con `docs/manual/dist/benotes.json`) y se deja el `page_id` en `manual.config.json`.
 
 ## Autoupdate: el manual avisa cuando un plugin cambia
 
@@ -101,7 +101,7 @@ Un plugin con estado `pr:N` (todavía sin mergear) se mira en la cabeza de ese P
 ```bash
 node scripts/manual/autoupdate.mjs                 # ENSAYO: qué cambió y qué capítulos revisar
 node scripts/manual/autoupdate.mjs --apply         # rama manual/autoupdate-<sha> con los capítulos marcados
-node scripts/manual/autoupdate.mjs --apply --pr    # además abre el PR (bajo ~/.believe/bin/infra)
+node scripts/manual/autoupdate.mjs --apply --pr    # además abre el PR (necesita GH_TOKEN)
 node scripts/manual/autoupdate.mjs --self-test
 ```
 
@@ -111,11 +111,12 @@ No toca la rama donde se corre, no publica y no abre otra rama mientras haya una
 
 ### El disparador
 
-`scripts/manual/launchd/` trae el LaunchAgent (una vez al día, 09:35) y su ayudante, que clona el repo en `~/.believe/cache/maasy-plugins`, lo deja en `origin/main` y corre `--apply --pr` bajo `infra`. No se carga solo:
+`scripts/manual/launchd/` trae el LaunchAgent (una vez al día, 09:35) y su ayudante, que clona el repo en `~/.cache/maasy-plugins`, lo deja en `origin/main` y corre `--apply --pr`. No se carga solo:
 
 ```bash
-install -m 755 scripts/manual/launchd/maasy-manual-autoupdate.sh ~/.believe/bin/
-cp scripts/manual/launchd/com.believe.maasy-manual-autoupdate.plist ~/Library/LaunchAgents/
+mkdir -p ~/.local/bin ~/.config/maasy-manual
+install -m 755 scripts/manual/launchd/maasy-manual-autoupdate.sh ~/.local/bin/
+sed "s#__HOME__#$HOME#g" scripts/manual/launchd/com.believe.maasy-manual-autoupdate.plist > ~/Library/LaunchAgents/com.believe.maasy-manual-autoupdate.plist
 launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.believe.maasy-manual-autoupdate.plist
 launchctl kickstart gui/$(id -u)/com.believe.maasy-manual-autoupdate   # primera corrida, a mano
 tail -f ~/Library/Logs/maasy-manual-autoupdate.log

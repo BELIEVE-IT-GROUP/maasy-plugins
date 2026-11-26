@@ -8,6 +8,14 @@ Cómo se numera:
 - **Segundo número**: un capítulo nuevo o una capacidad nueva documentada (por ejemplo, un plugin que llega a la tienda).
 - **Tercer número**: correcciones, precisiones y pantallas rehechas.
 
+## 1.0.1 (2026-11-26)
+
+- **Planes y cobro**: cada marca de pago se cobra solo con tu sí. Claude pide la marca, Maasy responde una cotización (monto y prorrateo de hoy) que vale 10 minutos y Claude te la muestra en una tarjeta; solo con esa cotización se crea la marca y se cobra. Borrar una marca Pro: solo el dueño, con la misma confirmación; la factura baja en el acto con prorrateo a favor, la purga llega a los 30 días y el borrado se frena con un aviso si hay algo vivo o pagos pendientes de la red de anuncios. Cancelar un Pro queda como pendiente: el código no define un flujo propio.
+- **AOS**: los topes ya no son de ejemplo. El juez lo paga Believe, con un tope de 5 corridas y USD 10 por cuenta al día, y la medición usa solo las llaves de la persona.
+- **Lens**: solo Mac con chip Apple y macOS 13 o superior. Se quitó la mención a Intel.
+- **Si algo falla**: canal de soporte, soporte@maasy.ai (también en el pie de la página).
+- **Scripts**: sin datos de infraestructura interna. Los secretos y rutas salen de variables de entorno (`scripts/manual/.env.example`).
+
 ## 1.0.0 (2026-11-25)
 
 Primera edición. Describe `maasy` 0.2.0 y `maasy-vibe` 0.1.0, ya en la tienda, y `maasy-motion` 0.2.0 y `maasy-lens` 0.2.0, en revisión (PR 2 y 3 del repositorio).

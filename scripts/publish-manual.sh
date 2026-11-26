@@ -12,7 +12,8 @@
 #   - contenido distinto con la misma versión     → se niega: sube docs/manual/MANUAL-VERSION y
 #     agrega la entrada en docs/manual/CHANGELOG.md (o --force si de verdad es lo que quieres)
 #
-# Ningún secreto pasa por este script: `publish-r2` y `infra` los leen de Infisical.
+# Ningún secreto vive en este script. Se leen del entorno (ver scripts/manual/.env.example): corre el script con tus
+# secretos ya cargados, y PUBLISH_R2_BIN apunta a tu herramienta de subida a R2 (por defecto `publish-r2` del PATH).
 #
 # Uso:  scripts/publish-manual.sh [--publish] [--only r2|benotes] [--force]
 set -euo pipefail
@@ -86,7 +87,7 @@ if [[ -z "$ONLY" || "$ONLY" == "r2" ]]; then
     # El plan ya viene en orden: imágenes, Markdown, la página y al final el marcador de versión.
     while IFS=$'\t' read -r file key; do
       if [[ $PUBLISH -eq 1 ]]; then
-        "${HOME}/.believe/bin/publish-r2" "${DIST}/${file}" --key "$key"
+        "${PUBLISH_R2_BIN:-publish-r2}" "${DIST}/${file}" --key "$key"
       else
         printf '    subiría  %-30s %8s bytes  →  %s/%s\n' "$file" "$(wc -c < "${DIST}/${file}" | tr -d ' ')" "$PUBLIC_BASE" "$key"
       fi
@@ -94,7 +95,7 @@ if [[ -z "$ONLY" || "$ONLY" == "r2" ]]; then
     if [[ $PUBLISH -eq 1 ]]; then
       # Cloudflare cachea por URL: sin purgar, la copia vieja (o un 404 de antes) sigue saliendo.
       echo "    Purgando la caché de Cloudflare"
-      "${HOME}/.believe/bin/infra" "$NODE" "${ROOT}/scripts/manual/purge-cache.mjs"
+      "$NODE" "${ROOT}/scripts/manual/purge-cache.mjs"
       # Un 200 no prueba que renderice: se baja la página y se busca la versión adentro, y después
       # una captura que la página pide (Cloudflare cachea por URL: el ?t= salta esa caché).
       PAGE="$(curl -fsS -m 20 "${URL}?t=$(date +%s)")"
@@ -104,7 +105,7 @@ if [[ -z "$ONLY" || "$ONLY" == "r2" ]]; then
       [[ "$IMG_TYPE" == image/* ]] || { echo "ERROR: assets/${HERO} no responde como imagen (${IMG_TYPE})." >&2; exit 1; }
       echo "    Verificado: ${URL} sirve la v${VERSION} con su captura principal (${IMG_TYPE})."
     else
-      echo "    con: ~/.believe/bin/publish-r2 <archivo> --key <key>"
+      echo "    con: ${PUBLISH_R2_BIN:-publish-r2} <archivo> --key <key>"
     fi
   fi
 fi
@@ -114,11 +115,11 @@ if [[ -z "$ONLY" || "$ONLY" == "benotes" ]]; then
   echo "==> 3. BeNotes"
   if [[ $PUBLISH -eq 0 ]]; then
     "$NODE" "${ROOT}/scripts/manual/benotes.mjs" plan
-  elif "${HOME}/.believe/bin/infra" bash -c '[[ -n "${BENOTES_MAASY_MANUAL_OAUTH:-}" ]]'; then
-    "${HOME}/.believe/bin/infra" "$NODE" "${ROOT}/scripts/manual/benotes.mjs" push
+  elif [[ -n "${BENOTES_MAASY_MANUAL_OAUTH:-}" ]]; then
+    "$NODE" "${ROOT}/scripts/manual/benotes.mjs" push
   else
-    echo "    PENDIENTE: BeNotes todavía no está conectado (falta BENOTES_MAASY_MANUAL_OAUTH en Infisical)."
-    echo "    Una vez, quien administra Cuadernos, en su Mac:  ~/.believe/bin/infra node scripts/manual/benotes.mjs connect"
+    echo "    PENDIENTE: BeNotes todavía no está conectado (falta BENOTES_MAASY_MANUAL_OAUTH en el entorno)."
+    echo "    Una vez, quien administra Cuadernos, en su Mac:  node scripts/manual/benotes.mjs connect"
     echo "    Mientras tanto, a mano con el conector BeNotes: notes_create/notes_update con docs/manual/dist/benotes-resumen.json"
   fi
 fi

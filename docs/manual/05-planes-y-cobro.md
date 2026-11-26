@@ -38,29 +38,49 @@ El pago se hace en la web de Maasy, nunca dentro del chat de Claude.
 </figure>
 ```
 
-1. Cuando una función es del plan Pro, Claude te lo dice y te da el enlace a los planes. No intenta cobrarte ni lo hace por su cuenta.
+1. Cuando una función es del plan Pro, Claude te lo dice y te da el enlace a los planes. No intenta cobrarte por su cuenta.
 2. Abres **Cuenta y plan** en la web de Maasy y eliges **Mejorar plan**.
 3. Pagas en el checkout de Maasy. Nada de tarjetas ni datos de pago pasan por el chat.
 4. Vuelves a Claude y sigues. Tu marca ya sirve a tus plugins.
 
-> **Pendiente de confirmar con el equipo:** la pantalla exacta de confirmación con tarjeta antes del primer cobro no está descrita en los documentos de diseño que respaldan este manual. Se completa cuando esté en producción.
+## Cada marca nueva se cobra solo con tu sí
 
-## Cuántas marcas
+Con el plan Pro, cada marca suma un cobro de USD 29 al mes. Por eso Claude nunca crea una marca de pago sin preguntarte antes.
 
-El cupo de marcas depende del plan. El plan gratis tiene una. Cuando intentas crear una más allá de tu cupo, Claude muestra el mensaje del servidor y el enlace a los planes. No se cobra nada ni se crea nada hasta que subes de plan.
+```figura
+<figure class="vx-fig" data-alt="Cinco pasos. Claude pide crear la marca. Maasy responde con una cotización: el monto mensual y el prorrateo de hoy, válida 10 minutos. Claude te la muestra en una tarjeta. Tú dices sí o no. Solo con el sí se crea la marca y se cobra.">
+  <div class="vx-head">Crear una marca en el plan Pro</div>
+  <div class="vx-body">
+    <div class="vx-flow">
+      <div class="vx-node">Claude pide crear la marca<small>Todavía no se crea nada</small></div>
+      <div class="vx-node">Maasy cotiza<small>Monto mensual y prorrateo de hoy. Vale 10 minutos</small></div>
+      <div class="vx-node">Tarjeta en el chat<small>Claude te la muestra tal cual</small></div>
+      <div class="vx-node vx-key">Tú decides<small>Sí, agregarla, o No por ahora</small></div>
+      <div class="vx-node">Se crea y se cobra<small>Solo con esa cotización</small></div>
+    </div>
+  </div>
+  <figcaption>Sin tu sí a una cotización vigente no se crea la marca ni se cobra nada.</figcaption>
+</figure>
+```
+
+- La cotización te dice cuánto cuesta la marca por mes, cuánto se suma hoy por lo que queda del período (prorrateo, en tu próxima factura) y cuánto pagarás por mes con todas tus marcas.
+- Vale **10 minutos** y se usa una sola vez. Si vence, o si cambió algo (el monto, el nombre de la marca o tu suscripción), Claude pide otra y vuelve a preguntarte.
+- Si el cobro falla en Stripe, la marca no se crea.
+- Claude no puede responder el sí por ti.
 
 ## Borrar una marca
 
-Hay dos maneras, según el caso.
+Hay tres casos.
 
-- **Marca del plan gratis, creada desde Claude:** `/maasy:borrar`. Libera tu cupo al instante (ver capítulo 3).
-- **Cualquier otra marca:** desde la web de Maasy.
+- **Marca del plan gratis, creada desde Claude:** `/maasy:borrar`, con el nombre escrito por ti. Libera tu cupo al instante (capítulo 3).
+- **Marca del plan Pro:** la puede borrar solo su dueño, y pide la misma confirmación por tarjeta. Antes de borrar, Maasy te dice qué se borra y cuánto baja tu factura, con el prorrateo a favor de hoy. La confirmación vale 10 minutos. Con tu sí, la marca deja de verse en todas partes y la factura baja en el acto. Sus datos, archivos, conversaciones, contactos y plantillas se eliminan del todo a los 30 días. Hasta entonces, soporte puede restaurarla.
+- **Cualquier otra marca** (compartida con otras personas, operada por Believe): desde la web de Maasy.
 
-Como el plan Pro es por marca, el cobro sigue a las marcas que tienes. Cómo se refleja un borrado en la factura (si se prorratea y desde qué fecha) todavía no está definido en los documentos de diseño.
+El borrado se frena con un aviso si la marca tiene algo vivo: publicaciones o posts programados, redes conectadas, campañas o automatizaciones activas, landings o artículos publicados, o pagos pendientes de la red de anuncios que hay que cobrar antes. Primero resuelves eso y después borras.
 
 ## Cancelar o dejar de pagar
 
-> **Pendiente de confirmar con el equipo:** qué pasa exactamente al cancelar un plan Pro (fecha de corte, qué se apaga y qué pasa con las marcas que superen el cupo gratis) no está definido en los documentos que respaldan este manual.
+> **Pendiente de confirmar con el equipo:** el código de pago del plan no define un flujo propio de cancelación (ni fecha de corte ni qué se apaga). Lo único que hace es sincronizar el estado de tu suscripción de Stripe con tu cuenta, incluidos los cambios que hagas desde el portal de Stripe, y reconciliar tu cupo de marcas con las marcas que tienes vivas. Qué pasa exactamente al cancelar se completa cuando esté definido.
 
 ## Preguntas frecuentes
 

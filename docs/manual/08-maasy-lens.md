@@ -27,7 +27,7 @@ Funciona con Instagram, TikTok, YouTube, Facebook y X.
 
 `/maasy-lens:estado` revisa si todo está instalado. Si falta algo, te explica qué va a instalar antes de hacerlo y te pide permiso:
 
-- Instala en tu carpeta `~/.maasy-lens`: el gestor de Python, las dependencias, la herramienta de análisis, el modelo de transcripción y, en Mac con chip Apple, los programas de audio y video (whisper-cli, deno, ffmpeg y ffprobe).
+- Instala en tu carpeta `~/.maasy-lens`: el gestor de Python, las dependencias, la herramienta de análisis, el modelo de transcripción y los programas de audio y video (whisper-cli, deno, ffmpeg y ffprobe).
 - Cada archivo se verifica antes de usarse. Si uno solo no coincide, se detiene sin instalar nada.
 - Lens nunca lee cookies ni sesiones de ninguna red.
 
@@ -83,7 +83,7 @@ Todo lo que viene del video (el texto de la descripción, la transcripción, el 
 
 ## Preguntas frecuentes
 
-**¿Funciona en un Mac con chip Intel?** El plugin trae un camino técnico para Intel (con Homebrew), pero la guía oficial de instalación pide chip Apple. Si tienes Intel, usa Lens bajo tu propio criterio.
+**¿Funciona en Windows o en un Mac sin chip Apple?** No. Lens es solo para Mac con chip Apple (M1 o más nuevo) y macOS 13 o superior.
 
 **Dice que `ver_video` no existe.** Lens no está instalado o no está conectado. Corre `/maasy-lens:estado` y, al terminar, reconecta con `/mcp`.
 
