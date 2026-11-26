@@ -15,7 +15,27 @@
     "url": "https://cuadernos.believe-global.com",
     "title": "Manual de Maasy en Claude",
     "notebook": "BELIEVE",
-    "page_id": "cmwwzj5ha006hke07p1kg5s7f"
+    "page_id": "cmwwzj5ha006hke07p1kg5s7f",
+    "capitulos": {
+      "01": "cmwxpkifd0071ke07m901ul1z",
+      "02": "cmwxpktgl0073ke07563g0fs8",
+      "03": "cmwxpnot90075ke07nd375o9s",
+      "04": "cmwxpo4qh0077ke07w8pmus4k",
+      "05": "cmwxpojfd0079ke07v5wf3s3b",
+      "06": "cmwxpovhp007bke07ky1he9at",
+      "07": "cmwxpp8kx007dke07yvmzc4bt",
+      "08": "cmwxppl4m007fke07v9ajbrpw",
+      "09": "cmwxppzt4007hke070wzo4b7p",
+      "10": "cmwxpqcl0007jke07nmu1cdxl",
+      "11": "cmwxpqowy007lke0763wvgfce",
+      "12": "cmwxpqzvm007nke07e7onplvu",
+      "13": "cmwxprb8y007pke07hiwpqz9l",
+      "14": "cmwxprt1p007rke07lp4frda2",
+      "15": "cmwxpsaw5007tke07syp0c9qe",
+      "16": "cmwxpsbx5007vke07l26gq8dj",
+      "17": "cmwxpsq6v007xke07wunm4fkp",
+      "18": "cmwxpsra3007zke0710vu5el9"
+    }
   },
   "plugins": {
     "maasy": {

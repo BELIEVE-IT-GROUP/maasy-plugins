@@ -76,13 +76,17 @@ PLAYWRIGHT_CORE=/ruta/a/node_modules node scripts/manual/capture.mjs [--only nom
 |---|---|---|
 | Repo | El Markdown y las pantallas | git |
 | R2 | `index.html`, `manual.md`, `manual.json`, `assets/*` en `files.believe-global.com/maasy/manual/` | `publish-r2 <archivo> --key maasy/manual/<archivo>` (o la herramienta que indique `PUBLISH_R2_BIN`) |
-| BeNotes | La nota "Manual de Maasy en Claude" en el cuaderno BELIEVE | `scripts/manual/benotes.mjs push`, por el MCP de Cuadernos |
+| BeNotes | La nota índice "Manual de Maasy en Claude" en el cuaderno BELIEVE y una nota hija por capítulo | `scripts/manual/benotes.mjs push`, por el MCP de Cuadernos |
 
 ### BeNotes
 
 BeNotes (Cuadernos) se publica por su MCP `https://cuadernos.believe-global.com/api/mcp` con el token de máquina `BENOTES_MANUALES_TOKEN`, el mismo para todas las recetas de manuales. No vence ni rota: nadie tiene que dar permiso en el navegador. Su alcance es mínimo: solo lee y actualiza las notas de manuales de su lista y crea notas en su cuaderno; el resto de las notas no existe para él.
 
-`push` actualiza la nota de `page_id` y la relee para verificarla. Sin el token en el entorno, `--publish` publica en R2 y deja BeNotes como pendiente, con el paso a mano (`notes_update` con `docs/manual/dist/benotes.json` por el conector de Cuadernos).
+En BeNotes el manual es una nota índice (`benotes.page_id`) con una nota hija por capítulo (`benotes.capitulos`, número → id, en `manual.config.json`). Cada nota lleva Markdown como texto, un párrafo por línea: el capítulo sin su título, con las imágenes apuntando a `files.believe-global.com/maasy/manual/assets/`, cada figura como una línea `> Figura: …` y cada pedido como citas. El índice trae la versión, los plugins que describe y la lista de capítulos.
+
+`push` arma esas 19 notas desde `docs/manual/` y `dist/manual.json` (corre antes `build.mjs`), escribe solo las que cambiaron y relee cada una para verificarla. Repetirlo no escribe nada. Sin el token en el entorno, `--publish` publica en R2 y deja BeNotes como pendiente.
+
+**Capítulo nuevo:** crea a mano su nota hija bajo el índice (con el conector de Cuadernos), pon su id en `benotes.capitulos` y súmala a la lista del token (SQL en el README de Cuadernos, "Tokens de máquina"). Sin eso, `push` se niega y dice qué capítulo falta. Si cambian los números de los capítulos, reordena `benotes.capitulos` para que cada número apunte a su nota.
 
 ## Autoupdate: el manual avisa cuando un plugin cambia
 

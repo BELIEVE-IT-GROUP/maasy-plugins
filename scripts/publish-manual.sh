@@ -119,7 +119,6 @@ if [[ -z "$ONLY" || "$ONLY" == "benotes" ]]; then
     "$NODE" "${ROOT}/scripts/manual/benotes.mjs" push
   else
     echo "    PENDIENTE: falta BENOTES_MANUALES_TOKEN en el entorno (token de máquina de BeNotes)."
-    echo "    Mientras tanto, a mano con el conector BeNotes: notes_create/notes_update con docs/manual/dist/benotes-resumen.json"
   fi
 fi
 
