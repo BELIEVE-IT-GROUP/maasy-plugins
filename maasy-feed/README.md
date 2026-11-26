@@ -2,7 +2,7 @@
 
 Plugin de Claude para operar el Instagram orgánico de tus marcas de Maasy con BeFeed.
 
-Claude lee el método y las métricas de la marca, escribe la semana y deja las piezas en BeFeed. Tú apruebas y programas en el panel. Claude no propone horas ni publica.
+Claude lee el método y las métricas de la marca, escribe la semana y deja las piezas en BeFeed. Tú apruebas y programas en la web de Maasy. Claude no propone horas ni publica.
 
 ## Qué trae
 
@@ -24,8 +24,8 @@ Los permisos son por marca y vencen (90 días por defecto):
 ## Qué no hace
 
 - No genera semanas con la IA de Believe ni produce Reels. Escribe tu Claude, con el método de BeFeed.
-- No aprueba, no programa y no publica. Eso queda en el panel de BeFeed.
-- No conecta Instagram: el enlace para hacerlo te lo da `/maasy-feed:conectar`.
+- No aprueba, no programa y no publica. Eso queda en la web de Maasy.
+- No conecta Instagram: eso se hace en la web de Maasy.
 
 El método no viene en el plugin: BeFeed lo sirve siempre en su última versión.
 

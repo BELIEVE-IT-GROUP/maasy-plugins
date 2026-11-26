@@ -11,4 +11,4 @@ Vas a escribir una semana de Instagram orgánico para la cuenta $ARGUMENTS en Be
 4. Crea la semana con `crear_semana` y cada pieza con `guardar_pieza`. Pasa los textos por `revisar_voz` antes de guardarlos y corrige lo que marque.
 5. Cuando una pieza esté lista para revisión, `pasar_a_filtros`. Si la persona quiere una hora, `programar_pieza` la deja como propuesta.
 
-Habla con la persona en su idioma. Las piezas se escriben en el idioma de la marca. Aprobar y publicar los hace la persona en el panel de BeFeed: no digas que algo quedó publicado.
+Habla con la persona en su idioma. Las piezas se escriben en el idioma de la marca. Aprobar y publicar los hace la persona en la web de Maasy: no digas que algo quedó publicado.

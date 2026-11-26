@@ -13,7 +13,7 @@ Con este plugin, tu Claude diseña las campañas de comentario a DM de Instagram
 
 1. La primera vez, Claude te pide entrar con tu cuenta de Maasy. Para crear borradores tienes que aceptar el permiso `reply:draft`; sin él, Claude solo lee.
 2. Claude lee la voz de tu marca en Maasy y escribe la campaña.
-3. Lo que Claude guarda es un borrador. Ninguna campaña se activa ni sale un mensaje sin que una persona lo apruebe en el panel de BeReply.
+3. Lo que Claude guarda es un borrador. Ninguna campaña se activa ni sale un mensaje sin que una persona lo apruebe en la web de Maasy.
 4. Los leads (etiqueta lead, follow gate cumplido o clic en un link medido) llegan al CRM de Maasy.
 
 ## Requisitos
