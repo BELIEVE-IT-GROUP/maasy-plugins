@@ -2,7 +2,7 @@
 
 `maasy-feed` planea tu semana de Instagram y escribe las piezas con tu voz de marca. Las semanas y las piezas se guardan en BeFeed, el sistema de contenido orgánico de Believe. Claude las deja como guion; tú las apruebas, las programas y las publicas en la web de Maasy (maasy.ai/control/feed).
 
-> Disponible en la tienda (versión 1.0.0).
+> Disponible en la tienda (versión 1.0.2).
 
 ## Para qué sirve
 

@@ -2,7 +2,7 @@
 
 `maasy-reply` te ayuda a diseñar cómo responde tu marca a comentarios en Instagram. Tu Claude arma la campaña como borrador, la deja guardada y tú la revisas y la activas en la web de Maasy (maasy.ai/control/reply). Las campañas funcionan sin IA: cada texto queda escrito y fijo. Reply no es un chatbot.
 
-> Disponible en la tienda (versión 1.0.0).
+> Disponible en la tienda (versión 1.0.3).
 
 ## Para qué sirve
 
