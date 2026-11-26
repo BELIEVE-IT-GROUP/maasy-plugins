@@ -1,0 +1,11 @@
+{
+  "name": "maasy-games",
+  "version": "0.1.0",
+  "description": "Maasy Games en Claude: juegos de marca jugables en el celular, probados y empaquetados por Maasy.",
+  "author": {
+    "name": "Believe Global",
+    "url": "https://believe-global.com"
+  },
+  "homepage": "https://maasy.ai",
+  "dependencies": ["maasy"]
+}
