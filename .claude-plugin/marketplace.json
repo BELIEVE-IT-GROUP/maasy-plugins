@@ -15,6 +15,12 @@
       "category": "marketing"
     },
     {
+      "name": "maasy-aos",
+      "source": "./maasy-aos",
+      "description": "Audita si los agentes de IA pueden operar tu sitio y mide si los modelos te recomiendan. Requiere el plugin maasy y un plan de pago.",
+      "category": "marketing"
+    },
+    {
       "name": "maasy-lens",
       "source": "./maasy-lens",
       "description": "Maasy Lens: desarma un video de un link desde tu Mac y guarda la fórmula en tu cerebro de Maasy. Solo Mac.",
