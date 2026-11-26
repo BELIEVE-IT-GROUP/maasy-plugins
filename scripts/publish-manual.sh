@@ -115,11 +115,10 @@ if [[ -z "$ONLY" || "$ONLY" == "benotes" ]]; then
   echo "==> 3. BeNotes"
   if [[ $PUBLISH -eq 0 ]]; then
     "$NODE" "${ROOT}/scripts/manual/benotes.mjs" plan
-  elif [[ -n "${BENOTES_MAASY_MANUAL_OAUTH:-}" ]]; then
+  elif [[ -n "${BENOTES_MANUALES_TOKEN:-}" ]]; then
     "$NODE" "${ROOT}/scripts/manual/benotes.mjs" push
   else
-    echo "    PENDIENTE: BeNotes todavía no está conectado (falta BENOTES_MAASY_MANUAL_OAUTH en el entorno)."
-    echo "    Una vez, quien administra Cuadernos, en su Mac:  node scripts/manual/benotes.mjs connect"
+    echo "    PENDIENTE: falta BENOTES_MANUALES_TOKEN en el entorno (token de máquina de BeNotes)."
     echo "    Mientras tanto, a mano con el conector BeNotes: notes_create/notes_update con docs/manual/dist/benotes-resumen.json"
   fi
 fi
