@@ -38,7 +38,9 @@ el servidor de Maasy, por partes y marcado con tu cuenta: no lo inventes, no lo 
    `plugin: "maasy-motion"`, `client_ref: "film:<id>:v<versión>"` (y `parent_ref` con el de la versión anterior si la
    hubo), `title`, `content_text` (el guion, en el idioma de salida de la marca), `duration_s`,
    `media: [{upload_id, role: "main"}, {upload_id, role: "poster"}]` y `meta: {film_id, version}`. Muestra el
-   `canvas_url` que devuelve: la persona aprueba o descarta en la web. Si alguna de esas tools no existe todavía, dilo
+   `canvas_url` que devuelve: la persona aprueba o descarta en la web. Registra la tarjeta con `asset_upload` (`film`,
+   `file` = el video, `card` = el id o el `canvas_url` de la tarjeta, `version`): sin eso la app sigue mostrando que
+   falta enviarlo. Si alguna de esas tools no existe todavía, dilo
    y deja el render en el Mac. Sin permiso, no subas nada.
 7. **Lo que la persona juzgó.** Al empezar un video nuevo, `maasy_canvas_list` con `plugin: "maasy-motion"` te dice
    qué aprobó y qué descartó (con su motivo): tenlo en cuenta en el guion y en el look.
