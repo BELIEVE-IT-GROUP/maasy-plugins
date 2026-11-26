@@ -22,6 +22,7 @@ Cada llamada lleva `marca` (el slug que devuelve `marcas`).
 | Salud en vivo de la cuenta | `estructura_en_meta`, `diagnostico_meta`, `estado_cuenta`, `activos_de_la_cuenta` |
 | Qué pasó y qué espera | `alertas`, `decisiones`, `journal` |
 
+- Si `marcas` devuelve la lista vacía, no es un error. Di: "Todavía no tienes cuentas publicitarias conectadas. Conéctalas en https://maasy.ai/control/ads y vuelve aquí", y no sigas con lecturas ni planes.
 - Las cifras se citan como vienen de las tools. No las calcules ni sumes monedas distintas.
 - Si una tool no aparece o no responde, dilo. No rellenes con supuestos.
 
@@ -53,6 +54,6 @@ Lo hace la persona en la web. Las cuentas propias de Maasy aprueban en `/claude/
 
 `ads_panel` es la tab de Ads del panel de Maasy (contrato `panel.v1`, orden 50): estado, métricas de 7 días, tarjetas pendientes, alertas, mandato y calendario. La dibuja el plugin `maasy` cuando el servidor la ofrece; se abre con `/maasy-panel`.
 
-## Todavía no disponible
+## Conectar cuentas
 
-Conectar tu propia cuenta publicitaria (por Zernio) llega **próximamente**. No ofrezcas ese flujo ni pidas llaves o tokens.
+Las cuentas publicitarias se conectan en la web: https://maasy.ai/control/ads. Desde aquí no conectes nada ni pidas llaves o tokens.
