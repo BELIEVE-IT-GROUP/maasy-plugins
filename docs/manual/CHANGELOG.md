@@ -8,6 +8,13 @@ Cómo se numera:
 - **Segundo número**: un capítulo nuevo o una capacidad nueva documentada (por ejemplo, un plugin que llega a la tienda).
 - **Tercer número**: correcciones, precisiones y pantallas rehechas.
 
+## 1.1.0 (2026-11-26)
+
+- **Tres capítulos nuevos.** "Lo que Maasy sabe de tu marca" (4): el ADN parte por parte, las ocho derivaciones y lo que produce cada una, el análisis de referencias con Anti-Look Maasy y el design.md. "El cerebro de tu marca" (5): el grafo, su compresión, el corpus vectorizado por capas, la memoria de aprobadas, ganadoras y descartadas, cómo lo consulta Claude y cómo aprende, con una figura del ciclo. "Qué puedes crear con tu marca" (6): textos, estrategias, anuncios, posts, artículos, emails, landings y videos, con ejemplos de pedidos.
+- **Capítulo 3 reescrito.** La entrevista guiada construye el ADN completo (más de 40 campos y ocho derivaciones), no un resumen.
+- Los capítulos siguientes se renumeran (del 4 al 15 pasan al 7 al 18) y se actualizan las referencias cruzadas.
+- `maasy_forget_brand_brain_item` figura como `PRÓXIMAMENTE`: está en revisión y no en producción.
+
 ## 1.0.1 (2026-11-26)
 
 - **Planes y cobro**: cada marca de pago se cobra solo con tu sí. Claude pide la marca, Maasy responde una cotización (monto y prorrateo de hoy) que vale 10 minutos y Claude te la muestra en una tarjeta; solo con esa cotización se crea la marca y se cobra. Borrar una marca Pro: solo el dueño, con la misma confirmación; la factura baja en el acto con prorrateo a favor, la purga llega a los 30 días y el borrado se frena con un aviso si hay algo vivo o pagos pendientes de la red de anuncios. Cancelar un Pro queda como pendiente: el código no define un flujo propio.

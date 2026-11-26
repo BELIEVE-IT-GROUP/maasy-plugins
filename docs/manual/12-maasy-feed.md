@@ -55,4 +55,4 @@ La pestaña **Feed** del panel muestra la semana en curso: un cuadro con día, f
 
 **¿Por qué el servidor revisa mi voz y no Claude?** Porque Claude puede equivocarse al revisarse a sí mismo. El servidor aplica las mismas reglas siempre, con las palabras prohibidas y el tono de tu ADN.
 
-**¿Se conecta con Reply?** Sí. Una pieza puede terminar con una palabra clave (por ejemplo AUDIT) que ya tiene su campaña en Reply (capítulo 10).
+**¿Se conecta con Reply?** Sí. Una pieza puede terminar con una palabra clave (por ejemplo AUDIT) que ya tiene su campaña en Reply (capítulo 13).

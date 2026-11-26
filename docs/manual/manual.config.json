@@ -90,7 +90,40 @@
         "maasy/.claude-plugin"
       ]
     },
-    "04-la-web-de-maasy.md": {
+    "04-lo-que-maasy-sabe-de-tu-marca.md": {
+      "sha": "44aac3a0d34966f234c1c2cdc4f7c228db0c3cfe",
+      "plugins": [
+        "maasy"
+      ],
+      "paths": [
+        "maasy/commands",
+        "maasy/skills"
+      ]
+    },
+    "05-el-cerebro-de-tu-marca.md": {
+      "sha": "44aac3a0d34966f234c1c2cdc4f7c228db0c3cfe",
+      "plugins": [
+        "maasy"
+      ],
+      "paths": [
+        "maasy/commands",
+        "maasy/skills"
+      ]
+    },
+    "06-que-puedes-crear-con-tu-marca.md": {
+      "sha": "44aac3a0d34966f234c1c2cdc4f7c228db0c3cfe",
+      "plugins": [
+        "maasy",
+        "maasy-vibe",
+        "maasy-motion",
+        "maasy-lens"
+      ],
+      "paths": [
+        "maasy/commands",
+        "maasy/skills"
+      ]
+    },
+    "07-la-web-de-maasy.md": {
       "sha": "44aac3a0d34966f234c1c2cdc4f7c228db0c3cfe",
       "plugins": [
         "maasy"
@@ -99,7 +132,7 @@
         "maasy/README.md"
       ]
     },
-    "05-planes-y-cobro.md": {
+    "08-planes-y-cobro.md": {
       "sha": "44aac3a0d34966f234c1c2cdc4f7c228db0c3cfe",
       "plugins": [
         "maasy"
@@ -108,7 +141,7 @@
         "maasy/commands"
       ]
     },
-    "06-maasy-vibe.md": {
+    "09-maasy-vibe.md": {
       "sha": "44aac3a0d34966f234c1c2cdc4f7c228db0c3cfe",
       "plugins": [
         "maasy-vibe"
@@ -120,7 +153,7 @@
         "maasy-vibe/template/README.md"
       ]
     },
-    "07-maasy-motion.md": {
+    "10-maasy-motion.md": {
       "sha": "44aac3a0d34966f234c1c2cdc4f7c228db0c3cfe",
       "plugins": [
         "maasy-motion"
@@ -129,7 +162,7 @@
         "maasy-motion"
       ]
     },
-    "08-maasy-lens.md": {
+    "11-maasy-lens.md": {
       "sha": "44aac3a0d34966f234c1c2cdc4f7c228db0c3cfe",
       "plugins": [
         "maasy-lens"
@@ -138,33 +171,33 @@
         "maasy-lens"
       ]
     },
-    "09-maasy-feed.md": {
+    "12-maasy-feed.md": {
       "sha": "44aac3a0d34966f234c1c2cdc4f7c228db0c3cfe",
       "plugins": [
         "maasy-feed"
       ],
       "paths": []
     },
-    "10-maasy-reply.md": {
+    "13-maasy-reply.md": {
       "sha": "44aac3a0d34966f234c1c2cdc4f7c228db0c3cfe",
       "plugins": [
         "maasy-reply"
       ],
       "paths": []
     },
-    "11-maasy-aos.md": {
+    "14-maasy-aos.md": {
       "sha": "44aac3a0d34966f234c1c2cdc4f7c228db0c3cfe",
       "plugins": [
         "maasy-aos"
       ],
       "paths": []
     },
-    "12-proximamente.md": {
+    "15-proximamente.md": {
       "sha": "44aac3a0d34966f234c1c2cdc4f7c228db0c3cfe",
       "plugins": [],
       "paths": []
     },
-    "13-privacidad-y-seguridad.md": {
+    "16-privacidad-y-seguridad.md": {
       "sha": "44aac3a0d34966f234c1c2cdc4f7c228db0c3cfe",
       "plugins": [
         "maasy",
@@ -177,7 +210,7 @@
         "maasy-motion/README.md"
       ]
     },
-    "14-si-algo-falla.md": {
+    "17-si-algo-falla.md": {
       "sha": "44aac3a0d34966f234c1c2cdc4f7c228db0c3cfe",
       "plugins": [
         "maasy",
@@ -192,7 +225,7 @@
         "maasy-motion/commands"
       ]
     },
-    "15-glosario.md": {
+    "18-glosario.md": {
       "sha": "44aac3a0d34966f234c1c2cdc4f7c228db0c3cfe",
       "plugins": [],
       "paths": []

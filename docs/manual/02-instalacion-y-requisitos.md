@@ -48,7 +48,7 @@ Cada uno se instala igual, con una línea, y se activa abriendo una conversació
 | Responder a tus clientes en redes | `/plugin install maasy-reply@maasy` |
 | Medir cómo te ven las IA | `/plugin install maasy-aos@maasy` |
 
-> **Estado hoy:** en la tienda ya están `maasy` y `maasy-vibe`. `maasy-motion` y `maasy-lens` están en revisión y llegan a la tienda al aprobarse. `maasy-feed`, `maasy-reply` y `maasy-aos` tienen su diseño aprobado y todavía no se publican. Los capítulos 7 a 11 describen cada uno como será.
+> **Estado hoy:** en la tienda ya están `maasy` y `maasy-vibe`. `maasy-motion` y `maasy-lens` están en revisión y llegan a la tienda al aprobarse. `maasy-feed`, `maasy-reply` y `maasy-aos` tienen su diseño aprobado y todavía no se publican. Los capítulos 10 a 14 describen cada uno como será.
 
 ## Qué ves después de instalar
 
@@ -72,4 +72,4 @@ Los plugins se pueden instalar para toda tu cuenta de Claude o solo para un proy
 
 **Instalé y no aparece el comando.** Abre una conversación nueva. Si sigue sin aparecer, escribe `/plugin` y revisa que `maasy` figure como instalado.
 
-**¿Es seguro dar permiso para que se instale?** Es el permiso normal de Claude para sumar un plugin. Cada plugin pide por separado lo que quiere hacer cuando lo hace, y lo que toca tu plata, tus mensajes o tus cuentas va aparte (capítulo 13).
+**¿Es seguro dar permiso para que se instale?** Es el permiso normal de Claude para sumar un plugin. Cada plugin pide por separado lo que quiere hacer cuando lo hace, y lo que toca tu plata, tus mensajes o tus cuentas va aparte (capítulo 16).

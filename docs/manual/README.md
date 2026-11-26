@@ -8,7 +8,7 @@ Dirección canónica: **https://files.believe-global.com/maasy/manual/index.html
 
 | Archivo | Qué es |
 |---|---|
-| `01-…md` a `15-…md` | Los capítulos. El orden es el número; el título es el primer `#`. |
+| `01-…md` a `18-…md` | Los capítulos. El orden es el número; el título es el primer `#`. |
 | `MANUAL-VERSION` | El número de esta edición (`N.N.N`). Empieza en 1.0.0. |
 | `CHANGELOG.md` | El historial. Cada versión necesita su entrada `## N.N.N (AAAA-MM-DD)`. |
 | `manual.config.json` | Título, portada, destino en R2, nota de BeNotes, los plugins y versiones que describe (`plugins`) y el mapeo capítulo → fuentes (`sources`). |

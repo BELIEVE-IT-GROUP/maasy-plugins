@@ -83,7 +83,7 @@ Los dominios propios, los secretos de tu app, las herramientas MCP que expone y 
 
 ## El Incubator
 
-Dentro de Vibe vivirá el Incubator: un recorrido guiado para pasar de una idea a un negocio, con fases y revisión en cada una. Está `PRÓXIMAMENTE` (capítulo 12).
+Dentro de Vibe vivirá el Incubator: un recorrido guiado para pasar de una idea a un negocio, con fases y revisión en cada una. Está `PRÓXIMAMENTE` (capítulo 15).
 
 ## Qué ves en pantalla
 

@@ -1,13 +1,15 @@
 # Maasy: tu cuenta y tu marca
 
-`maasy` es el plugin núcleo. Crea tu cuenta, te hace una entrevista sobre tu negocio y deja tu marca lista: su ADN, su identidad visual y su cerebro. Es el paso más importante de todo el sistema, porque cada plugin posterior trabaja con lo que aquí queda guardado.
+`maasy` es el plugin núcleo. Crea tu cuenta y construye con una entrevista guiada el ADN completo de tu marca: más de 40 campos sobre tu negocio, tu cliente, tu voz y tu estilo visual, y ocho piezas estratégicas que el sistema deriva de tus respuestas. Al final deja la marca creada, con su design.md y con su cerebro cargado. Es el paso más importante de todo el sistema, porque cada plugin posterior trabaja con lo que aquí queda guardado.
+
+Qué queda guardado, campo por campo, está en el capítulo 4. Cómo lo usa el cerebro, en el 5.
 
 ## Qué hace
 
 - Crea tu cuenta de Maasy gratis, sin tarjeta.
-- Te entrevista con tarjetas de opción múltiple, una pregunta a la vez.
-- Recibe tu logo, tus fuentes y tus imágenes de producto.
-- Genera por ti lo que no tendrías que escribir: ángulos de venta, pilares de contenido, design system y design.md.
+- Te entrevista con tarjetas de opción múltiple, una pregunta a la vez. Las preguntas son fáciles de contestar; lo que se construye con ellas es completo.
+- Recibe tu logo, tus fuentes, tus imágenes de producto y tus referencias visuales.
+- Deriva por ti ocho piezas: perfiles de cliente ideal, ángulos de venta, pilares de contenido, perfil de referencias, design system, biblioteca de ambientes, biblioteca de escenas y design.md.
 - Crea la marca con su cerebro ya cargado.
 - Te muestra el avance en un panel al lado del chat.
 
@@ -38,7 +40,7 @@ Con tu cuenta gratis tienes una marca. Si ya la usaste, Claude te lo dice antes 
 
 ### 2. La entrevista en tarjetas
 
-Claude te hace preguntas cortas, una por vez, con opciones que puedes elegir con un clic. También puedes escribir tu propia respuesta. Si ninguna opción te encaja, elige **Más opciones** y verás otras.
+Claude te hace una pregunta por vez, con opciones que puedes elegir con un clic. También puedes escribir tu propia respuesta. Si ninguna opción te encaja, elige **Más opciones** y verás otras.
 
 La entrevista tiene estas partes:
 
@@ -50,7 +52,7 @@ La entrevista tiene estas partes:
 | Voz y tono | Cómo hablas: tuteo, uso de emojis, palabras que sí y que no |
 | Lo visual | Colores, fuentes, estilo de imagen, logo y referencias |
 | Prueba social | Resultados, testimonios y reconocimientos |
-| Salida | Idioma del contenido, largo de los textos y llamados a la acción |
+| Preferencias | Idioma del contenido, largo de los textos, urgencia de los llamados a la acción y los que ya tienes aprobados |
 
 ![Diseño aprobado: una tarjeta de la entrevista. A la derecha, el panel muestra el avance del ADN por parte.](img/capturas/entrevista-tarjetas.png)
 
@@ -133,7 +135,7 @@ Con el plan Pro, Claude puede leer tu CRM de Maasy: contactos, leads, oportunida
 3. Claude pide un permiso aparte para la tool de borrado. Es una segunda barrera a propósito.
 4. Si lo que escribiste coincide, la marca desaparece de todas partes. Sus datos y archivos se eliminan del todo a los 30 días.
 
-Con el plan gratis solo se puede borrar una marca propia, que nadie más esté usando y que no opere Believe. Si tu marca es del plan Pro, solo su dueño puede borrarla: Claude te muestra una tarjeta con lo que se borra y cuánto baja tu factura, y borra solo con tu sí (capítulo 5). Cualquier otra marca se borra desde la web de Maasy. Las tarjetas que tengas en el canvas se van con la marca.
+Con el plan gratis solo se puede borrar una marca propia, que nadie más esté usando y que no opere Believe. Si tu marca es del plan Pro, solo su dueño puede borrarla: Claude te muestra una tarjeta con lo que se borra y cuánto baja tu factura, y borra solo con tu sí (capítulo 8). Cualquier otra marca se borra desde la web de Maasy. Las tarjetas que tengas en el canvas se van con la marca.
 
 ## Idioma
 
@@ -141,7 +143,7 @@ Claude te habla en tu idioma. Las tarjetas de la entrevista y los correos de Maa
 
 ## Límites
 
-- El plan gratis es una marca. Para más marcas hay que pasar a un plan (capítulo 5).
+- El plan gratis es una marca. Para más marcas hay que pasar a un plan (capítulo 8).
 - En el plan gratis el cerebro no se sirve a los plugins de producto. Esa conexión es del plan Pro.
 - Los archivos tienen formatos y tamaños permitidos. Un archivo que no cumple se rechaza con un mensaje que dice por qué. SVG con código ejecutable se rechaza.
 - Una entrevista incompleta no crea marca: la marca nace solo en el último paso.

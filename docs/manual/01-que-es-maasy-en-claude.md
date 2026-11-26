@@ -91,6 +91,6 @@ Tres cosas que Claude nunca hace por sí solo: enviar un mensaje a un cliente tu
 
 **¿Maasy usa mi cuenta de Claude para todo?** Sí. La entrevista, las piezas y los análisis los genera tu Claude. Maasy pone la memoria de la marca, el método y los servidores. Por eso el plan de Maasy no incluye créditos de IA.
 
-**¿Qué pasa con la web de Maasy de antes?** Sigue existiendo, ahora como el panel de control de tu cuenta (ver el capítulo 4). Las herramientas que generan con IA de Believe (el chat de Vibe, el Copilot y las generaciones en la web) no aparecen para quien llega desde Claude.
+**¿Qué pasa con la web de Maasy de antes?** Sigue existiendo, ahora como el panel de control de tu cuenta (ver el capítulo 7). Las herramientas que generan con IA de Believe (el chat de Vibe, el Copilot y las generaciones en la web) no aparecen para quien llega desde Claude.
 
 **¿Puedo usar solo un plugin?** Puedes instalar los que quieras, pero todos necesitan el núcleo `maasy` y una marca creada.
