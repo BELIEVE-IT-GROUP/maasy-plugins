@@ -1,6 +1,6 @@
 {
   "name": "maasy-feed",
-  "version": "1.0.2+b3dac80",
+  "version": "1.0.2+3a44066",
   "dependencies": [
     "maasy"
   ],
