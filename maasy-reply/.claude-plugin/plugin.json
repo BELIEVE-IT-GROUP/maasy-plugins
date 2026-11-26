@@ -1,6 +1,6 @@
 {
   "name": "maasy-reply",
-  "version": "1.0.0+287168f",
+  "version": "1.0.1+a6a7b09",
   "dependencies": [
     "maasy"
   ],
@@ -15,5 +15,7 @@
     "instagram",
     "dm",
     "bereply"
-  ]
+  ],
+  "icon": "./.claude-plugin/icon.png",
+  "privacyPolicyUrl": "https://reply.believe-global.com/privacy"
 }

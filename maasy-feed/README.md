@@ -28,3 +28,5 @@ Los permisos son por marca y vencen (90 días por defecto):
 - No conecta Instagram: el enlace para hacerlo te lo da `/maasy-feed:conectar`.
 
 El método no viene en el plugin: BeFeed lo sirve siempre en su última versión.
+
+Licencia: MIT. Ver LICENSE.
