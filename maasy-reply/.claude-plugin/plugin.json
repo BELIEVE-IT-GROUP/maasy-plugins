@@ -1,6 +1,6 @@
 {
   "name": "maasy-reply",
-  "version": "1.0.3+48c415b",
+  "version": "1.0.4+48c415b",
   "dependencies": [
     "maasy"
   ],
