@@ -31,6 +31,12 @@
       "source": "./maasy-motion",
       "description": "Maasy Motion en Claude: videos con la marca de tu cerebro Maasy, hechos y renderizados en tu Mac.",
       "category": "marketing"
+    },
+    {
+      "name": "maasy-feed",
+      "source": "./maasy-feed",
+      "description": "Maasy Feed: planea y escribe el Instagram orgánico de tus marcas de Maasy desde Claude. BeFeed guarda las semanas y las piezas; aprobar y publicar los haces tú en el panel.",
+      "category": "marketing"
     }
   ]
 }
