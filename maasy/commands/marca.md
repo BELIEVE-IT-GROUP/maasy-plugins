@@ -30,7 +30,7 @@ Abres una marca de Maasy para trabajar con ella en esta sesión. Conversa en el 
      ```
    Si dice que no, no crees nada y no vuelvas a preguntar en esta sesión.
    En esa carpeta nunca escribas: el método o las recetas, una copia del ADN, llaves o tokens, ni datos de clientes finales (contactos, leads, conversaciones).
-4. **Lo que hay.** Llama `maasy_get_brand_context` de esa marca y `maasy_canvas_list` con `status: "all"`. Si hay carpeta, pon al día la Bitácora con lo que cambió desde la última vez: piezas nuevas y, de las ya anotadas, su veredicto con el motivo que escribió la persona. Una línea por pieza.
+4. **Lo que hay.** Llama `maasy_get_brand_context` de esa marca y `maasy_canvas_list` con `scope: "all"` y `status: "all"`: así ves lo que hay en su Canvas, tanto lo enviado desde Claude como lo hecho en la web. Si el servidor todavía no acepta `scope`, repite la llamada sin ese campo y sigue con lo que devuelva; en ese caso no digas que no hay nada más: di que ves lo que se envió desde Claude. Si hay carpeta, pon al día la Bitácora con lo que cambió desde la última vez: piezas nuevas y, de las ya anotadas, su veredicto con el motivo que escribió la persona. Una línea por pieza.
 5. **Saludo.** Breve, como alguien que ya conoce la marca:
    - una línea con el nombre de la marca;
    - una frase con lo que ya hay: cuántas piezas esperan su decisión, qué aprobó hace poco y, si descartó algo, por qué;
