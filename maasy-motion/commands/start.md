@@ -12,8 +12,11 @@ el servidor de Maasy, por partes y marcado con tu cuenta: no lo inventes, no lo 
    lo que diga Claude) y vuelve a llamarla. Sin sesión no sigas.
 2. **El Mac y la app.** Maasy Motion corre en Mac con Apple Silicon y macOS 13 o más. Llama `doctor` de BeCut. Si la
    tool no responde, mira `uname -m` y `sw_vers -productVersion`: si no es `arm64` o la versión es menor que 13, dilo y
-   detente. Si el Mac sirve, la app no está instalada: pide instalar Maasy Motion desde
-   su DMG (`https://files.believe-global.com/apps/maasy-motion/`) y abrirla una vez. Si `doctor` marca piezas que faltan,
+   detente. Si el Mac sirve, la app no está instalada: lee
+   `https://files.believe-global.com/apps/maasy-motion/latest.json` y muestra el enlace de su campo `url` para bajar el
+   instalador (la carpeta sola no abre). Que la persona instale Maasy Motion, la abra una vez y reinicie Claude. Si en el
+   Mac hay otra app de video (por ejemplo BeCut) pero no existe `/Applications/Maasy Motion.app`, no es un problema de
+   configuración ni sirve abrir la otra: falta instalar Maasy Motion. Si `doctor` marca piezas que faltan,
    muestra el arreglo que trae cada una y espera a que la persona lo haga.
 3. **La marca.** Con `maasy_list_brands`, primero pasa todas las marcas de la cuenta a `brand_reconcile` (`slugs`: el
    `id` de cada una): los kits de marcas que ya no están en la cuenta se archivan y dejan de salir en el selector (los
