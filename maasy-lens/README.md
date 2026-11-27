@@ -38,7 +38,15 @@ sha256 (`bin/versiones`). En Mac con Apple Silicon baja también, a `~/.maasy-le
 y verifica todo: si un solo sha256 no coincide, no instala nada. En un Mac Intel no baja esos binarios y te pide
 instalarlos con Homebrew (`brew install ffmpeg whisper-cpp deno`).
 
-Al terminar, abre una conversación nueva; si Lens no aparece, escribe `/mcp` y elige Reconectar.
+Antes de bajar nada dice cuánto ocupa (unos 886 MB en Apple Silicon, unos 793 MB en Intel) y cuánto tarda, y no
+instala sin un sí explícito: `/maasy-lens:estado` lo pide con una pregunta y después corre `bin/instalar --si`. El
+tamaño sale de `bin/versiones`, y `bin/instalar tamaño` solo lo muestra, sin bajar nada.
+
+Tampoco hay que reconectar el MCP al terminar. Mientras Lens falta, `bin/lens mcp` arranca un servidor mínimo
+(`bin/stub-mcp`, en Perl, que ya viene en macOS) que contesta el MCP con una sola tool, `estado`, que explica cómo
+instalar. Cuando la instalación termina, ese servidor le pasa el stdio al de verdad y avisa `tools/list_changed`: las
+tools de Lens aparecen solas en la misma conversación. Solo si algo falla hace falta `/mcp`, elegir `belens` y
+Reconectar (Claude guarda en caché un fallo de conexión durante 15 minutos, y ahí reiniciar la conversación no alcanza).
 
 ## Actualizaciones
 

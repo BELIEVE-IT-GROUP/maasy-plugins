@@ -23,6 +23,37 @@ if [ -n "$INTEL" ]; then
   fi
 fi
 
+# Cuánto ocupa, antes de bajar nada. `bin/instalar tamaño` solo lo dice y sale; sin --si (o MAASY_LENS_SI=1) tampoco
+# instala: el sí lo pide /maasy-lens:estado.
+TOTAL="$(tamano_mb "$(uname -m)")"
+tamanos() {
+  echo "Maasy Lens ocupa esto en $D:"
+  echo "  Modelo de whisper: $MB_MODELO MB"
+  if [ -z "$INTEL" ]; then
+    echo "  whisper-cli, ffmpeg, ffprobe y deno: $((MB_WHISPER_CLI + MB_FFMPEG + MB_FFPROBE + MB_DENO)) MB"
+  else
+    echo "  whisper-cli, ffmpeg, ffprobe y deno: de Homebrew, no se bajan acá"
+  fi
+  echo "  uv: $MB_UV MB · Python $PYTHON_VERSION con las dependencias: unos $MB_PYTHON_Y_DEPENDENCIAS MB"
+  echo "  Total a bajar: unos $TOTAL MB. Con buena conexión tarda unos 5 a 10 minutos; con una lenta, bastante más."
+}
+SI=""
+for a in "$@"; do
+  case "$a" in
+    tamaño|--tamaño) tamanos; exit 0 ;;
+    --si|--sí) SI=1 ;;
+    *) echo "No conozco la opción $a. Usa: instalar [tamaño] [--si]"; exit 1 ;;
+  esac
+done
+[ "${MAASY_LENS_SI:-}" = 1 ] && SI=1
+if [ -z "$SI" ]; then
+  tamanos
+  echo
+  echo "No instalé nada: falta tu sí. /maasy-lens:estado lo pide y después corre esto con --si."
+  exit 4
+fi
+echo "Instalando Maasy Lens en $D (unos $TOTAL MB)…"
+
 UA="Mozilla/5.0 (Macintosh; Apple silicon) maasy-lens"  # Cloudflare responde 403 sin un User-Agent de navegador
 HOST="https://files.believe-global.com"
 ESPEJO="${MAASY_LENS_ESPEJO_LOCAL:-}"   # solo para pruebas: sirve las URLs de ${HOST} desde 127.0.0.1
@@ -80,5 +111,5 @@ rm -rf "$E"   # lo bajado ya está en su lugar: no queda nada temporal ocupando 
 export UV_CACHE_DIR="$D/uv-cache" UV_PYTHON_INSTALL_DIR="$D/python"
 "$D/uv" venv --quiet --allow-existing --python "$PYTHON_VERSION" "$D/venv"   # uv verifica el Python que baja
 "$D/uv" pip install --quiet --python "$D/venv/bin/python" --require-hashes -r "$R/requirements.lock"
-echo "$BELENS_VERSION" > "$D/VERSION"   # bin/actualizar compara contra esta
-echo "Maasy Lens quedó instalado en $D. Abre una conversación nueva; si Lens no aparece, escribe /mcp y elige Reconectar. Después: /maasy-lens:estado."
+echo "$BELENS_VERSION" > "$D/VERSION"   # bin/actualizar compara contra esta; bin/stub-mcp la espera para pasar al servidor de verdad
+echo "Maasy Lens quedó instalado en $D. Lens ya está disponible en esta conversación: el servidor que arrancó mientras faltaba se lo pasa al de verdad solo, sin /mcp ni reconectar. Corre /maasy-lens:estado para comprobarlo."

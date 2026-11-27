@@ -1,5 +1,7 @@
 #!/bin/bash
 # Arranca el MCP de Maasy Lens en modo externo: sin cookies ni sesiones de nadie (D10).
+# Si Lens todavía no está instalado no falla: arranca bin/stub-mcp, que contesta el MCP, pide la instalación y le pasa
+# el stdio al servidor de verdad cuando termina (Claude guardaría la conexión fallida en caché 15 minutos).
 #   lens actualizar [--seco]   revisa ya si hay versión nueva (--seco: solo dice qué haría)
 set -euo pipefail
 if [ "$(uname -s)" != Darwin ]; then
@@ -9,9 +11,11 @@ fi
 R="$(cd "$(dirname "$0")/.." && pwd)"
 source "$R/bin/versiones"
 D="$HOME/.maasy-lens"
+export MAASY_LENS_RAIZ="$R" MAASY_LENS_TAMANO_MB="$(tamano_mb "$(uname -m)")"
 # Si una actualización se cortó en medio del cambio, vuelve lo que quedó en .anterior.
 for n in venv belens.py bin; do [ -e "$D/$n" ] || [ ! -e "$D/.anterior/$n" ] || mv "$D/.anterior/$n" "$D/$n"; done
 if [ ! -x "$D/venv/bin/python" ] || [ ! -f "$D/belens.py" ]; then
+  if [ "${1:-}" = mcp ]; then exec "$R/bin/stub-mcp"; fi
   echo "Maasy Lens no está instalado en este Mac. Corre /maasy-lens:estado y acepta la instalación." >&2
   exit 1
 fi

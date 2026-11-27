@@ -5,12 +5,29 @@ UV_SHA256="81b811b57e4624df7ed3aac148e0359100d9962f3d9dce00aec533dc2e086731"
 UV_INTEL_URL="https://github.com/astral-sh/uv/releases/download/0.13.7/uv-x86_64-apple-darwin.tar.gz"
 UV_INTEL_SHA256="20c47e4c1f630b8abaff8c291fa9b9aa300fef92c4fbff95adf198b55287cda7"
 PYTHON_VERSION="3.12"
-BELENS_VERSION="0.3.5"
+BELENS_VERSION="0.3.6"
 BELENS_URL="${BELENS_URL:-https://files.believe-global.com/apps/maasy-lens/${BELENS_VERSION}/belens.py}"
-BELENS_SHA256="a52e96504ed57a95d7d520f5a3abe3fc239756c22770569cba47d56416eed676"
+BELENS_SHA256="d709c3459e1dea6e2af47e8b37d95d39825f96443d532c1e8c431c1350c888f2"
 MODELO="ggml-large-v3-turbo-q5_0.bin"
 MODELO_URL="https://huggingface.co/ggerganov/whisper.cpp/resolve/5359861c739e955e79d9a303bcbc70fb988958b1/ggml-large-v3-turbo-q5_0.bin"
 MODELO_SHA256="394221709cd5ad1f40c46e6031ca61bce88931e6e088c188294c6d5a55ffa7e2"
+
+# Cuánto ocupa lo que baja la instalación, en MB redondeados. Se mide sobre los archivos publicados (2026-11-26); sirve
+# para decir el tamaño antes de bajar nada. Python y las dependencias de requirements.lock se estiman: uv no dice el peso
+# antes de bajarlas.
+MB_UV="14"
+MB_MODELO="574"
+MB_PYTHON_Y_DEPENDENCIAS="205"
+MB_WHISPER_CLI="8"
+MB_FFMPEG="23"
+MB_FFPROBE="23"
+MB_DENO="39"
+# tamano_mb arm64|x86_64: lo que ocupa la instalación completa en ese Mac. En Intel los binarios salen de Homebrew.
+tamano_mb() {
+  local t=$((MB_UV + MB_MODELO + MB_PYTHON_Y_DEPENDENCIAS))
+  [ "${1:-}" = arm64 ] && t=$((t + MB_WHISPER_CLI + MB_FFMPEG + MB_FFPROBE + MB_DENO))
+  echo "$t"
+}
 
 # Binarios para Mac con Apple Silicon, sin modificar, cada uno en su carpeta con su LICENSE. De dónde sale cada uno:
 # deploy/BINARIOS.md. En Mac Intel no se bajan: salen de Homebrew.
