@@ -1,7 +1,7 @@
 ---
 description: Empieza con Maasy Motion. Trae tu marca de Maasy y arma un video en tu Mac
 argument-hint: "[qué video quieres]"
-allowed-tools: mcp__plugin_maasy_maasy__maasy_list_brands, mcp__plugin_maasy_maasy__maasy_get_design_md, mcp__plugin_maasy_maasy__maasy_get_brand_dna, mcp__plugin_maasy_maasy__maasy_get_brand_context, mcp__plugin_maasy_maasy__maasy_get_motion_recipe, mcp__plugin_maasy_maasy__maasy_upload_asset, mcp__plugin_maasy_maasy__maasy_canvas_submit, mcp__plugin_maasy_maasy__maasy_canvas_list, mcp__plugin_maasy-motion_becut__doctor, mcp__plugin_maasy-motion_becut__motion_panel, mcp__plugin_maasy-motion_becut__brand_put, mcp__plugin_maasy-motion_becut__brand_reconcile, mcp__plugin_maasy-motion_becut__brand_list, mcp__plugin_maasy-motion_becut__brand_set, mcp__plugin_maasy-motion_becut__hub_new_film, mcp__plugin_maasy-motion_becut__hub_live, mcp__plugin_maasy-motion_becut__hub_frame, mcp__plugin_maasy-motion_becut__hub_notes, mcp__plugin_maasy-motion_becut__film_poster, mcp__plugin_maasy-motion_becut__asset_upload, mcp__plugin_maasy-motion_becut__fal_run, Bash(uname -m), Bash(sw_vers -productVersion), Read(~/Movies/BeCut/films/**), Edit(~/Movies/BeCut/films/**), AskUserQuestion
+allowed-tools: mcp__plugin_maasy_maasy__maasy_list_brands, mcp__plugin_maasy_maasy__maasy_get_design_md, mcp__plugin_maasy_maasy__maasy_get_brand_dna, mcp__plugin_maasy_maasy__maasy_get_brand_context, mcp__plugin_maasy_maasy__maasy_get_motion_recipe, mcp__plugin_maasy_maasy__maasy_upload_asset, mcp__plugin_maasy_maasy__maasy_canvas_submit, mcp__plugin_maasy_maasy__maasy_canvas_list, mcp__plugin_maasy-motion_becut__doctor, mcp__plugin_maasy-motion_becut__motion_panel, mcp__plugin_maasy-motion_becut__brand_put, mcp__plugin_maasy-motion_becut__brand_reconcile, mcp__plugin_maasy-motion_becut__brand_list, mcp__plugin_maasy-motion_becut__brand_set, mcp__plugin_maasy-motion_becut__hub_new_film, mcp__plugin_maasy-motion_becut__hub_live, mcp__plugin_maasy-motion_becut__hub_frame, mcp__plugin_maasy-motion_becut__hub_notes, mcp__plugin_maasy-motion_becut__hub_lang_scan, mcp__plugin_maasy-motion_becut__film_poster, mcp__plugin_maasy-motion_becut__asset_upload, mcp__plugin_maasy-motion_becut__fal_run, Bash(uname -m), Bash(sw_vers -productVersion), Read(~/Movies/BeCut/films/**), Edit(~/Movies/BeCut/films/**), AskUserQuestion
 ---
 
 Maasy Motion usa la sesión del plugin `maasy` y la app Maasy Motion instalada en este Mac. El método de trabajo lo manda
@@ -37,7 +37,8 @@ el servidor de Maasy, por partes y marcado con tu cuenta: no lo inventes, no lo 
    render lo hace la persona en la app cuando le guste.
 6. **Al canvas de Maasy (solo con permiso).** Cuando haya un render final, pregunta con `AskUserQuestion` si lo mandas al
    canvas de su marca. Solo con un sí explícito, primero deja el póster con `film_poster` (`t` = el segundo del cuadro
-   clave; queda como `poster.jpg` en la carpeta del video) y después, por cada archivo (el video y `poster.jpg`):
+   del gancho, de 0 a 1 s: el póster de la tarjeta es esa imagen; queda como `poster.jpg` en la carpeta del video) y
+   después, por cada archivo (el video y `poster.jpg`):
    `asset_upload` de BeCut sin `url` (te da `file_name`, `mime_type`, `size_bytes` y `asset_class`),
    `maasy_upload_asset` con `action=prepare` y esa clase (`canvas_video` para el MP4, `canvas_image` para el póster),
    `asset_upload` con la `upload_url` y los `headers` que devolvió, y `maasy_upload_asset` con `action=confirm` y el
@@ -47,11 +48,14 @@ el servidor de Maasy, por partes y marcado con tu cuenta: no lo inventes, no lo 
    hubo), `title`, `content_text` (el guion, en el idioma de salida de la marca), `duration_s`,
    `media: [{upload_id, role: "main"}, {upload_id, role: "poster"}]`, `meta` y `panel`: lo que
    devuelve `motion_panel` con ese `film` y `brandId` = el `project_id`, llamado justo antes y sin cambiarlo (si falla,
-   manda la tarjeta sin `panel`). `meta` = `{film_id, version, notas_abiertas, notas_corregidas, loudness_lufs, recipe}`:
-   `notas_abiertas` y `notas_corregidas` son los conteos de `hub_notes` con `status: "all"` (abiertas = `open`, `claude`
-   o `still`; corregidas = `fixed`); `loudness_lufs` es el LUFS del bloque Versiones de `motion_panel` para la versión
-   que envías; `recipe` es solo la etiqueta de versión que devuelve `maasy_get_motion_recipe` (por ejemplo `1.6.0`),
-   nunca su contenido. El meta pesa menos de 2 KB. Si un dato no está, se omite: nunca se inventa. Muestra el
+   manda la tarjeta sin `panel`). `meta` = `{film_id, version, notas_abiertas, notas_corregidas, loudness_lufs, recipe}`
+   más dos campos opcionales, `hook` y `sound`: `notas_abiertas` y `notas_corregidas` son los conteos de `hub_notes` con
+   `status: "all"` (abiertas = `open`, `claude` o `still`; corregidas = `fixed`); `loudness_lufs` es el LUFS del bloque
+   Versiones de `motion_panel` para la versión que envías; `recipe` es solo la etiqueta de versión que devuelve
+   `maasy_get_motion_recipe` (por ejemplo `1.6.0`), nunca su contenido; `hook` es el texto en pantalla del gancho, de 0
+   a 3 s, sacado de lo que el film ya tiene (`KE.text` de 0 a 3 s, o `hub_lang_scan` `action=texts`), en el idioma de
+   salida y con máximo 140 caracteres; `sound` es `"sin audio"` cuando el render final no tiene pista de audio, y ahí no
+   va `loudness_lufs`. El meta pesa menos de 2 KB. Si un dato no está, se omite: nunca se inventa. Muestra el
    `canvas_url` que devuelve: la persona aprueba o descarta en la web. Registra la tarjeta con `asset_upload` (`film`,
    `file` = el video, `card` = el id o el `canvas_url` de la tarjeta, `version`): sin eso la app sigue mostrando que
    falta enviarlo. Después llama otra vez `motion_panel` y repite el mismo `maasy_canvas_submit` (mismos campos y `client_ref`) con ese `panel`: así la tarjeta ya no dice que falta enviarla. Si alguna de esas tools no existe todavía, dilo
