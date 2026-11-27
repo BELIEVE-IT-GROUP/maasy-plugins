@@ -10,6 +10,6 @@ Maasy Ads en Claude Code y Claude Desktop. Claude lee la pauta, simula planes y 
 
 ## Estado (2026-11-25)
 
-- El servidor en producción todavía autentica solo con llave de agente: el ingreso con OAuth de Maasy **llega próximamente**, así que hoy el plugin instalado no puede iniciar sesión.
+- El ingreso es con OAuth de Maasy: al primer uso, Claude abre el navegador para autorizar.
 - La tool `ads_panel`, las tarjetas para cuentas propias y la aprobación en `/claude/ads` están en camino.
-- Conexión de cuentas publicitarias por Zernio: **próximamente**.
+- Las cuentas publicitarias se conectan en la web de Maasy: Productos, Ads, Conectar cuenta.

@@ -1,6 +1,6 @@
 {
   "name": "maasy-aos",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Maasy AOS en Claude: audita si los agentes de IA pueden operar tu sitio y mide si los modelos te recomiendan. / Audit whether AI agents can operate your site and measure whether models recommend you.",
   "author": {
     "name": "Believe Global",
