@@ -100,6 +100,8 @@ dist/
 
 Si necesitas revisar el HTML de salida, **no uses `grep` a secas**: el HTML del prerender contiene bytes NUL dentro del payload de hidratación, `grep` cae a modo binario y devuelve falsos negativos en silencio. Usa `grep -a` o lee el archivo desde código.
 
+Si tu app declara `frame-ancestors` en `public/_headers.json`, la lista debe incluir `https://vibe.maasy.ai` (además de `'self'`): sin ese origen la vista previa del Canvas de Maasy sale en blanco.
+
 `npm run typecheck` corre TypeScript aparte del build. Úsalo antes de dar algo por terminado.
 
 ## Diseño
