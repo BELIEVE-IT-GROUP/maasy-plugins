@@ -8,6 +8,9 @@ Casi todo lo que falla tiene un arreglo corto. Busca tu síntoma y sigue la rece
 |---|---|
 | Claude se cerró al instalar | Al preguntar si confías en la carpeta, la opción marcada por defecto es **No, exit**. Elige **Yes, I trust this folder** y mira antes de presionar Enter |
 | Instalé y no aparece `/maasy:start` | Abre una conversación nueva. Si sigue sin aparecer, `/plugin` y revisa que `maasy` figure como instalado |
+| Tengo Maasy como conector en mi cuenta y no veo el servidor del plugin | Es lo esperado: los dos apuntan al mismo servidor y Claude Code usa el de tu cuenta (**Maasy MCP**). Los comandos y el panel funcionan igual (capítulo 2) |
+| Claude pide permiso para cada herramienta de Maasy | Pasa cuando las herramientas vienen del conector de tu cuenta: apruébalas. Con el servidor del plugin no las pide |
+| Ya tenía un servidor de Maasy o de BeFeed configurado a mano y el del plugin no aparece | Claude Code usa uno solo cuando dos servidores tienen la misma dirección. Las herramientas siguen ahí, con el nombre de tu servidor: los comandos funcionan igual |
 | La ventana de inicio de sesión no se abre, o la sesión no continúa | `/mcp`, elige **maasy**, **Authenticate**, y vuelve a escribir `/maasy:start` |
 | No veo el panel | Escribe `/maasy-panel`. El panel solo se activa cuando usas Maasy por primera vez |
 | Claude se cierra solo durante una sesión | Puede pasar con Code Mode. Cuéntanos qué hacías cuando pasó |

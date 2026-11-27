@@ -1,17 +1,22 @@
 ---
 description: Empieza con Maasy Motion. Trae tu marca de Maasy y arma un video en tu Mac
 argument-hint: "[qué video quieres]"
-allowed-tools: mcp__plugin_maasy_maasy__maasy_list_brands, mcp__plugin_maasy_maasy__maasy_get_design_md, mcp__plugin_maasy_maasy__maasy_get_brand_dna, mcp__plugin_maasy_maasy__maasy_get_brand_context, mcp__plugin_maasy_maasy__maasy_get_motion_recipe, mcp__plugin_maasy_maasy__maasy_upload_asset, mcp__plugin_maasy_maasy__maasy_canvas_submit, mcp__plugin_maasy_maasy__maasy_canvas_list, mcp__plugin_maasy-motion_becut__doctor, mcp__plugin_maasy-motion_becut__motion_panel, mcp__plugin_maasy-motion_becut__brand_put, mcp__plugin_maasy-motion_becut__brand_reconcile, mcp__plugin_maasy-motion_becut__brand_list, mcp__plugin_maasy-motion_becut__brand_set, mcp__plugin_maasy-motion_becut__hub_new_film, mcp__plugin_maasy-motion_becut__hub_live, mcp__plugin_maasy-motion_becut__hub_frame, mcp__plugin_maasy-motion_becut__hub_notes, mcp__plugin_maasy-motion_becut__hub_lang_scan, mcp__plugin_maasy-motion_becut__film_poster, mcp__plugin_maasy-motion_becut__asset_upload, mcp__plugin_maasy-motion_becut__fal_run, Bash(uname -m), Bash(sw_vers -productVersion), Read(~/Movies/BeCut/films/**), Edit(~/Movies/BeCut/films/**), AskUserQuestion
+allowed-tools: mcp__plugin_maasy_maasy__maasy_list_brands, mcp__plugin_maasy_maasy__maasy_get_design_md, mcp__plugin_maasy_maasy__maasy_get_brand_dna, mcp__plugin_maasy_maasy__maasy_get_brand_context, mcp__plugin_maasy_maasy__maasy_get_motion_recipe, mcp__plugin_maasy_maasy__maasy_upload_asset, mcp__plugin_maasy_maasy__maasy_canvas_submit, mcp__plugin_maasy_maasy__maasy_canvas_list, mcp__claude_ai_Maasy_MCP__*, mcp__claude_ai_Maasy__*, mcp__plugin_maasy-motion_becut__doctor, mcp__plugin_maasy-motion_becut__motion_panel, mcp__plugin_maasy-motion_becut__brand_put, mcp__plugin_maasy-motion_becut__brand_reconcile, mcp__plugin_maasy-motion_becut__brand_list, mcp__plugin_maasy-motion_becut__brand_set, mcp__plugin_maasy-motion_becut__hub_new_film, mcp__plugin_maasy-motion_becut__hub_live, mcp__plugin_maasy-motion_becut__hub_frame, mcp__plugin_maasy-motion_becut__hub_notes, mcp__plugin_maasy-motion_becut__hub_lang_scan, mcp__plugin_maasy-motion_becut__film_poster, mcp__plugin_maasy-motion_becut__asset_upload, mcp__plugin_maasy-motion_becut__fal_run, Bash(uname -m), Bash(sw_vers -productVersion), Read(~/Movies/BeCut/films/**), Edit(~/Movies/BeCut/films/**), AskUserQuestion
 ---
 
 Maasy Motion usa la sesión del plugin `maasy` y la app Maasy Motion instalada en este Mac. El método de trabajo lo manda
 el servidor de Maasy, por partes y marcado con tu cuenta: no lo inventes, no lo cambies y no lo copies a otros archivos.
 
-1. **Sesión de Maasy.** Usa solo las tools del plugin, las que empiezan por `mcp__plugin_maasy_maasy__`. Si en la sesión hay
-   otro conector de Maasy con otros nombres, no lo uses: puede ser otra cuenta. Si no tienes ninguna tool
-   `mcp__plugin_maasy_maasy__*`, detente y muestra estas dos líneas: `/plugin install maasy` y después `/maasy:start`.
+1. **Sesión de Maasy.** Las tools de Maasy llegan por el servidor del plugin (`mcp__plugin_maasy_maasy__*`) o por el
+   conector de Maasy de tu cuenta de Claude (`mcp__claude_ai_Maasy_MCP__*`): cuando el conector apunta a la misma URL,
+   Claude Code descarta el del plugin y deja el del conector. Es la misma cuenta: usa el que exista y no importa el
+   prefijo. Si aparecen tools `maasy_*` bajo otro nombre de servidor, no las uses: puede ser otra cuenta. Si Claude
+   Code pide permiso para una tool de Maasy, es lo normal cuando viene del conector: pídeselo a la persona y sigue
+   cuando lo dé. Si no tienes
+   ninguna tool `maasy_*`, detente y muestra estas dos líneas: `/plugin install maasy` y después `/maasy:start`.
    Si las tienes pero faltan `maasy_get_motion_recipe` o `maasy_canvas_submit`, el plugin está bien y lo que falta es
-   iniciar sesión con la cuenta: dile a la persona que escriba `/mcp`, elija maasy y "Authenticate", y que vuelva a
+   iniciar sesión con la cuenta: dile a la persona que escriba `/mcp`, elija el servidor de Maasy (se llama maasy o
+   Maasy MCP, según si viene del plugin o de tu cuenta) y "Authenticate", y que vuelva a
    escribir `/maasy-motion:start`. Reinstalar no lo arregla. Si `maasy_list_brands` pide iniciar sesión, conecta Maasy (sigue
    lo que diga Claude) y vuelve a llamarla. Sin sesión no sigas.
 2. **El Mac y la app.** Maasy Motion corre en Mac con Apple Silicon y macOS 13 o más. Llama `doctor` de BeCut. Si la

@@ -30,20 +30,31 @@ export type TabRef = { id: string; plugin: string; key: string; tool: string; se
 
 const PANEL = /^mcp__plugin_([a-z0-9-]+)_([a-z0-9-]+)__([a-z][a-z0-9-]*)_panel$/
 
+/**
+ * El nombre que tendría la tool si viniera del servidor del plugin. El conector de Maasy de la cuenta
+ * (`mcp__claude_ai_Maasy_MCP__*`; `mcp__claude_ai_Maasy__*` si se llama Maasy) es el mismo servidor a la misma URL:
+ * cuando existen los dos, Claude Code descarta el del plugin y deja el del conector.
+ */
+const desdeConector = (tool: string): string =>
+  tool.replace(/^mcp__claude_ai_Maasy_MCP__/, 'mcp__plugin_maasy_maasy__').replace(/^mcp__claude_ai_Maasy__/, 'mcp__plugin_maasy_maasy__')
+
 /** De los nombres de `$.tool.list()` a las tabs: `mcp__plugin_<plugin>_<key>__<id>_panel`, solo con los ids de §4.1 `maasy_panel` ("Pedir a Maasy") es la del núcleo: solo vale la del plugin maasy y su servidor propio se conecta con la key. */
 export function descubrir(nombres: readonly string[]): TabRef[] {
   const out: TabRef[] = []
-  for (const n of nombres) {
-    const m = PANEL.exec(n)
+  for (const nombre of nombres) {
+    const normal = desdeConector(nombre)
+    const m = PANEL.exec(normal)
     const [, plugin, key, id] = m ?? []
     if (!plugin || !key || !id || !IDS_TAB.includes(id) || (id === 'maasy' && plugin !== 'maasy')) continue
-    out.push({ id, plugin, key, tool: `${id}_panel`, server: id === 'maasy' ? key : `plugin:${plugin}:${key}` })
+    // Del conector se guarda el servidor tal como lo nombra la sesión (`claude_ai_Maasy_MCP`): es el que existe.
+    const delConector = normal !== nombre ? nombre.slice(5, nombre.indexOf('__', 5)) : undefined
+    out.push({ id, plugin, key, tool: `${id}_panel`, server: delConector ?? (id === 'maasy' ? key : `plugin:${plugin}:${key}`) })
   }
   return out
 }
 
 /** ¿La tool `e.tool` es de ese servidor? Para refrescar la tab dueña después de cada una de sus tools (regla 6). */
-export const esDelServidor = (tool: string, t: Pick<TabRef, 'plugin' | 'key'>): boolean => tool.startsWith(`mcp__plugin_${t.plugin}_${t.key}__`)
+export const esDelServidor = (tool: string, t: Pick<TabRef, 'plugin' | 'key'>): boolean => desdeConector(tool).startsWith(`mcp__plugin_${t.plugin}_${t.key}__`)
 
 export type TabPlugin = { ref: TabRef; panel: PanelV1 | null; aviso: string | null; cargando: boolean }
 
@@ -169,7 +180,7 @@ const urlMarca = (v: unknown): string | null => {
 }
 
 export const TOOL_MAASY = /^mcp__plugin_maasy_maasy__maasy_(\w+)$/
-export const toolCorta = (tool: string): string | null => TOOL_MAASY.exec(tool)?.[1] ?? null
+export const toolCorta = (tool: string): string | null => TOOL_MAASY.exec(desdeConector(tool))?.[1] ?? null
 
 /** Lo que una tool maasy_* ya llamada cambia en las tabs Crear y Cuenta. El JSON roto o ajeno no cambia nada. */
 export function aplicar(crear: Crear, cuenta: Cuenta, tool: string, resultado: unknown): { crear: Crear; cuenta: Cuenta } {
