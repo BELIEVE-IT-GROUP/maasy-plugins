@@ -10,9 +10,9 @@ Cómo se numera:
 
 ## 1.3.1 (2026-11-27)
 
-- **Conector de Maasy en la cuenta:** capítulo 2 suma la sección "Si además tienes el conector de Maasy en tu cuenta". Explica que Claude Code usa uno solo de los dos servidores cuando apuntan a la misma URL (se queda con el de la cuenta, **Maasy MCP**), que los comandos y el panel funcionan igual, que la sesión se inicia una sola vez y que, con el conector, Claude pide permiso la primera vez que usa cada herramienta.
+- **Conector de Maasy en la cuenta:** capítulo 2 suma la sección "Si además tienes el conector de Maasy en tu cuenta". Explica que Claude Code usa uno solo de los dos servidores cuando apuntan a la misma URL (se queda con el de la cuenta, en `/mcp` **Maasy MCP** o el nombre que le ponga la app), que los comandos y el panel funcionan igual, que la sesión se inicia una sola vez y que, con el conector, Claude pide permiso la primera vez que usa cada herramienta.
 - **Capítulo 17:** dos filas nuevas para esos mismos casos (no ver el servidor del plugin, y las tarjetas de permiso).
-- **Comandos al día:** `maasy` 0.4.3, `maasy-motion` 0.2.8, `maasy-games` 0.1.3, `maasy-lens` 0.2.6, `maasy-aos` 0.1.3 y `maasy-vibe` 0.1.1 dejan de depender del nombre del servidor: piden las herramientas de Maasy por su nombre de tool, vengan del plugin o del conector.
+- **Comandos al día:** `maasy` 0.4.3, `maasy-motion` 0.2.8, `maasy-games` 0.1.3, `maasy-lens` 0.2.6, `maasy-aos` 0.1.3 y `maasy-vibe` 0.1.1 dejan de depender del nombre del servidor: piden las herramientas de Maasy por su nombre corto, vengan del plugin, del conector de la cuenta o de un servidor que la app de escritorio nombre con un identificador.
 
 ## 1.3.0 (2026-11-26)
 

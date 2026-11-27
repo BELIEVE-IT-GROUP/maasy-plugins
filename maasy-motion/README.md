@@ -2,7 +2,7 @@
 
 Maasy Motion en Claude Code y Claude Desktop. Conecta el MCP local de la app Maasy Motion (BeCut en modo externo,
 `/Applications/Maasy Motion.app`) y trae `/maasy-motion:start`. Requiere el plugin `maasy`: usa su sesión de Maasy
-(`mcp__plugin_maasy_maasy__*` o, si la cuenta tiene el conector de Maasy, `mcp__claude_ai_Maasy_MCP__*`: Claude Code descarta el servidor del plugin cuando el conector apunta a la misma URL) y no abre otra.
+(`maasy_*`, del servidor de Maasy que exista: el del plugin o el conector de la cuenta, que Claude Code deja en lugar del del plugin cuando apuntan a la misma URL) y no abre otra.
 
 ```
 /plugin install maasy-motion --marketplace BELIEVE-IT-GROUP/maasy-plugins

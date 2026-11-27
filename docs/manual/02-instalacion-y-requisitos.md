@@ -60,7 +60,7 @@ El panel no hace nada hasta que usas Maasy por primera vez. Si no lo ves, escrib
 
 ## Si además tienes el conector de Maasy en tu cuenta
 
-Algunas personas tienen Maasy conectado en **claude.ai** (la sección de conectores de su cuenta) además del plugin. Los dos llevan al mismo servidor y a la misma cuenta, así que Claude Code usa uno solo: se queda con el de tu cuenta, que en `/mcp` aparece como **Maasy MCP**, y descarta el del plugin. No es un error y no hay que hacer nada: no pierdes funciones ni tu marca.
+Algunas personas tienen Maasy conectado en **claude.ai** (la sección de conectores de su cuenta) además del plugin. Los dos llevan al mismo servidor y a la misma cuenta, así que Claude Code usa uno solo: se queda con el de tu cuenta y descarta el del plugin. En `/mcp` puede aparecer como **Maasy MCP** o con el nombre que le ponga la app de escritorio (a veces un identificador). Lo reconoces porque sus herramientas se llaman `maasy_*`: el prefijo del servidor no importa. No es un error y no hay que hacer nada: no pierdes funciones ni tu marca.
 
 Qué ves en ese caso:
 
@@ -69,7 +69,7 @@ Qué ves en ese caso:
 - **Claude pide permiso la primera vez.** Cuando las herramientas vienen del conector, Claude Code no las deja pasar sin que las apruebes. Es normal: aprueba la tarjeta y el comando sigue. Con el servidor del plugin no hace falta, porque ya viene aprobado.
 - **El panel se enciende igual.** Reconoce las herramientas del conector como las del plugin: las pestañas Crear y Cuenta, la franja de la entrevista y las pestañas de los otros plugins se actualizan con lo que devuelven.
 
-Si en la sesión aparecen dos servidores con herramientas de Maasy (por ejemplo, dos cuentas), Claude te lo dice y te pregunta antes de usar ninguna.
+Si en `/mcp` tienes más de una conexión de Maasy (por ejemplo, dos cuentas), dile a Claude cuál usar: las herramientas se llaman igual y las pide por su nombre.
 
 ## Dónde conviene instalar
 

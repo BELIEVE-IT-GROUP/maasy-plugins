@@ -1,12 +1,12 @@
 ---
 description: "Borra una marca de Maasy (pide confirmación) / Delete a Maasy brand (asks for confirmation)"
 argument-hint: "[nombre de la marca]"
-allowed-tools: mcp__plugin_maasy_maasy__maasy_list_brands, mcp__claude_ai_Maasy_MCP__*, mcp__claude_ai_Maasy__*, AskUserQuestion
+allowed-tools: AskUserQuestion
 ---
 
 Borrar una marca es difícil de deshacer. Solo la borra la persona, escribiendo el nombre exacto de la marca. La tool de borrado no está preaprobada: Claude Code pide permiso aparte, y eso es una segunda barrera a propósito.
 
-Las tools de Maasy llegan por el servidor del plugin (`mcp__plugin_maasy_maasy__*`) o por el conector de Maasy de tu cuenta de Claude (`mcp__claude_ai_Maasy_MCP__*`): cuando el conector apunta a la misma URL, Claude Code descarta el del plugin y deja el del conector. Es la misma cuenta: usa el que exista y no importa el prefijo. Si aparecen tools `maasy_*` bajo otro nombre de servidor, no las uses sin preguntar. Si Claude Code pide permiso para una tool de Maasy, es lo normal cuando viene del conector: pídeselo a la persona y sigue cuando lo dé.
+Las tools de Maasy llegan del servidor de Maasy que exista en tu sesión, con el prefijo que Claude Code le ponga (el del plugin, el conector de tu cuenta o el nombre que use la app de escritorio). Es la misma cuenta: pide cada tool por su nombre corto, `maasy_*`, sin prefijo. Si Claude Code pide permiso para una tool de Maasy, es lo normal cuando viene del conector: pídeselo a la persona y sigue cuando lo dé.
 
 1. Llama `maasy_list_brands`. Si "$ARGUMENTS" trae un nombre, búscalo en esa lista; si no, pregunta con `AskUserQuestion` cuál marca quiere borrar. Guarda el `project_id` de la marca elegida.
 2. Dile a la persona qué se borra y pídele que escriba el nombre de la marca para confirmar. Espera su respuesta.
