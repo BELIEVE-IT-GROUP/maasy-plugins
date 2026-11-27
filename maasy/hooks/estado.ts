@@ -30,14 +30,23 @@ export type TabRef = { id: string; plugin: string; key: string; tool: string; se
 
 const PANEL = /^mcp__plugin_([a-z0-9-]+)_([a-z0-9-]+)__([a-z][a-z0-9-]*)_panel$/
 
-/** De los nombres de `$.tool.list()` a las tabs: `mcp__plugin_<plugin>_<key>__<id>_panel`, solo con los ids de §4.1 `maasy_panel` ("Pedir a Maasy") es la del núcleo: solo vale la del plugin maasy y su servidor propio se conecta con la key. */
+/** La tab del núcleo puede venir de cualquier servidor de Maasy: el del plugin, el conector de la cuenta o el que la app de escritorio nombra con un uuid. */
+const PANEL_MAASY = /^mcp__.+__(maasy_panel)$/
+
+/** El servidor tal como lo nombra la sesión: lo que va entre `mcp__` y la tool. Es el que existe y al que se conecta. */
+const servidorDe = (tool: string): string => tool.slice(5, tool.indexOf('__', 5))
+
+/** De los nombres de `$.tool.list()` a las tabs: `mcp__plugin_<plugin>_<key>__<id>_panel`, solo con los ids de §4.1. `maasy_panel` ("Pedir a Maasy") es la del núcleo: vale la del plugin maasy o la de un conector de Maasy, y su servidor es el que de verdad existe en la sesión. */
 export function descubrir(nombres: readonly string[]): TabRef[] {
   const out: TabRef[] = []
-  for (const n of nombres) {
-    const m = PANEL.exec(n)
+  for (const nombre of nombres) {
+    const m = PANEL.exec(nombre)
     const [, plugin, key, id] = m ?? []
-    if (!plugin || !key || !id || !IDS_TAB.includes(id) || (id === 'maasy' && plugin !== 'maasy')) continue
-    out.push({ id, plugin, key, tool: `${id}_panel`, server: id === 'maasy' ? key : `plugin:${plugin}:${key}` })
+    if (plugin && key && id && IDS_TAB.includes(id) && (id !== 'maasy' || plugin === 'maasy')) {
+      out.push({ id, plugin, key, tool: `${id}_panel`, server: id === 'maasy' ? key : `plugin:${plugin}:${key}` })
+      continue
+    }
+    if (PANEL_MAASY.test(nombre)) out.push({ id: 'maasy', plugin: 'maasy', key: 'maasy', tool: 'maasy_panel', server: servidorDe(nombre) })
   }
   return out
 }
@@ -168,8 +177,9 @@ const urlMarca = (v: unknown): string | null => {
   return u && enlaceValido(u, ORIGENES.maasy ?? []) ? u : null
 }
 
-export const TOOL_MAASY = /^mcp__plugin_maasy_maasy__maasy_(\w+)$/
-export const toolCorta = (tool: string): string | null => TOOL_MAASY.exec(tool)?.[1] ?? null
+/** Toda tool de Maasy con cualquier servidor delante: el del plugin, el conector de la cuenta (`mcp__claude_ai_Maasy_MCP__*`, `mcp__claude_ai_Maasy__*`) o el que la app de escritorio nombra con un uuid. El nombre corto es lo único que importa. */
+export const TOOL_MAASY = /^mcp__.+__(maasy_[a-z_]+)$/
+export const toolCorta = (tool: string): string | null => TOOL_MAASY.exec(tool)?.[1]?.slice('maasy_'.length) ?? null
 
 /** Lo que una tool maasy_* ya llamada cambia en las tabs Crear y Cuenta. El JSON roto o ajeno no cambia nada. */
 export function aplicar(crear: Crear, cuenta: Cuenta, tool: string, resultado: unknown): { crear: Crear; cuenta: Cuenta } {

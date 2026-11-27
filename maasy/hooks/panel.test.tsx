@@ -4,6 +4,11 @@ import { expect, test } from 'claude-code/testing'
 
 const CWD = '/tmp/mi-marca'
 const OWN = 'mcp__plugin_maasy_maasy__maasy_get_interview_spec'
+const CONECTOR = 'mcp__claude_ai_Maasy_MCP__maasy_get_interview_spec'
+// La app de escritorio nombra el conector con un uuid: el prefijo no dice nada, el nombre corto sí.
+const UUID = 'ade2a058-0000-0000-0000-000000000000'
+const UUID_TOOL = `mcp__${UUID}__maasy_list_brands`
+const UUID_SPEC = `mcp__${UUID}__maasy_get_interview_spec`
 const CREAR = 'mcp__plugin_maasy_maasy__maasy_create_brand'
 const VIBE_TOOL = 'mcp__plugin_maasy-vibe_vibe__vibe_panel'
 const AJENA = 'mcp__plugin_otro_otro__otro_panel'
@@ -96,6 +101,9 @@ function motor(on: Parameters<Parameters<typeof test>[1]>[1], opts: { vibe?: unk
     return { value: { command: 'maasy-panel' } }
   })
   on('tool.call', { tool: OWN }, () => ({ result: { content: [{ type: 'text', text: JSON.stringify(INDICE) }] } }))
+  on('tool.call', { tool: CONECTOR }, () => ({ result: { content: [{ type: 'text', text: JSON.stringify(INDICE) }] } }))
+  on('tool.call', { tool: UUID_TOOL }, () => ({ result: { content: [{ type: 'text', text: JSON.stringify(INDICE) }] } }))
+  on('tool.call', { tool: UUID_SPEC }, () => ({ result: { content: [{ type: 'text', text: JSON.stringify(INDICE) }] } }))
   on('session.start', (_, e) => ({ cwd: e.cwd }))
   return r
 }
@@ -154,6 +162,34 @@ for (const surface of ['terminal', 'desktop'] as const) {
     expect(r.submits).toBe(0)
   })
 
+  test(`la primera tool maasy_* del conector de la cuenta también enciende el panel · ${surface}`, async ($, on) => {
+    // Claude Code descarta el servidor del plugin cuando la cuenta tiene el conector de Maasy a la misma URL:
+    // las tools llegan como mcp__claude_ai_Maasy_MCP__* y el panel tiene que reconocerlas igual.
+    const r = motor(on)
+    await $.session.start({ cwd: CWD, surface, isInteractive: true })
+    await $.tool.call({ tool: CONECTOR })
+    await hasta(() => r.calls.length > 0)
+    expect(r.abiertos).toBe(1)
+    expect(r.connects).toEqual(['plugin:maasy-vibe:vibe'])
+    const ui = await $.ui.mount(pane(surface))
+    expect((await ui.find({ type: 'Text', text: /^ADN de tu marca/ }))?.text).toContain('38%')
+    await ui.unmount()
+  })
+
+  test(`la primera tool maasy_* de un servidor con uuid también enciende el panel · ${surface}`, async ($, on) => {
+    // En Claude Desktop el conector llega con un uuid como servidor: mcp__<uuid>__maasy_list_brands.
+    const r = motor(on)
+    await $.session.start({ cwd: CWD, surface, isInteractive: true })
+    await $.tool.call({ tool: UUID_TOOL })
+    await $.tool.call({ tool: UUID_SPEC })
+    await hasta(() => r.calls.length > 0)
+    expect(r.abiertos).toBe(1)
+    expect(r.connects).toEqual(['plugin:maasy-vibe:vibe'])
+    const ui = await $.ui.mount(pane(surface))
+    expect((await ui.find({ type: 'Text', text: /^ADN de tu marca/ }))?.text).toContain('38%')
+    await ui.unmount()
+  })
+
   test(`la tab del plugin se pinta por bloques, descarta el bloque desconocido y el enlace de otro origen · ${surface}`, async ($, on) => {
     const r = motor(on)
     await $.session.start({ cwd: CWD, surface, isInteractive: true })
@@ -200,6 +236,19 @@ test('version distinta de 1: "Actualiza el plugin maasy-vibe"', async ($, on) =>
   expect(await ui.find({ type: 'Text', text: /Actualiza el plugin maasy-vibe/ })).toBeDefined()
   await ui.unmount()
 })
+
+for (const nombre of ['claude_ai_Maasy_MCP', UUID]) {
+  test(`con el conector de Maasy, la tab del núcleo se pide al servidor que existe (${nombre})`, async ($, on) => {
+    const PANEL_CONECTOR = `mcp__${nombre}__maasy_panel`
+    const r = motor(on, { tools: [PANEL_CONECTOR] })
+    await $.session.start({ cwd: CWD, surface: 'desktop', isInteractive: true })
+    await $.tool.call({ tool: CONECTOR })
+    await hasta(() => r.connects.length > 0)
+    expect(r.connects).toEqual([nombre])
+    await hasta(() => r.calls.length > 0)
+    expect(r.calls).toEqual([`${nombre}:maasy_panel`])
+  })
+}
 
 test('brandId: cada <id>_panel recibe la marca activa y al cambiar de marca se vacían las tabs', async ($, on) => {
   const r = motor(on)
