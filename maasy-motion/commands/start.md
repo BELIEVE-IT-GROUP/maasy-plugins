@@ -1,7 +1,7 @@
 ---
 description: Empieza con Maasy Motion. Trae tu marca de Maasy y arma un video en tu Mac
 argument-hint: "[qué video quieres]"
-allowed-tools: mcp__plugin_maasy_maasy__maasy_list_brands, mcp__plugin_maasy_maasy__maasy_get_design_md, mcp__plugin_maasy_maasy__maasy_get_brand_dna, mcp__plugin_maasy_maasy__maasy_get_brand_context, mcp__plugin_maasy_maasy__maasy_get_motion_recipe, mcp__plugin_maasy_maasy__maasy_upload_asset, mcp__plugin_maasy_maasy__maasy_canvas_submit, mcp__plugin_maasy_maasy__maasy_canvas_list, mcp__plugin_maasy-motion_becut__doctor, mcp__plugin_maasy-motion_becut__brand_put, mcp__plugin_maasy-motion_becut__brand_reconcile, mcp__plugin_maasy-motion_becut__brand_list, mcp__plugin_maasy-motion_becut__brand_set, mcp__plugin_maasy-motion_becut__hub_new_film, mcp__plugin_maasy-motion_becut__hub_live, mcp__plugin_maasy-motion_becut__hub_frame, mcp__plugin_maasy-motion_becut__hub_notes, mcp__plugin_maasy-motion_becut__film_poster, mcp__plugin_maasy-motion_becut__asset_upload, mcp__plugin_maasy-motion_becut__fal_run, Bash(uname -m), Bash(sw_vers -productVersion), Read(~/Movies/BeCut/films/**), Edit(~/Movies/BeCut/films/**), AskUserQuestion
+allowed-tools: mcp__plugin_maasy_maasy__maasy_list_brands, mcp__plugin_maasy_maasy__maasy_get_design_md, mcp__plugin_maasy_maasy__maasy_get_brand_dna, mcp__plugin_maasy_maasy__maasy_get_brand_context, mcp__plugin_maasy_maasy__maasy_get_motion_recipe, mcp__plugin_maasy_maasy__maasy_upload_asset, mcp__plugin_maasy_maasy__maasy_canvas_submit, mcp__plugin_maasy_maasy__maasy_canvas_list, mcp__plugin_maasy-motion_becut__doctor, mcp__plugin_maasy-motion_becut__motion_panel, mcp__plugin_maasy-motion_becut__brand_put, mcp__plugin_maasy-motion_becut__brand_reconcile, mcp__plugin_maasy-motion_becut__brand_list, mcp__plugin_maasy-motion_becut__brand_set, mcp__plugin_maasy-motion_becut__hub_new_film, mcp__plugin_maasy-motion_becut__hub_live, mcp__plugin_maasy-motion_becut__hub_frame, mcp__plugin_maasy-motion_becut__hub_notes, mcp__plugin_maasy-motion_becut__film_poster, mcp__plugin_maasy-motion_becut__asset_upload, mcp__plugin_maasy-motion_becut__fal_run, Bash(uname -m), Bash(sw_vers -productVersion), Read(~/Movies/BeCut/films/**), Edit(~/Movies/BeCut/films/**), AskUserQuestion
 ---
 
 Maasy Motion usa la sesión del plugin `maasy` y la app Maasy Motion instalada en este Mac. El método de trabajo lo manda
@@ -45,7 +45,9 @@ el servidor de Maasy, por partes y marcado con tu cuenta: no lo inventes, no lo 
    un render más liviano y no subas el máster. Después, `maasy_canvas_submit` con `kind: "video"`,
    `plugin: "maasy-motion"`, `client_ref: "film:<id>:v<versión>"` (y `parent_ref` con el de la versión anterior si la
    hubo), `title`, `content_text` (el guion, en el idioma de salida de la marca), `duration_s`,
-   `media: [{upload_id, role: "main"}, {upload_id, role: "poster"}]` y `meta: {film_id, version}`. Muestra el
+   `media: [{upload_id, role: "main"}, {upload_id, role: "poster"}]`, `meta: {film_id, version}` y `panel`: lo que
+   devuelve `motion_panel` con ese `film` y `brandId` = el `project_id`, llamado justo antes y sin cambiarlo (si falla,
+   manda la tarjeta sin `panel`). Muestra el
    `canvas_url` que devuelve: la persona aprueba o descarta en la web. Registra la tarjeta con `asset_upload` (`film`,
    `file` = el video, `card` = el id o el `canvas_url` de la tarjeta, `version`): sin eso la app sigue mostrando que
    falta enviarlo. Si alguna de esas tools no existe todavía, dilo
