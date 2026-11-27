@@ -12,8 +12,8 @@ Los archivos locales se miden con `wc` y `file` (macOS y Linux). El logo por URL
 
 ## Panel (MEC-15 y MEC-16)
 
-`hooks/panel.tsx` es el mod del núcleo: un solo panel con pestañas (Crear, Cuenta y las de los plugins que traen una tool
-`<id>_panel`), la entrevista con su avance y la franja `.cd-plugbar`. Contrato: `panel.v1` (`contrato-tabs-panel.md`).
+`hooks/panel.tsx` es el mod del núcleo: un solo panel con pestañas (Crear, Cuenta, "Pedir a Maasy" —el catálogo, que
+manda la tool `maasy_panel` del servidor— y las de los plugins que traen una tool `<id>_panel`), la entrevista con su avance y la franja `.cd-plugbar`. Contrato: `panel.v1` (`contrato-tabs-panel.md`).
 Inerte hasta la primera tool `maasy_*` o `/maasy-panel`: al arrancar solo registra el comando.
 
 - `hooks/panel-v1.ts`: validador por partes (un bloque malo se descarta, no la tab) y enlaces contra el origen de cada tab.
@@ -28,6 +28,19 @@ Instalación (cuando el repo `BELIEVE-IT-GROUP/maasy-plugins` se publique, con e
 /plugin marketplace add BELIEVE-IT-GROUP/maasy-plugins
 /plugin install maasy@maasy
 ```
+
+## Dónde se usa completo
+
+Maasy funciona en el chat de Claude y en la pestaña Code de la app de Claude (Claude Code). En el chat tienes a Maasy; en Code tienes la Suite.
+
+| | Pestaña Code | Chat |
+|---|---|---|
+| Pedir piezas y dejarlas en tu Canvas | Sí | Sí |
+| El panel con pestañas (Maasy, Feed, Ads, Games...) | Sí | No |
+| La carpeta de tu marca con su bitácora (`~/Maasy/<marca>/`) | Sí | No |
+| Motion, Lens y Vibe, que trabajan en tu Mac | Sí | No |
+
+`/maasy:start` crea tu cuenta y tu marca. `/maasy:marca` abre una marca para trabajar: su carpeta, lo que ya hay en tu Canvas y qué mover ahora.
 
 ## Licencia
 
