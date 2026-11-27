@@ -45,9 +45,13 @@ el servidor de Maasy, por partes y marcado con tu cuenta: no lo inventes, no lo 
    un render más liviano y no subas el máster. Después, `maasy_canvas_submit` con `kind: "video"`,
    `plugin: "maasy-motion"`, `client_ref: "film:<id>:v<versión>"` (y `parent_ref` con el de la versión anterior si la
    hubo), `title`, `content_text` (el guion, en el idioma de salida de la marca), `duration_s`,
-   `media: [{upload_id, role: "main"}, {upload_id, role: "poster"}]`, `meta: {film_id, version}` y `panel`: lo que
+   `media: [{upload_id, role: "main"}, {upload_id, role: "poster"}]`, `meta` y `panel`: lo que
    devuelve `motion_panel` con ese `film` y `brandId` = el `project_id`, llamado justo antes y sin cambiarlo (si falla,
-   manda la tarjeta sin `panel`). Muestra el
+   manda la tarjeta sin `panel`). `meta` = `{film_id, version, notas_abiertas, notas_corregidas, loudness_lufs, recipe}`:
+   `notas_abiertas` y `notas_corregidas` son los conteos de `hub_notes` con `status: "all"` (abiertas = `open`, `claude`
+   o `still`; corregidas = `fixed`); `loudness_lufs` es el LUFS del bloque Versiones de `motion_panel` para la versión
+   que envías; `recipe` es solo la etiqueta de versión que devuelve `maasy_get_motion_recipe` (por ejemplo `1.6.0`),
+   nunca su contenido. El meta pesa menos de 2 KB. Si un dato no está, se omite: nunca se inventa. Muestra el
    `canvas_url` que devuelve: la persona aprueba o descarta en la web. Registra la tarjeta con `asset_upload` (`film`,
    `file` = el video, `card` = el id o el `canvas_url` de la tarjeta, `version`): sin eso la app sigue mostrando que
    falta enviarlo. Después llama otra vez `motion_panel` y repite el mismo `maasy_canvas_submit` (mismos campos y `client_ref`) con ese `panel`: así la tarjeta ya no dice que falta enviarla. Si alguna de esas tools no existe todavía, dilo
