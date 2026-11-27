@@ -29,6 +29,9 @@ export type Resultado =
   | { ok: false; motivo: 'version' | 'formato'; texto: string }
 
 export const TOPES = { bloques: 12, corto: 60, largo: 280, pedido: 500, pasos: 30, checklist: 30, filas: 20, kv: 12, metricas: 6, enlaces: 12, bytes: 32 * 1024 }
+
+/** Lo que una tab muestra cuando no llegó su `<id>_panel`: qué falta y con qué comando se vuelve a pedir. */
+export const SIN_DATOS = 'Sin datos por ahora. Corre /maasy-panel para volver a pedirlos.'
 const TONOS = ['ok', 'info', 'warn', 'error', 'neutro']
 const NO = Symbol('no')
 type V<T> = T | typeof NO
@@ -182,13 +185,13 @@ const ID_TAB = /^[a-z][a-z0-9-]{1,23}$/
 
 /** raw: el JSON ya parseado. Cabecera por partes, después cada bloque; un bloque malo se cuenta y se descarta. */
 export function validarPanel(raw: unknown, idPlugin: string): Resultado {
-  if (!esObj(raw)) return { ok: false, motivo: 'formato', texto: 'Sin datos por ahora' }
+  if (!esObj(raw)) return { ok: false, motivo: 'formato', texto: SIN_DATOS }
   if (raw.version !== 1) return { ok: false, motivo: 'version', texto: `Actualiza el plugin ${idPlugin}` }
   const tab = raw.tab
   const titulo = esObj(tab) ? txt(tab.titulo, 24) : NO
   if (!forma(tab, ['id', 'titulo', 'orden'], []) || typeof tab.id !== 'string' || !ID_TAB.test(tab.id) || titulo === NO || !Number.isInteger(tab.orden) || (tab.orden as number) < 1 || (tab.orden as number) > 999)
-    return { ok: false, motivo: 'formato', texto: 'Sin datos por ahora' }
-  if (typeof raw.updated_at !== 'string' || !FECHA.test(raw.updated_at) || !Array.isArray(raw.bloques)) return { ok: false, motivo: 'formato', texto: 'Sin datos por ahora' }
+    return { ok: false, motivo: 'formato', texto: SIN_DATOS }
+  if (typeof raw.updated_at !== 'string' || !FECHA.test(raw.updated_at) || !Array.isArray(raw.bloques)) return { ok: false, motivo: 'formato', texto: SIN_DATOS }
   let franja: Franja | undefined
   if (esObj(raw.franja) && forma(raw.franja, ['texto'], ['paso'])) {
     const f = armar<Franja>({ texto: txt(raw.franja.texto, TOPES.largo), paso: opc(raw.franja, 'paso', accion) })

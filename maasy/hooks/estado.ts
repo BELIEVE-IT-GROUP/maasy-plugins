@@ -1,7 +1,7 @@
 // Lógica pura del panel de Maasy (MEC-15 y MEC-16). Sin motor: se prueba con Deno (estado.test.ts).
 // El panel lee lo que ya pasa por el chat (resultado de las tools maasy_* y de las <id>_panel) y nunca llama a
 // una tool que escriba.
-import { enlaceValido, filtrarEnlaces, filtrarPedidos, limpio, type PanelV1, validarPanel } from './panel-v1'
+import { enlaceValido, filtrarEnlaces, filtrarPedidos, limpio, SIN_DATOS, type PanelV1, validarPanel } from './panel-v1'
 
 // ---------------- Enlaces permitidos (§4): el origen de cada tab.id lo fija el núcleo, no el plugin ----------------
 // Copia fija de la tabla de §4.1 mientras MEC-34 no sirva `ui_origins`. Todas admiten además la Suite.
@@ -103,13 +103,13 @@ const TOPE_BYTES = 32 * 1024
 
 /** La respuesta de una `<id>_panel` a la tab que se dibuja: valida, filtra enlaces y nunca lanza. */
 export function tabDeRespuesta(ref: TabRef, r: unknown): { panel: PanelV1 | null; aviso: string | null } {
-  if (bytesDe(r) > TOPE_BYTES * 2 + 1024) return { panel: null, aviso: 'Sin datos por ahora' } // antes de parsear: la respuesta trae el JSON dos veces (structuredContent y texto)
+  if (bytesDe(r) > TOPE_BYTES * 2 + 1024) return { panel: null, aviso: SIN_DATOS } // antes de parsear: la respuesta trae el JSON dos veces (structuredContent y texto)
   const json = leerJson(r)
-  if (bytesDe(json) > TOPE_BYTES) return { panel: null, aviso: 'Sin datos por ahora' } // §2: 32 KB de JSON
+  if (bytesDe(json) > TOPE_BYTES) return { panel: null, aviso: SIN_DATOS } // §2: 32 KB de JSON
   const res = validarPanel(json, ref.plugin)
   if (!res.ok) return { panel: null, aviso: res.texto }
   // La tab dice quién es: tiene que ser la del servidor que respondió (otro id sería hacerse pasar por otra tab)
-  if (res.panel.tab.id !== ref.id) return { panel: null, aviso: 'Sin datos por ahora' }
+  if (res.panel.tab.id !== ref.id) return { panel: null, aviso: SIN_DATOS }
   return { panel: filtrarPedidos(filtrarEnlaces(res.panel, ORIGENES[ref.id] ?? []), ref.plugin), aviso: null }
 }
 

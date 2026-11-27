@@ -31,6 +31,7 @@ import {
   type TabPlugin
 } from './estado'
 import type { Accion, Bloque } from './panel-v1'
+import { SIN_DATOS } from './panel-v1'
 import { COLOR_TONO, TOKENS } from './tokens.generated'
 
 const PANE = { id: 'maasy-panel', title: 'Maasy' } as const
@@ -61,7 +62,7 @@ async function cargarTab($: Engine, ref: TabPlugin['ref']): Promise<void> {
   cargaVigente.set(ref.server, n)
   const brandId = (await read($, panel)).brandId
   await poner($, ref, () => ({ cargando: true }))
-  let resultado: { panel: TabPlugin['panel']; aviso: string | null } = { panel: null, aviso: 'Sin datos por ahora' }
+  let resultado: { panel: TabPlugin['panel']; aviso: string | null } = { panel: null, aviso: SIN_DATOS }
   try {
     const c = await tope($, $.mcp.connect(ref.server)) // regla 2: connect también tiene tope de 3 s
     if (c?.isConnected) {
@@ -301,9 +302,9 @@ function pluginUI($: Engine, ui: Elementos, t: TabPlugin) {
   return (
     <Box flexDirection="column" gap={1}>
       {t.cargando && !t.panel && <Text color={SEÑAL}>Cargando…</Text>}
-      {!t.panel && !t.cargando && <Text color={DIM}>{t.aviso ?? 'Sin datos por ahora'}</Text>}
+      {!t.panel && !t.cargando && <Text color={DIM}>{t.aviso ?? SIN_DATOS}</Text>}
       {t.panel?.bloques.map((b, n) => bloqueUI($, ui, b, `${t.ref.id}-${n}`))}
-      {t.panel && t.panel.bloques.length === 0 && <Text color={DIM}>Sin datos por ahora</Text>}
+      {t.panel && t.panel.bloques.length === 0 && <Text color={DIM}>{SIN_DATOS}</Text>}
       <Button key={`act-${t.ref.id}`} plain hotkey="r" onPress={() => void cargarTab($, t.ref).catch(() => {})}>
         Actualizar
       </Button>
@@ -373,7 +374,7 @@ export const register: Register = (on) => {
             )
           )}
         </Box>
-        {abierta === 'crear' ? crearUI($, ui, p) : abierta === 'cuenta' ? cuentaUI(ui, p) : actual ? pluginUI($, ui, actual) : <Text color={DIM}>Sin datos por ahora</Text>}
+        {abierta === 'crear' ? crearUI($, ui, p) : abierta === 'cuenta' ? cuentaUI(ui, p) : actual ? pluginUI($, ui, actual) : <Text color={DIM}>{SIN_DATOS}</Text>}
         <Button key="actualizar-todo" plain dimColor onPress={() => void descubrirTabs($).catch(() => {})}>
           Actualizar pestañas
         </Button>

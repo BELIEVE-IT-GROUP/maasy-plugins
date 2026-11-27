@@ -175,7 +175,7 @@ for (const surface of ['terminal', 'desktop'] as const) {
   })
 }
 
-test('una tab que no responde en 3 s muestra "Sin datos por ahora" y no rompe el panel', async ($, on) => {
+test('una tab que no responde en 3 s dice qué falta y qué comando la vuelve a pedir, y no rompe el panel', async ($, on) => {
   const r = motor(on, { colgado: true })
   await $.session.start({ cwd: CWD, surface: 'desktop', isInteractive: true })
   await $.tool.call({ tool: OWN })
@@ -183,7 +183,9 @@ test('una tab que no responde en 3 s muestra "Sin datos por ahora" y no rompe el
   await unRato()
   const ui = await $.ui.mount(pane('desktop'))
   await ui.press({ key: 'tab-vibe' })
-  expect(await ui.find({ type: 'Text', text: /Sin datos por ahora/ })).toBeDefined()
+  const aviso = await ui.find({ type: 'Text', text: /Sin datos por ahora/ })
+  expect(aviso).toBeDefined()
+  expect(aviso?.text).toContain('/maasy-panel')
   await ui.unmount()
 })
 
@@ -245,7 +247,7 @@ test('un plugin ajeno (id fuera de la lista cerrada) no se vuelve tab ni recibe 
   await ui.unmount()
 })
 
-test('un connect que no responde en 3 s deja "Sin datos por ahora"', async ($, on) => {
+test('un connect que no responde en 3 s deja el aviso con el comando que la vuelve a pedir', async ($, on) => {
   const r = motor(on, { connectColgado: true })
   await $.session.start({ cwd: CWD, surface: 'desktop', isInteractive: true })
   await $.tool.call({ tool: OWN })
@@ -253,6 +255,8 @@ test('un connect que no responde en 3 s deja "Sin datos por ahora"', async ($, o
   await unRato()
   const ui = await $.ui.mount(pane('desktop'))
   await ui.press({ key: 'tab-vibe' })
-  expect(await ui.find({ type: 'Text', text: /Sin datos por ahora/ })).toBeDefined()
+  const aviso = await ui.find({ type: 'Text', text: /Sin datos por ahora/ })
+  expect(aviso).toBeDefined()
+  expect(aviso?.text).toContain('/maasy-panel')
   await ui.unmount()
 })
