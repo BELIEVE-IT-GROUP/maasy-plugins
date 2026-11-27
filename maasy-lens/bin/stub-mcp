@@ -1,0 +1,201 @@
+#!/usr/bin/perl
+# Servidor MCP mínimo de Maasy Lens. bin/lens lo arranca cuando Lens todavía no está instalado, así el servidor
+# contesta siempre y Claude no guarda en caché una conexión fallida durante 15 minutos.
+#   - Responde initialize y tools/list con una sola tool, estado, que dice cómo instalar.
+#   - Mientras tanto mira si bin/instalar terminó (escribe VERSION). Cuando terminó, arranca el servidor de verdad,
+#     le repite el saludo de la conversación, le pasa el stdio y avisa notifications/tools/list_changed: las tools de
+#     Lens aparecen solas, sin /mcp ni reiniciar nada.
+#   - Si el servidor de verdad no arranca, sigue contestando estado y lo dice en la tool y en el log del cliente.
+# Es Perl porque macOS siempre lo trae en /usr/bin/perl y todavía no hay Python instalado.
+use strict;
+use warnings;
+use utf8;
+use IO::Select;
+use IPC::Open2;
+use JSON::PP ();
+use File::Basename ();
+
+$| = 1;
+my $D = $ENV{BELENS_HOME} || (($ENV{HOME} || "") . "/.maasy-lens");
+my $RAIZ = $ENV{MAASY_LENS_RAIZ} || File::Basename::dirname(File::Basename::dirname($0));
+if ($RAIZ =~ m{^(.*)/bin$}) { $RAIZ = $1 }
+my $MB = $ENV{MAASY_LENS_TAMANO_MB} || "886";
+my $VERSION = "0";
+if ($RAIZ && open(my $pj, "<", "$RAIZ/.claude-plugin/plugin.json")) {
+  my $t = do { local $/; <$pj> };
+  close $pj;
+  my $o = eval { JSON::PP->new->utf8->decode($t) };
+  $VERSION = $o->{version} if ref($o) eq "HASH" && $o->{version};
+}
+
+my $json = JSON::PP->new->utf8->allow_nonref;
+my %buf;    # lo leído de cada handle que todavía no forma una línea
+my $falla = "";   # por qué el servidor de verdad no arrancó, si pasó
+my $protocolo = "2025-06-18";
+my $cliente;
+
+sub lista { return index($buf{ fileno($_[0]) } // "", "\n") >= 0 }
+
+sub leer {   # una línea JSON completa; necesita que lista() haya dicho que hay una
+  my $k = fileno($_[0]);
+  while (1) {
+    my $i = index($buf{$k} // "", "\n");
+    if ($i >= 0) {
+      my $l = substr($buf{$k}, 0, $i);
+      substr($buf{$k}, 0, $i + 1, "");
+      return $l;
+    }
+    my $n = sysread($_[0], my $trozo, 65536);
+    return undef unless defined $n && $n > 0;   # EOF
+    $buf{$k} = ($buf{$k} // "") . $trozo;
+  }
+}
+
+sub al_cliente { print STDOUT $_[0], "\n" }
+sub al_servidor {   # syswrite: el pipe del servidor no tiene autoflush
+  my ($fh, $s) = @_;
+  $s .= "\n";
+  while (length $s) {
+    my $n = syswrite($fh, $s);
+    last unless $n;
+    substr($s, 0, $n, "");
+  }
+}
+sub json_al_servidor { al_servidor($_[0], $json->encode($_[1])) }
+sub resultado { return { jsonrpc => "2.0", id => $_[0], result => $_[1] } }
+sub error { return { jsonrpc => "2.0", id => $_[0], error => { code => $_[1], message => $_[2] } } }
+
+sub texto_estado {
+  my $s = "Maasy Lens no está instalado en este Mac todavía. Corre /maasy-lens:estado: te dice cuánto ocupa "
+    . "(unos $MB MB) y cuánto tarda, pide tu confirmación y lo instala. Cuando termine, las tools de Lens aparecen "
+    . "solas en esta misma conversación: no hay que reconectar /mcp ni reiniciar nada.";
+  $s .= " Ojo: la instalación terminó pero el servidor de Lens no arrancó ($falla). Corre /maasy-lens:estado otra vez."
+    if $falla;
+  return $s;
+}
+
+my $TOOL_ESTADO = {
+  name => "estado",
+  description => "Dice si Maasy Lens está instalado en este Mac y, si falta, cuánto ocupa y cómo instalarlo.",
+  inputSchema => { type => "object", properties => {} },
+};
+
+sub atiende {   # lo que llega mientras Lens no está instalado
+  my $o = eval { $json->decode($_[0]) };
+  return unless ref($o) eq "HASH" && ($o->{method} // "") ne "";
+  my $m = $o->{method};
+  my $id = $o->{id};
+  return if $m eq "notifications/initialized" || $m eq "initialized";
+  if ($m eq "initialize") {
+    $protocolo = $o->{params}{protocolVersion} if ref($o->{params}) eq "HASH" && $o->{params}{protocolVersion};
+    $cliente = $o->{params}{clientInfo} if ref($o->{params}) eq "HASH";
+    return al_cliente($json->encode(resultado($id, {
+      protocolVersion => $protocolo,
+      capabilities => { tools => { listChanged => \1 } },
+      serverInfo => { name => "belens", version => $VERSION },
+      instructions => "Maasy Lens está a medio instalar: solo existe la tool estado, que dice cómo terminar. "
+        . "No intentes ver videos todavía.",
+    })));
+  }
+  return unless defined $id;   # una notificación no se responde
+  return al_cliente($json->encode(resultado($id, {}))) if $m eq "ping";
+  return al_cliente($json->encode(resultado($id, { tools => [$TOOL_ESTADO] }))) if $m eq "tools/list";
+  if ($m eq "tools/call") {
+    my $n = ref($o->{params}) eq "HASH" ? ($o->{params}{name} // "") : "";
+    return al_cliente($json->encode(resultado($id, { content => [{ type => "text", text => texto_estado() }] })))
+      if $n eq "estado";
+    return al_cliente($json->encode(resultado($id, {
+      content => [{ type => "text", text => "Hasta que Maasy Lens se instale solo existe la tool estado." }],
+      isError => \1,
+    })));
+  }
+  return al_cliente($json->encode(error($id, -32601, "Maasy Lens no está instalado todavía: corre /maasy-lens:estado.")));
+}
+
+sub instalado { return -x "$D/venv/bin/python" && -f "$D/belens.py" && -f "$D/VERSION" }
+
+sub bucle_stub {
+  my $esperar = shift;   # 1: se puede ir cuando la instalación termina
+  my $sel = IO::Select->new(\*STDIN);
+  while (1) {
+    unless (lista(\*STDIN)) {
+      return if $esperar && instalado();
+      next unless $sel->can_read(2);   # 2 s sin nada: vuelve a mirar la instalación
+    }
+    my $l = leer(\*STDIN);
+    return unless defined $l;   # la conversación cerró
+    atiende($l);
+  }
+}
+
+sub pasar_a_real {
+  my ($rd, $wr);
+  # por bin/lens, que pone BELENS_EXTERNO=1 (D10: sin cookies ni sesiones), BELENS_HOME y el PATH de los binarios
+  my $pid = eval { open2($rd, $wr, "$RAIZ/bin/lens", "mcp") };
+  if (!$pid) {
+    $falla = "no arrancó: $@";
+    return undef;
+  }
+  my $saludo = { jsonrpc => "2.0", id => "lens-saludo", method => "initialize",
+                 params => { protocolVersion => $protocolo, capabilities => {},
+                             clientInfo => $cliente || { name => "maasy-lens", version => $VERSION } } };
+  json_al_servidor($wr, $saludo);
+  my $sel = IO::Select->new($rd);
+  my $ok = 0;
+  while ($sel->can_read(30)) {
+    my $l = leer($rd);
+    last unless defined $l;
+    my $r = eval { $json->decode($l) };
+    next unless ref($r) eq "HASH" && defined $r->{id} && "$r->{id}" eq "lens-saludo";
+    $ok = 1;
+    last;
+  }
+  if (!$ok) {
+    $falla = "Lens no contestó el saludo";
+    close $wr;
+    close $rd;
+    kill "TERM", $pid;
+    waitpid($pid, 0);
+    return undef;
+  }
+  json_al_servidor($wr, { jsonrpc => "2.0", method => "notifications/initialized" });
+  al_cliente('{"jsonrpc":"2.0","method":"notifications/tools/list_changed"}');
+  return [$rd, $wr, $pid];
+}
+
+sub bucle_proxy {
+  my ($rd, $wr, $pid) = @{ $_[0] };
+  my $sel = IO::Select->new(\*STDIN, $rd);
+  PROXY: while (1) {
+    if (lista(\*STDIN)) {
+      my $l = leer(\*STDIN);
+      last unless defined $l;   # la conversación cerró: se cierra el servidor de verdad
+      al_servidor($wr, $l);
+      next;
+    }
+    if (lista($rd)) {
+      my $l = leer($rd);
+      last unless defined $l;
+      al_cliente($l);
+      next;
+    }
+    my @listos = $sel->can_read(5);
+    if (!@listos) {
+      last if waitpid($pid, 1) > 0;   # el servidor de verdad murió
+      next;
+    }
+    for my $fh (@listos) {
+      my $l = leer($fh);
+      last PROXY unless defined $l;
+      if (fileno($fh) == fileno(\*STDIN)) { al_servidor($wr, $l) } else { al_cliente($l) }
+    }
+  }
+  close $wr;
+  close $rd;
+  kill "TERM", $pid if kill 0, $pid;
+  waitpid($pid, 0);
+}
+
+bucle_stub(1);
+my $real = pasar_a_real();
+if ($real) { bucle_proxy($real) } else { bucle_stub(0) }   # sin servidor de verdad: sigue contestando estado

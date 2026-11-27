@@ -7,13 +7,20 @@ allowed-tools: mcp__plugin_maasy_maasy__maasy_list_brands, mcp__plugin_maasy_maa
 Maasy Motion usa la sesión del plugin `maasy` y la app Maasy Motion instalada en este Mac. El método de trabajo lo manda
 el servidor de Maasy, por partes y marcado con tu cuenta: no lo inventes, no lo cambies y no lo copies a otros archivos.
 
-1. **Sesión de Maasy.** Si no tienes las tools `mcp__plugin_maasy_maasy__*`, detente y muestra estas dos líneas:
-   `/plugin install maasy` y después `/maasy:start`. Si `maasy_list_brands` pide iniciar sesión, conecta Maasy (sigue
+1. **Sesión de Maasy.** Usa solo las tools del plugin, las que empiezan por `mcp__plugin_maasy_maasy__`. Si en la sesión hay
+   otro conector de Maasy con otros nombres, no lo uses: puede ser otra cuenta. Si no tienes ninguna tool
+   `mcp__plugin_maasy_maasy__*`, detente y muestra estas dos líneas: `/plugin install maasy` y después `/maasy:start`.
+   Si las tienes pero faltan `maasy_get_motion_recipe` o `maasy_canvas_submit`, el plugin está bien y lo que falta es
+   iniciar sesión con la cuenta: dile a la persona que escriba `/mcp`, elija maasy y "Authenticate", y que vuelva a
+   escribir `/maasy-motion:start`. Reinstalar no lo arregla. Si `maasy_list_brands` pide iniciar sesión, conecta Maasy (sigue
    lo que diga Claude) y vuelve a llamarla. Sin sesión no sigas.
 2. **El Mac y la app.** Maasy Motion corre en Mac con Apple Silicon y macOS 13 o más. Llama `doctor` de BeCut. Si la
    tool no responde, mira `uname -m` y `sw_vers -productVersion`: si no es `arm64` o la versión es menor que 13, dilo y
-   detente. Si el Mac sirve, la app no está instalada: pide instalar Maasy Motion desde
-   su DMG (`https://files.believe-global.com/apps/maasy-motion/`) y abrirla una vez. Si `doctor` marca piezas que faltan,
+   detente. Si el Mac sirve, la app no está instalada: lee
+   `https://files.believe-global.com/apps/maasy-motion/latest.json` y muestra el enlace de su campo `url` para bajar el
+   instalador (la carpeta sola no abre). Que la persona instale Maasy Motion, la abra una vez y reinicie Claude. Si en el
+   Mac hay otra app de video (por ejemplo BeCut) pero no existe `/Applications/Maasy Motion.app`, no es un problema de
+   configuración ni sirve abrir la otra: falta instalar Maasy Motion. Si `doctor` marca piezas que faltan,
    muestra el arreglo que trae cada una y espera a que la persona lo haga.
 3. **La marca.** Con `maasy_list_brands`, primero pasa todas las marcas de la cuenta a `brand_reconcile` (`slugs`: el
    `id` de cada una): los kits de marcas que ya no están en la cuenta se archivan y dejan de salir en el selector (los
@@ -21,7 +28,8 @@ el servidor de Maasy, por partes y marcado con tu cuenta: no lo inventes, no lo 
    trae marcas, no la llames. Después pregunta con `AskUserQuestion` cuál usar (si hay una sola, úsala). Trae
    `maasy_get_design_md`, `maasy_get_brand_dna` y los logos de `maasy_get_brand_context` (`logo_urls`), y pásalo todo a
    `brand_put` (`name`, `project_id`, `design_md`, `dna`, `logos`, `industry`, `website`). BeCut guarda el kit; no
-   le pases tokens ni llaves.
+   le pases tokens ni llaves. Si la marca no trae `design_md`, ADN ni logos, dilo antes de seguir: sin identidad visual el
+   video sale genérico. Ofrece completarla primero con `/maasy:start` y sigue solo si la persona prefiere avanzar así.
 4. **El método.** Llama `maasy_get_motion_recipe` sin `parte`: devuelve el índice. Pide solo la parte que el paso de
    ahora necesita, una por vez, y síguela. Lo que llegue es de la cuenta de la persona: no lo pegues en el chat entero.
 5. **El video.** Crea el film con `hub_new_film` y `brand=` el slug que devolvió `brand_put`, muéstralo con `hub_live`,
