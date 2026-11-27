@@ -4,35 +4,40 @@
 import { enlaceValido, filtrarEnlaces, filtrarPedidos, limpio, type PanelV1, validarPanel } from './panel-v1'
 
 // ---------------- Enlaces permitidos (§4): el origen de cada tab.id lo fija el núcleo, no el plugin ----------------
-// Copia fija de la tabla de §4.1 mientras MEC-34 no sirva `ui_origins`. Motion y lens no tienen enlaces; ads no fijó el suyo.
+// Copia fija de la tabla de §4.1 mientras MEC-34 no sirva `ui_origins`. Todas admiten además la Suite.
+// La Suite (donde el dueño aprueba, conecta cuentas y ve su Canvas) vive en vibe.maasy.ai: toda tab puede enlazar ahí.
+const SUITE = 'https://vibe.maasy.ai'
 export const ORIGENES: Record<string, readonly string[]> = {
-  maasy: ['https://maasy.ai'],
-  vibe: ['https://app.believable.studio'],
-  reply: ['https://reply.believe-global.com'],
-  feed: ['https://reply.believe-global.com'],
-  aos: ['https://beaos.believe-global.com'],
-  games: ['https://games.maasy.ai']
+  maasy: ['https://maasy.ai', SUITE],
+  vibe: ['https://app.believable.studio', SUITE],
+  motion: [SUITE],
+  lens: [SUITE],
+  reply: ['https://reply.believe-global.com', SUITE],
+  feed: ['https://reply.believe-global.com', SUITE],
+  ads: [SUITE],
+  aos: ['https://beaos.believe-global.com', SUITE],
+  games: ['https://games.maasy.ai', SUITE]
 }
 
 /** Orden de §4.1, fijado por el núcleo. `tab.orden` solo vale para un id que no está aquí. */
 export const ORDEN: Record<string, number> = { maasy: 10, vibe: 20, motion: 30, lens: 35, reply: 40, feed: 45, ads: 50, aos: 60, games: 70 }
 
-/** Lista cerrada de ids de tab (los de §4.1, sin la del núcleo). Un plugin con otro id no se vuelve tab ni recibe el `brandId`. */
-const IDS_TAB: readonly string[] = Object.keys(ORDEN).filter((id) => id !== 'maasy')
+/** Lista cerrada de ids de tab (los de §4.1). Un plugin con otro id no se vuelve tab ni recibe el `brandId`. */
+const IDS_TAB: readonly string[] = Object.keys(ORDEN)
 
 // ---------------- Descubrimiento de tabs (§5, spike VERIFIED 2026-11-25) ----------------
 export type TabRef = { id: string; plugin: string; key: string; tool: string; server: string }
 
 const PANEL = /^mcp__plugin_([a-z0-9-]+)_([a-z0-9-]+)__([a-z][a-z0-9-]*)_panel$/
 
-/** De los nombres de `$.tool.list()` a las tabs: `mcp__plugin_<plugin>_<key>__<id>_panel`, solo con los ids de §4.1 (`maasy_panel` es el del núcleo). */
+/** De los nombres de `$.tool.list()` a las tabs: `mcp__plugin_<plugin>_<key>__<id>_panel`, solo con los ids de §4.1 `maasy_panel` ("Pedir a Maasy") es la del núcleo: solo vale la del plugin maasy y su servidor propio se conecta con la key. */
 export function descubrir(nombres: readonly string[]): TabRef[] {
   const out: TabRef[] = []
   for (const n of nombres) {
     const m = PANEL.exec(n)
     const [, plugin, key, id] = m ?? []
-    if (!plugin || !key || !id || !IDS_TAB.includes(id)) continue
-    out.push({ id, plugin, key, tool: `${id}_panel`, server: `plugin:${plugin}:${key}` })
+    if (!plugin || !key || !id || !IDS_TAB.includes(id) || (id === 'maasy' && plugin !== 'maasy')) continue
+    out.push({ id, plugin, key, tool: `${id}_panel`, server: id === 'maasy' ? key : `plugin:${plugin}:${key}` })
   }
   return out
 }
